@@ -10,8 +10,8 @@ namespace KH2FM_CrowdControl
         private static HubConnection connection;
         private static MessageHub messageHub;
 
-        private static readonly string connectionUrl = "https://localhost:44362/MessageHub";
-        //private static readonly string connectionUrl = "https://memoryscape.azurewebsites.net/MessageHub";
+        //private static readonly string connectionUrl = "https://localhost:44362/MessageHub";
+        private static readonly string connectionUrl = "https://memoryscape.azurewebsites.net/MessageHub";
 
         static async Task Main(string[] args)
         {

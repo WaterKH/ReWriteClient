@@ -1,13 +1,14 @@
-﻿using System;
+﻿using ReWriteClient.Enums;
+using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using Waterkh.Common.Memory;
 
-namespace KH2FM_CrowdControl
+namespace ReWriteClient.Data
 {
-    class MemoryProcessor
+    public class MemoryProcessor
     {
         [DllImport("kernel32.dll", SetLastError = true)]
         static extern bool ReadProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, [Out] byte[] lpBuffer, int dwSize, out int lpNumberOfBytesRead);
@@ -18,50 +19,81 @@ namespace KH2FM_CrowdControl
         [DllImport("kernel32.dll")]
         static extern IntPtr OpenProcess(int dwDesiredAccess, bool bInheritHandle, int dwProcessId);
 
-        private readonly Process Process;
-        private readonly IntPtr ProcessHandle;
+        public static MemoryProcessor Instance { get; set; } = new MemoryProcessor();
 
-        public MemoryProcessor()
+        public Process Process;
+        private IntPtr ProcessHandle;
+
+        private MemoryProcessor()
+        { }
+
+        public bool ConnectToProcess()
         {
-            // TODO Ask them to open pcsx2
-            Process = Process.GetProcessesByName("pcsx2")[0];
-            ProcessHandle = OpenProcess(0x001F0FFF, false, Process.Id);
-        }
-
-        public void UpdateMemory(MemoryObject obj)
-        {
-            byte[] data;
-
-            data = ConvertToBytes(obj.Type, obj.Value);
-
-            byte[] readMemory = new byte[data.Length];
-
-            switch (obj.ManipulationType)
+            try
             {
-                case ManipulationType.Set:
-                    break;
-                case ManipulationType.Add:
+                Process = Process.GetProcessesByName("pcsx2")[0];
+                ProcessHandle = OpenProcess(0x001F0FFF, false, Process.Id);
 
-                    ReadProcessMemory(ProcessHandle, (IntPtr)obj.Address, readMemory, data.Length, out _);
+                Process.EnableRaisingEvents = true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
 
-                    data = this.AddBytes(obj.Type, readMemory, data);
-
-                    break;
-                case ManipulationType.Subtract:
-                    
-                    ReadProcessMemory(ProcessHandle, (IntPtr)obj.Address, readMemory, data.Length, out _);
-
-                    data = this.SubtractBytes(obj.Type, readMemory, data);
-
-                    break;
+                return false;
             }
 
-            WriteProcessMemory(ProcessHandle, (IntPtr)obj.Address, data, data.Length, out _);            
+            return true;
         }
 
+        public bool UpdateMemory(MemoryObject obj)
+        {
+            if (ProcessHandle == null)
+                return false;
+
+            try
+            {
+                byte[] data;
+
+                data = ConvertToBytes(obj.Type, obj.Value);
+
+                byte[] readMemory = new byte[data.Length];
+
+                switch (obj.ManipulationType)
+                {
+                    case ManipulationType.Set:
+                        break;
+                    case ManipulationType.Add:
+
+                        ReadProcessMemory(ProcessHandle, (IntPtr)obj.Address, readMemory, data.Length, out _);
+
+                        data = this.AddBytes(obj.Type, readMemory, data);
+
+                        break;
+                    case ManipulationType.Subtract:
+
+                        ReadProcessMemory(ProcessHandle, (IntPtr)obj.Address, readMemory, data.Length, out _);
+
+                        data = this.SubtractBytes(obj.Type, readMemory, data);
+
+                        break;
+                }
+
+                WriteProcessMemory(ProcessHandle, (IntPtr)obj.Address, data, data.Length, out _);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+            return true;
+        }
 
         public bool UpdateAbilityMemory(MemoryObject obj, int maxNumber, int toggleValue)
         {
+            if (ProcessHandle == null)
+                return false;
+
             int firstInstance = 0;
             int lastReference = 0;
             int currNumber = 0;
@@ -95,11 +127,11 @@ namespace KH2FM_CrowdControl
                         break;
                 }
 
-                if(firstInstance == 0 && readMemory[0] == 0)
+                if (firstInstance == 0 && readMemory[0] == 0)
                 {
                     firstInstance = obj.Address;
                 }
-                else if(readMemory[0] == data[0])
+                else if (readMemory[0] == data[0])
                 {
                     lastReference = obj.Address;
 
