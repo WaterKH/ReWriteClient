@@ -454,7 +454,7 @@ namespace ReWriteClient.Messages
         {
             timer.Elapsed += (object source, ElapsedEventArgs e) =>
             {
-                if (memoryProcessor.CheckMemory(0x21C5FF4E, DataType.TwoBytes, "0"))
+                if (memoryProcessor.CheckMemory(0x21C5FF4E, DataType.TwoBytes, "0", false))
                     timer.Stop();
 
                 action.Invoke(obj);

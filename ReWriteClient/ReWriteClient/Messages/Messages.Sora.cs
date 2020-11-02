@@ -463,7 +463,7 @@ namespace ReWriteClient.Messages
 
         public static bool SendSoraActivateAbilityMessage(ManipulationType manipulationType, string value)
         {
-            var memoryObject = new MemoryObject { Address = 0x2032E074, Type = DataType.Byte, ManipulationType = manipulationType, Value = value };
+            var memoryObject = new MemoryObject { Address = 0x2032E074, Type = DataType.Byte, ManipulationType = manipulationType, Value = value, IsValueHex = true };
 
             CheckMemoryForAbility(memoryObject, 1, 128); // Add Ability map to account for how max/ toggleValue are assigned
 
@@ -472,7 +472,7 @@ namespace ReWriteClient.Messages
 
         public static bool SendSoraDeactivateAbilityMessage(ManipulationType manipulationType, string value)
         {
-            var memoryObject = new MemoryObject { Address = 0x2032E074, Type = DataType.Byte, ManipulationType = manipulationType, Value = value };
+            var memoryObject = new MemoryObject { Address = 0x2032E074, Type = DataType.Byte, ManipulationType = manipulationType, Value = value, IsValueHex = true };
 
             CheckMemoryForAbility(memoryObject, 1, 0); // Add Ability map to account for how max/ toggleValue are assigned
 

@@ -152,9 +152,12 @@ namespace ReWriteClient
         {
             if (messageHub.Options == null)
                 messageHub.Options = args.Options;
-
-            ManualCommands.Items.Clear();
-
+            
+            this.Dispatcher.Invoke(() =>
+            {
+                ManualCommands.Items.Clear();
+            });
+            
             foreach (var (group, buttons) in messageHub.Options)
             {
                 var methodsInGroup = Messages.Messages.Instance.MessageMappings[group];
@@ -188,7 +191,10 @@ namespace ReWriteClient
                     }
                 }
 
-                ManualCommands.Items.Add(tabItem);
+                this.Dispatcher.Invoke(() =>
+                {
+                    ManualCommands.Items.Add(tabItem);
+                });
             }
 
             return null;

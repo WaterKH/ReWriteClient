@@ -55,7 +55,7 @@ namespace ReWriteClient.Data
             {
                 byte[] data;
 
-                data = ConvertToBytes(obj.Type, obj.Value);
+                data = ConvertToBytes(obj.Type, obj.Value, obj.IsValueHex);
 
                 byte[] readMemory = new byte[data.Length];
 
@@ -163,11 +163,11 @@ namespace ReWriteClient.Data
             return false;
         }
 
-        public bool CheckMemory(int address, DataType type, string value)
+        public bool CheckMemory(int address, DataType type, string value, bool isValueHex)
         {
             byte[] data;
 
-            data = ConvertToBytes(type, value);
+            data = ConvertToBytes(type, value, isValueHex);
 
             byte[] readMemory = new byte[data.Length];
 
@@ -179,10 +179,10 @@ namespace ReWriteClient.Data
             return false;
         }
 
-        public byte[] ConvertToBytes(DataType type, string value) => type switch
+        public byte[] ConvertToBytes(DataType type, string value, bool isValueHex) => type switch
         {
             DataType.Binary => BitConverter.GetBytes(byte.Parse(value)), // ?
-            DataType.Byte => new byte[] { byte.Parse(Convert.ToInt32(value, 16).ToString()) },
+            DataType.Byte => new byte[] { isValueHex ? byte.Parse(Convert.ToInt32(value, 16).ToString()) : byte.Parse(Convert.ToInt32(value).ToString()) },
             DataType.TwoBytes => BitConverter.GetBytes(short.Parse(value)),
             DataType.FourBytes => BitConverter.GetBytes(int.Parse(value)),
             DataType.EightBytes => BitConverter.GetBytes(long.Parse(value)),

@@ -10,5 +10,6 @@ namespace ReWriteClient.Data
         public DataType Type { get; set; }
         public ManipulationType ManipulationType { get; set; }
         public string Value { get; set; }
+        public bool IsValueHex { get; set; } = false;
     }
 }
