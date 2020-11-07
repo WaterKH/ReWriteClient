@@ -85,6 +85,17 @@ namespace ReWriteClient.Messages
             });
         }
 
+        public static bool SendSoraSpeedMessage(ManipulationType manipulationType, string value)
+        {
+            return memoryProcessor.UpdateMemory(new MemoryObject
+            {
+                Address = 0x21CE2FE4,
+                Type = DataType.FourBytes,
+                ManipulationType = manipulationType,
+                Value = value
+            });
+        }
+
         #endregion Stats
 
         #region Magic
@@ -458,6 +469,66 @@ namespace ReWriteClient.Messages
         }
 
         #endregion Items
+
+        #region Quick Menu
+
+        public static bool SendSoraQuickMenuSlot1Message(ManipulationType manipulationType, string value)
+        {
+            if(Conversions.QuickMenuToItem.TryGetValue(value, out var convertedValue))
+                SendSoraItemSlot1Message(ManipulationType.Set, convertedValue);
+
+            return memoryProcessor.UpdateMemory(new MemoryObject
+            {
+                Address = 0x2032F228,
+                Type = DataType.TwoBytes,
+                ManipulationType = manipulationType,
+                Value = value
+            });
+        }
+
+        public static bool SendSoraQuickMenuSlot2Message(ManipulationType manipulationType, string value)
+        {
+            if (Conversions.QuickMenuToItem.TryGetValue(value, out var convertedValue))
+                SendSoraItemSlot2Message(ManipulationType.Set, convertedValue);
+
+            return memoryProcessor.UpdateMemory(new MemoryObject
+            {
+                Address = 0x2032F22A,
+                Type = DataType.TwoBytes,
+                ManipulationType = manipulationType,
+                Value = value
+            });
+        }
+
+        public static bool SendSoraQuickMenuSlot3Message(ManipulationType manipulationType, string value)
+        {
+            if (Conversions.QuickMenuToItem.TryGetValue(value, out var convertedValue))
+                SendSoraItemSlot3Message(ManipulationType.Set, convertedValue);
+
+            return memoryProcessor.UpdateMemory(new MemoryObject
+            {
+                Address = 0x2032F22C,
+                Type = DataType.TwoBytes,
+                ManipulationType = manipulationType,
+                Value = value
+            });
+        }
+
+        public static bool SendSoraQuickMenuSlot4Message(ManipulationType manipulationType, string value)
+        {
+            if (Conversions.QuickMenuToItem.TryGetValue(value, out var convertedValue))
+                SendSoraItemSlot4Message(ManipulationType.Set, convertedValue);
+
+            return memoryProcessor.UpdateMemory(new MemoryObject
+            {
+                Address = 0x2032F22E,
+                Type = DataType.TwoBytes,
+                ManipulationType = manipulationType,
+                Value = value
+            });
+        }
+
+        #endregion Quick Menu
 
         #region Abilities
 

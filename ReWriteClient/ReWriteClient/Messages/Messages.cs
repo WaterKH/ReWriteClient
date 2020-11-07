@@ -31,6 +31,7 @@ namespace ReWriteClient.Messages
                     { "SendSoraStrengthMessage", SendSoraStrengthMessage },
                     { "SendSoraMagicMessage", SendSoraMagicMessage },
                     { "SendSoraDefenseMessage", SendSoraDefenseMessage },
+                    { "SendSoraSpeedMessage", SendSoraSpeedMessage },
 
                     #endregion Stats
 
@@ -88,7 +89,16 @@ namespace ReWriteClient.Messages
                     { "SendSoraItemSlot7Message", SendSoraItemSlot7Message },
                     { "SendSoraItemSlot8Message", SendSoraItemSlot8Message },
 
-                    #endregion Items
+                #endregion Items
+
+                    #region Quick Menu
+
+                    { "SendSoraQuickMenuSlot1Message", SendSoraQuickMenuSlot1Message },
+                    { "SendSoraQuickMenuSlot2Message", SendSoraQuickMenuSlot2Message },
+                    { "SendSoraQuickMenuSlot3Message", SendSoraQuickMenuSlot3Message },
+                    { "SendSoraQuickMenuSlot4Message", SendSoraQuickMenuSlot4Message },
+
+                    #endregion Quick Menu
 
                     #region Abilities
 
