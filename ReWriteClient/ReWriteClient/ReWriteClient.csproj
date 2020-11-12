@@ -4,9 +4,12 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
+    <Version>0.3.0</Version>
+    <Authors>WaterKH</Authors>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Data\MemoryCache.cs~RF3ebf0c.TMP" />
     <None Remove="Data\MessageMapping.cs~RF1a5cb2de.TMP" />
     <None Remove="Data\Options.cs~RF134d3ff.TMP" />
     <None Remove="Messages\MessageHub.cs~RF19d3da08.TMP" />

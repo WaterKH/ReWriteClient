@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.SignalR.Client;
-using Microsoft.Extensions.Options;
 using ReWriteClient.Data;
 using ReWriteClient.Events;
 using ReWriteClient.Messages;
@@ -8,7 +7,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using Waterkh.Common.Memory;
 
 namespace ReWriteClient
 {
@@ -21,8 +19,8 @@ namespace ReWriteClient
         private MessageHub messageHub;
         private readonly MemoryProcessor memoryProcessor = MemoryProcessor.Instance;
 
-        private readonly string connectionUrl = "https://localhost:44362/MessageHub";
-        //private readonly string connectionUrl = "https://memoryscape.azurewebsites.net/MessageHub";
+        //private readonly string connectionUrl = "https://localhost:44362/MessageHub";
+        private readonly string connectionUrl = "https://memoryscape.azurewebsites.net/MessageHub";
 
         private bool serverConnected = false;
         private bool clientConnected = false;
