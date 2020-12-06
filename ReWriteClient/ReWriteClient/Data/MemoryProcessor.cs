@@ -93,7 +93,7 @@ namespace ReWriteClient.Data
             return true;
         }
 
-        public bool UpdateAbilityMemory(MemoryObject obj, int maxNumber, int toggleValue)
+        public bool UpdateAbilityMemory(MemoryObject obj, int maxNumber, int toggleValue, int abilitySlots)
         {
             if (ProcessHandle == IntPtr.Zero)
                 return false;
@@ -107,7 +107,7 @@ namespace ReWriteClient.Data
 
             byte[] readMemory = new byte[data.Length];
 
-            for (int i = 0; i < 148; i += 2)
+            for (int i = 0; i < abilitySlots; i += 2)
             {
                 if (i != 0)
                     obj.Address += 2;
@@ -166,6 +166,41 @@ namespace ReWriteClient.Data
 
             return false;
         }
+
+        public bool UpdateEntitySlotMemory(MemoryObject obj, bool isHealth)
+        {
+            try
+            {
+                if (ProcessHandle == IntPtr.Zero)
+                    return false;
+
+                byte[] data;
+
+                byte[] readMemory = isHealth ? new byte[8] : new byte[2];
+
+                ReadProcessMemory(ProcessHandle, (IntPtr)obj.Address, readMemory, readMemory.Length, out _);
+
+                if (isHealth)
+                {
+                    data = readMemory[^4..];
+
+                    WriteProcessMemory(ProcessHandle, (IntPtr)obj.Address, data, data.Length, out _);
+                }
+                else
+                {
+                    data = ConvertToBytes(obj.Type, obj.Value, obj.IsValueHex);
+
+                    WriteProcessMemory(ProcessHandle, (IntPtr)obj.Address, data, data.Length, out _);
+                }
+
+                return true;
+            }
+            catch(Exception e)
+            {
+                return false;
+            }
+        }
+
 
         public void CheckForEvent()
         {

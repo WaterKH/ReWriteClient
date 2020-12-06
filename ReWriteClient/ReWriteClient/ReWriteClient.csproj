@@ -4,11 +4,15 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
-    <Version>0.3.0</Version>
+    <Version>0.4.0</Version>
     <Authors>WaterKH</Authors>
+    <PackageReleaseNotes>0.4.0 - Updated according to Project Release 0.4.0 
+0.3.1 - Updated Nuget Package to 1.0.11</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Data\EntitySlot.cs~RFbffab0b.TMP" />
+    <None Remove="Data\EntitySlotMappings.cs~RFbfe6a5e.TMP" />
     <None Remove="Data\MemoryCache.cs~RF3ebf0c.TMP" />
     <None Remove="Data\MessageMapping.cs~RF1a5cb2de.TMP" />
     <None Remove="Data\Options.cs~RF134d3ff.TMP" />
@@ -18,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="MemoryContract" Version="1.0.8" />
+    <PackageReference Include="MemoryContract" Version="1.0.12" />
     <PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="3.1.9" />
   </ItemGroup>

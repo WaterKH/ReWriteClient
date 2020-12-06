@@ -19,8 +19,8 @@ namespace ReWriteClient
         private MessageHub messageHub;
         private readonly MemoryProcessor memoryProcessor = MemoryProcessor.Instance;
 
-        //private readonly string connectionUrl = "https://localhost:44362/MessageHub";
-        private readonly string connectionUrl = "https://memoryscape.azurewebsites.net/MessageHub";
+        private readonly string connectionUrl = "https://localhost:44362/MessageHub";
+        //private readonly string connectionUrl = "https://memoryscape.azurewebsites.net/MessageHub";
 
         private bool serverConnected = false;
         private bool clientConnected = false;

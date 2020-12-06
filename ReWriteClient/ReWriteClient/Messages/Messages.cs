@@ -138,86 +138,6 @@ namespace ReWriteClient.Messages
 
             #endregion Summon
 
-            #region Donald
-
-            { "Donald", new Dictionary<string, Func<ManipulationType, string, bool>>
-                {
-                    #region Weapons
-
-                    { "SendEquipStaffMessage", SendEquipStaffMessage },
-
-                    #endregion Weapons
-
-                    #region Armor
-
-                    { "SendDonaldArmorSlotsMessage", SendDonaldArmorSlotsMessage },
-                    { "SendDonaldArmorSlot1Message", SendDonaldArmorSlot1Message },
-                    { "SendDonaldArmorSlot2Message", SendDonaldArmorSlot2Message },
-
-                    #endregion Armor
-
-                    #region Accessories
-
-                    { "SendDonaldAccessorySlotsMessage", SendDonaldAccessorySlotsMessage },
-                    { "SendDonaldAccessorySlot1Message", SendDonaldAccessorySlot1Message },
-                    { "SendDonaldAccessorySlot2Message", SendDonaldAccessorySlot2Message },
-                    { "SendDonaldAccessorySlot3Message", SendDonaldAccessorySlot3Message },
-
-                    #endregion Accessories
-
-                    #region Items
-
-                    { "SendDonaldItemSlotsMessage", SendDonaldItemSlotsMessage },
-                    { "SendDonaldItemSlot1Message", SendDonaldItemSlot1Message },
-                    { "SendDonaldItemSlot2Message", SendDonaldItemSlot2Message },
-
-                    #endregion Items
-                }
-            },
-
-            #endregion Donald
-
-            #region Goofy 
-            
-            { "Goofy", new Dictionary<string, Func<ManipulationType, string, bool>>
-                {
-                    #region Weapons
-
-                    { "SendEquipShieldMessage", SendEquipShieldMessage },
-
-                    #endregion Weapons
-
-                    #region Armor
-
-                    { "SendGoofyArmorSlotsMessage", SendGoofyArmorSlotsMessage },
-                    { "SendGoofyArmorSlot1Message", SendGoofyArmorSlot1Message },
-                    { "SendGoofyArmorSlot2Message", SendGoofyArmorSlot2Message },
-                    { "SendGoofyArmorSlot3Message", SendGoofyArmorSlot3Message },
-
-                    #endregion Armor
-
-                    #region Accessories
-
-                    { "SendGoofyAccessorySlotsMessage", SendGoofyAccessorySlotsMessage },
-                    { "SendGoofyAccessorySlot1Message", SendGoofyAccessorySlot1Message },
-                    { "SendGoofyAccessorySlot2Message", SendGoofyAccessorySlot2Message },
-
-                    #endregion Accessories
-
-                    #region Items
-
-                    { "SendGoofyItemSlotsMessage", SendGoofyItemSlotsMessage },
-                    { "SendGoofyItemSlot1Message", SendGoofyItemSlot1Message },
-                    { "SendGoofyItemSlot2Message", SendGoofyItemSlot2Message },
-                    { "SendGoofyItemSlot3Message", SendGoofyItemSlot3Message },
-                    { "SendGoofyItemSlot4Message", SendGoofyItemSlot4Message },
-
-                    #endregion Items
-                }
-            },
-
-            #endregion Goofy
-
             #region Items
             
             { "Items", new Dictionary<string, Func<ManipulationType, string, bool>>
@@ -418,18 +338,520 @@ namespace ReWriteClient.Messages
                     { "SendDonaldEnemyModelMessage", SendDonaldEnemyModelMessage },
                     { "SendGoofyAllyModelMessage", SendGoofyAllyModelMessage },
                     { "SendGoofyEnemyModelMessage", SendGoofyEnemyModelMessage },
+
+                    { "SendHalloweenGoofyAllyModelMessage", SendHalloweenGoofyAllyModelMessage },
+                    { "SendHalloweenGoofyEnemyModelMessage", SendHalloweenGoofyEnemyModelMessage },
+                    { "SendChristmasGoofyAllyModelMessage", SendChristmasGoofyAllyModelMessage },
+                    { "SendChristmasGoofyEnemyModelMessage", SendChristmasGoofyEnemyModelMessage },
+                    { "SendTortoiseGoofyAllyModelMessage", SendTortoiseGoofyAllyModelMessage },
+                    { "SendTortoiseGoofyEnemyModelMessage", SendTortoiseGoofyEnemyModelMessage },
+                    { "SendSpaceParanoidsGoofyAllyModelMessage", SendSpaceParanoidsGoofyAllyModelMessage },
+                    { "SendSpaceParanoidsGoofyEnemyModelMessage", SendSpaceParanoidsGoofyEnemyModelMessage },
+                    { "SendTimelessRiverGoofyAllyModelMessage", SendTimelessRiverGoofyAllyModelMessage },
+                    { "SendTimelessRiverGoofyEnemyModelMessage", SendTimelessRiverGoofyEnemyModelMessage },
+
+                    { "SendHalloweenDonaldAllyModelMessage", SendHalloweenDonaldAllyModelMessage },
+                    { "SendHalloweenDonaldEnemyModelMessage", SendHalloweenDonaldEnemyModelMessage },
+                    { "SendChristmasDonaldAllyModelMessage", SendChristmasDonaldAllyModelMessage },
+                    { "SendChristmasDonaldEnemyModelMessage", SendChristmasDonaldEnemyModelMessage },
+                    { "SendBirdDonaldAllyModelMessage", SendBirdDonaldAllyModelMessage },
+                    { "SendBirdDonaldEnemyModelMessage", SendBirdDonaldEnemyModelMessage },
+                    { "SendSpaceParanoidsDonaldAllyModelMessage", SendSpaceParanoidsDonaldAllyModelMessage },
+                    { "SendSpaceParanoidsDonaldEnemyModelMessage", SendSpaceParanoidsDonaldEnemyModelMessage },
+                    { "SendTimelessRiverDonaldAllyModelMessage", SendTimelessRiverDonaldAllyModelMessage },
+                    { "SendTimelessRiverDonaldEnemyModelMessage", SendTimelessRiverDonaldEnemyModelMessage },
+
+                    { "SendMulanAllyModelMessage", SendMulanAllyModelMessage },
+                    { "SendMulanEnemyModelMessage", SendMulanEnemyModelMessage },
+                    { "SendBeastAllyModelMessage", SendBeastAllyModelMessage },
+                    { "SendBeastEnemyModelMessage", SendBeastEnemyModelMessage },
+                    { "SendAuronAllyModelMessage", SendAuronAllyModelMessage },
+                    { "SendAuronEnemyModelMessage", SendAuronEnemyModelMessage },
+                    { "SendCaptainJackSparrowAllyModelMessage", SendCaptainJackSparrowAllyModelMessage },
+                    { "SendCaptainJackSparrowEnemyModelMessage", SendCaptainJackSparrowEnemyModelMessage },
+                    { "SendAladdinAllyModelMessage", SendAladdinAllyModelMessage },
+                    { "SendAladdinEnemyModelMessage", SendAladdinEnemyModelMessage },
+                    { "SendJackSkellingtonAllyModelMessage", SendJackSkellingtonAllyModelMessage },
+                    { "SendJackSkellingtonEnemyModelMessage", SendJackSkellingtonEnemyModelMessage },
+                    { "SendSimbaAllyModelMessage", SendSimbaAllyModelMessage },
+                    { "SendSimbaEnemyModelMessage", SendSimbaEnemyModelMessage },
+                    { "SendTronAllyModelMessage", SendTronAllyModelMessage },
+                    { "SendTronEnemyModelMessage", SendTronEnemyModelMessage },
+                    { "SendRikuAllyModelMessage", SendRikuAllyModelMessage },
+                    { "SendRikuEnemyModelMessage", SendRikuEnemyModelMessage },
                 }
             },
 
             #endregion Model Swap
 
+            #region Party
+
+            { "Party", new Dictionary<string, Func<ManipulationType, string, bool>>
+                {
+                    #region Donald
+
+                    #region Weapons
+
+                    { "SendEquipStaffMessage", SendEquipStaffMessage },
+
+                    #endregion Weapons
+
+                    #region Armor
+
+                    { "SendDonaldArmorSlotsMessage", SendDonaldArmorSlotsMessage },
+                    { "SendDonaldArmorSlot1Message", SendDonaldArmorSlot1Message },
+                    { "SendDonaldArmorSlot2Message", SendDonaldArmorSlot2Message },
+
+                    #endregion Armor
+
+                    #region Accessories
+
+                    { "SendDonaldAccessorySlotsMessage", SendDonaldAccessorySlotsMessage },
+                    { "SendDonaldAccessorySlot1Message", SendDonaldAccessorySlot1Message },
+                    { "SendDonaldAccessorySlot2Message", SendDonaldAccessorySlot2Message },
+                    { "SendDonaldAccessorySlot3Message", SendDonaldAccessorySlot3Message },
+
+                    #endregion Accessories
+
+                    #region Items
+
+                    { "SendDonaldItemSlotsMessage", SendDonaldItemSlotsMessage },
+                    { "SendDonaldItemSlot1Message", SendDonaldItemSlot1Message },
+                    { "SendDonaldItemSlot2Message", SendDonaldItemSlot2Message },
+
+                    #endregion Items
+
+                    #region Abilities
+
+                    { "SendDonaldActivateAbilityMessage", SendDonaldActivateAbilityMessage },
+                    { "SendDonaldDeactivateAbilityMessage", SendDonaldDeactivateAbilityMessage },
+
+                    #endregion Abilities
+
+                    #endregion Donald
+
+                    #region Goofy
+
+                    #region Weapons
+
+                    { "SendEquipShieldMessage", SendEquipShieldMessage },
+
+                    #endregion Weapons
+
+                    #region Armor
+
+                    { "SendGoofyArmorSlotsMessage", SendGoofyArmorSlotsMessage },
+                    { "SendGoofyArmorSlot1Message", SendGoofyArmorSlot1Message },
+                    { "SendGoofyArmorSlot2Message", SendGoofyArmorSlot2Message },
+                    { "SendGoofyArmorSlot3Message", SendGoofyArmorSlot3Message },
+
+                    #endregion Armor
+
+                    #region Accessories
+
+                    { "SendGoofyAccessorySlotsMessage", SendGoofyAccessorySlotsMessage },
+                    { "SendGoofyAccessorySlot1Message", SendGoofyAccessorySlot1Message },
+                    { "SendGoofyAccessorySlot2Message", SendGoofyAccessorySlot2Message },
+
+                    #endregion Accessories
+
+                    #region Items
+
+                    { "SendGoofyItemSlotsMessage", SendGoofyItemSlotsMessage },
+                    { "SendGoofyItemSlot1Message", SendGoofyItemSlot1Message },
+                    { "SendGoofyItemSlot2Message", SendGoofyItemSlot2Message },
+                    { "SendGoofyItemSlot3Message", SendGoofyItemSlot3Message },
+                    { "SendGoofyItemSlot4Message", SendGoofyItemSlot4Message },
+
+                    #endregion Items
+
+                    #region Abilities
+
+                    { "SendGoofyActivateAbilityMessage", SendGoofyActivateAbilityMessage },
+                    { "SendGoofyDeactivateAbilityMessage", SendGoofyDeactivateAbilityMessage },
+
+                    #endregion Abilities
+
+                    #endregion Goofy
+
+                    #region Mulan
+
+                    #region Weapons
+
+
+                    #endregion Weapons
+
+                    #region Armor
+
+                    { "SendMulanArmorSlotsMessage", SendMulanArmorSlotsMessage },
+                    { "SendMulanArmorSlot1Message", SendMulanArmorSlot1Message },
+
+                    #endregion Armor
+
+                    #region Accessories
+
+                    { "SendMulanAccessorySlotsMessage", SendMulanAccessorySlotsMessage },
+                    { "SendMulanAccessorySlot1Message", SendMulanAccessorySlot1Message },
+
+                    #endregion Accessories
+
+                    #region Items
+
+                    { "SendMulanItemSlotsMessage", SendMulanItemSlotsMessage },
+                    { "SendMulanItemSlot1Message", SendMulanItemSlot1Message },
+                    { "SendMulanItemSlot2Message", SendMulanItemSlot2Message },
+                    { "SendMulanItemSlot3Message", SendMulanItemSlot3Message },
+
+                    #endregion Items
+
+                    #region Abilities
+
+                    { "SendMulanActivateAbilityMessage", SendMulanActivateAbilityMessage },
+                    { "SendMulanDeactivateAbilityMessage", SendMulanDeactivateAbilityMessage },
+
+                    #endregion Abilities
+
+                    #endregion Mulan
+
+                    #region Beast
+
+                    #region Weapons
+
+                    #endregion Weapons
+
+                    #region Armor
+
+                    #endregion Armor
+
+                    #region Accessories
+
+                    { "SendBeastAccessorySlotsMessage", SendBeastAccessorySlotsMessage },
+                    { "SendBeastAccessorySlot1Message", SendBeastAccessorySlot1Message },
+
+                    #endregion Accessories
+
+                    #region Items
+
+                    { "SendBeastItemSlotsMessage", SendBeastItemSlotsMessage },
+                    { "SendBeastItemSlot1Message", SendBeastItemSlot1Message },
+                    { "SendBeastItemSlot2Message", SendBeastItemSlot2Message },
+                    { "SendBeastItemSlot3Message", SendBeastItemSlot3Message },
+                    { "SendBeastItemSlot4Message", SendBeastItemSlot4Message },
+
+                    #endregion Items
+
+                    #region Abilities
+
+                    { "SendBeastActivateAbilityMessage", SendBeastActivateAbilityMessage },
+                    { "SendBeastDeactivateAbilityMessage", SendBeastDeactivateAbilityMessage },
+
+                    #endregion Abilities
+
+                    #endregion Beast
+
+                    #region Auron
+
+                    #region Weapons
+
+                    #endregion Weapons
+
+                    #region Armor
+
+                    { "SendAuronArmorSlotsMessage", SendAuronArmorSlotsMessage },
+                    { "SendAuronArmorSlot1Message", SendAuronArmorSlot1Message },
+
+                    #endregion Armor
+
+                    #region Accessories
+
+                    #endregion Accessories
+
+                    #region Items
+
+                    { "SendAuronItemSlotsMessage", SendAuronItemSlotsMessage },
+                    { "SendAuronItemSlot1Message", SendAuronItemSlot1Message },
+                    { "SendAuronItemSlot2Message", SendAuronItemSlot2Message },
+
+                    #endregion Items
+
+                    #region Abilities
+
+                    { "SendAuronActivateAbilityMessage", SendAuronActivateAbilityMessage },
+                    { "SendAuronDeactivateAbilityMessage", SendAuronDeactivateAbilityMessage },
+
+                    #endregion Abilities
+
+                    #endregion Auron
+
+                    #region Captain Jack Sparrow
+
+                    #region Weapons
+
+                    #endregion Weapons
+
+                    #region Armor
+
+                    { "SendCaptainJackSparrowArmorSlotsMessage", SendCaptainJackSparrowArmorSlotsMessage },
+                    { "SendCaptainJackSparrowArmorSlot1Message", SendCaptainJackSparrowArmorSlot1Message },
+                    
+                    #endregion Armor
+
+                    #region Accessories
+
+                    { "SendCaptainJackSparrowAccessorySlotsMessage", SendCaptainJackSparrowAccessorySlotsMessage },
+                    { "SendCaptainJackSparrowAccessorySlot1Message", SendCaptainJackSparrowAccessorySlot1Message },
+                    
+                    #endregion Accessories
+
+                    #region Items
+
+                    { "SendCaptainJackSparrowItemSlotsMessage", SendCaptainJackSparrowItemSlotsMessage },
+                    { "SendCaptainJackSparrowItemSlot1Message", SendCaptainJackSparrowItemSlot1Message },
+                    { "SendCaptainJackSparrowItemSlot2Message", SendCaptainJackSparrowItemSlot2Message },
+                    { "SendCaptainJackSparrowItemSlot3Message", SendCaptainJackSparrowItemSlot3Message },
+                    { "SendCaptainJackSparrowItemSlot4Message", SendCaptainJackSparrowItemSlot4Message },
+
+                    #endregion Items
+
+                    #region Abilities
+
+                    { "SendCaptainJackSparrowActivateAbilityMessage", SendCaptainJackSparrowActivateAbilityMessage },
+                    { "SendCaptainJackSparrowDeactivateAbilityMessage", SendCaptainJackSparrowDeactivateAbilityMessage },
+
+                    #endregion Abilities
+
+                    #endregion Captain Jack Sparrow
+
+                    #region Aladdin
+
+                    #region Weapons
+
+                    #endregion Weapons
+
+                    #region Armor
+
+                    { "SendAladdinArmorSlotsMessage", SendAladdinArmorSlotsMessage },
+                    { "SendAladdinArmorSlot1Message", SendAladdinArmorSlot1Message },
+                    { "SendAladdinArmorSlot2Message", SendAladdinArmorSlot2Message },
+
+                    #endregion Armor
+
+                    #region Accessories
+
+                    #endregion Accessories
+
+                    #region Items
+
+                    { "SendAladdinItemSlotsMessage", SendAladdinItemSlotsMessage },
+                    { "SendAladdinItemSlot1Message", SendAladdinItemSlot1Message },
+                    { "SendAladdinItemSlot2Message", SendAladdinItemSlot2Message },
+                    { "SendAladdinItemSlot3Message", SendAladdinItemSlot3Message },
+                    { "SendAladdinItemSlot4Message", SendAladdinItemSlot4Message },
+                    { "SendAladdinItemSlot5Message", SendAladdinItemSlot5Message },
+
+                    #endregion Items
+
+                    #region Abilities
+
+                    { "SendAladdinActivateAbilityMessage", SendAladdinActivateAbilityMessage },
+                    { "SendAladdinDeactivateAbilityMessage", SendAladdinDeactivateAbilityMessage },
+
+                    #endregion Abilities
+
+                    #endregion Aladdin
+
+                    #region Jack Skellington
+
+                    #region Weapons
+
+                    #endregion Weapons
+
+                    #region Armor
+
+                    #endregion Armor
+
+                    #region Accessories
+
+                    { "SendJackSkellingtonAccessorySlotsMessage", SendJackSkellingtonAccessorySlotsMessage },
+                    { "SendJackSkellingtonAccessorySlot1Message", SendJackSkellingtonAccessorySlot1Message },
+                    { "SendJackSkellingtonAccessorySlot2Message", SendJackSkellingtonAccessorySlot2Message },
+
+                    #endregion Accessories
+
+                    #region Items
+
+                    { "SendJackSkellingtonItemSlotsMessage", SendJackSkellingtonItemSlotsMessage },
+                    { "SendJackSkellingtonItemSlot1Message", SendJackSkellingtonItemSlot1Message },
+                    { "SendJackSkellingtonItemSlot2Message", SendJackSkellingtonItemSlot2Message },
+                    { "SendJackSkellingtonItemSlot3Message", SendJackSkellingtonItemSlot3Message },
+
+                    #endregion Items
+
+                    #region Abilities
+
+                    { "SendJackSkellingtonActivateAbilityMessage", SendJackSkellingtonActivateAbilityMessage },
+                    { "SendJackSkellingtonDeactivateAbilityMessage", SendJackSkellingtonDeactivateAbilityMessage },
+
+                    #endregion Abilities
+
+                    #endregion Jack Skellington
+
+                    #region Simba
+
+                    #region Weapons
+
+                    #endregion Weapons
+
+                    #region Armor
+
+                    #endregion Armor
+
+                    #region Accessories
+
+                    { "SendSimbaAccessorySlotsMessage", SendSimbaAccessorySlotsMessage },
+                    { "SendSimbaAccessorySlot1Message", SendSimbaAccessorySlot1Message },
+                    { "SendSimbaAccessorySlot2Message", SendSimbaAccessorySlot2Message },
+
+                    #endregion Accessories
+
+                    #region Items
+
+                    { "SendSimbaItemSlotsMessage", SendSimbaItemSlotsMessage },
+                    { "SendSimbaItemSlot1Message", SendSimbaItemSlot1Message },
+                    { "SendSimbaItemSlot2Message", SendSimbaItemSlot2Message },
+                    { "SendSimbaItemSlot3Message", SendSimbaItemSlot3Message },
+
+                    #endregion Items
+
+                    #region Abilities
+
+                    { "SendSimbaActivateAbilityMessage", SendSimbaActivateAbilityMessage },
+                    { "SendSimbaDeactivateAbilityMessage", SendSimbaDeactivateAbilityMessage },
+
+                    #endregion Abilities
+
+                    #endregion Simba
+
+                    #region Tron
+
+                    #region Weapons
+
+                    #endregion Weapons
+
+                    #region Armor
+
+                    { "SendTronArmorSlotsMessage", SendTronArmorSlotsMessage },
+                    { "SendTronArmorSlot1Message", SendTronArmorSlot1Message },
+
+                    #endregion Armor
+
+                    #region Accessories
+
+                    { "SendTronAccessorySlotsMessage", SendTronAccessorySlotsMessage },
+                    { "SendTronAccessorySlot1Message", SendTronAccessorySlot1Message },
+
+                    #endregion Accessories
+
+                    #region Items
+
+                    { "SendTronItemSlotsMessage", SendTronItemSlotsMessage },
+                    { "SendTronItemSlot1Message", SendTronItemSlot1Message },
+                    { "SendTronItemSlot2Message", SendTronItemSlot2Message },
+
+                    #endregion Items
+
+                    #region Abilities
+
+                    { "SendTronActivateAbilityMessage", SendTronActivateAbilityMessage },
+                    { "SendTronDeactivateAbilityMessage", SendTronDeactivateAbilityMessage },
+
+                    #endregion Abilities
+
+                    #endregion Tron
+
+                    #region Riku
+
+                    #region Weapons
+
+                    #endregion Weapons
+
+                    #region Armor
+
+                    { "SendRikuArmorSlotsMessage", SendRikuArmorSlotsMessage },
+                    { "SendRikuArmorSlot1Message", SendRikuArmorSlot1Message },
+                    { "SendRikuArmorSlot2Message", SendRikuArmorSlot2Message },
+
+                    #endregion Armor
+
+                    #region Accessories
+
+                    { "SendRikuAccessorySlotsMessage", SendRikuAccessorySlotsMessage },
+                    { "SendRikuAccessorySlot1Message", SendRikuAccessorySlot1Message },
+
+                    #endregion Accessories
+
+                    #region Items
+
+                    { "SendRikuItemSlotsMessage", SendRikuItemSlotsMessage },
+                    { "SendRikuItemSlot1Message", SendRikuItemSlot1Message },
+                    { "SendRikuItemSlot2Message", SendRikuItemSlot2Message },
+                    { "SendRikuItemSlot3Message", SendRikuItemSlot3Message },
+                    { "SendRikuItemSlot4Message", SendRikuItemSlot4Message },
+                    { "SendRikuItemSlot5Message", SendRikuItemSlot5Message },
+                    { "SendRikuItemSlot6Message", SendRikuItemSlot6Message },
+
+                    #endregion Items
+
+                    #region Abilities
+                    
+                    { "SendRikuActivateAbilityMessage", SendRikuActivateAbilityMessage },
+                    { "SendRikuDeactivateAbilityMessage", SendRikuDeactivateAbilityMessage },
+
+                    #endregion Abilities
+
+                    #endregion Riku
+                }
+            },
+
+            #endregion Party
+
+            #region Enemy
+
+            { "Enemy", new Dictionary<string, Func<ManipulationType, string, bool>>
+                {
+                    { "SendBossChangeMessage", SendBossChangeMessage },    
+
+                    #region Timers
+                
+                    { "SendBossActivateHealthTimerMessage", SendBossActivateHealthTimerMessage },
+                    { "SendBossDeactivateHealthTimerMessage", SendBossDeactivateHealthTimerMessage },
+                    { "SendBossActivateStrengthTimerMessage", SendBossActivateStrengthTimerMessage },
+                    { "SendBossDeactivateStrengthTimerMessage", SendBossDeactivateStrengthTimerMessage },
+                    { "SendBossActivateDefenseTimerMessage", SendBossActivateDefenseTimerMessage },
+                    { "SendBossDeactivateDefenseTimerMessage", SendBossDeactivateDefenseTimerMessage },
+
+                    #endregion Timers
+
+                    #region Set Changes
+                    
+                    { "SendBossMaxHealthChangeMessage", SendBossMaxHealthChangeMessage },
+                    { "SendBossHealthChangeMessage", SendBossHealthChangeMessage },
+                    { "SendBossStrengthChangeMessage", SendBossStrengthChangeMessage },
+                    { "SendBossDefenseChangeMessage", SendBossDefenseChangeMessage },
+
+                    #endregion Set Changes
+                }
+            },
+
+            #endregion Enemy
+
             #region Misc
-            
+
             { "Misc", new Dictionary<string, Func<ManipulationType, string, bool>>
                 {
                     { "SendMunnyMessage", SendMunnyMessage },
                 }
-            }
+            },
 
             #endregion Misc
         };
@@ -469,25 +891,6 @@ namespace ReWriteClient.Messages
 
                 action.Invoke(obj);
             };
-        }
-
-        private static void CheckMemoryForAbility(MemoryObject obj, int maxNumber, int toggleValue)
-        {
-            switch (obj.Address)
-            {
-                // Ability start location
-                case 0x2032E074:
-
-                    // TODO Update this because we don't use Console.Write
-                    if (memoryProcessor.UpdateAbilityMemory(obj, maxNumber, toggleValue))
-                        Console.WriteLine($"{obj.Name} updated to {obj.Value} - Type: {obj.Type} - Address: {obj.Address}");
-                    else
-                        Console.WriteLine($"{obj.Name} Failed to update to {obj.Value} - Address: {obj.Address}");
-
-                    break;
-                default:
-                    break;
-            }
         }
     }
 }

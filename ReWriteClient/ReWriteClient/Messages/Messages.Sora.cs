@@ -534,22 +534,22 @@ namespace ReWriteClient.Messages
 
         public static bool SendSoraActivateAbilityMessage(ManipulationType manipulationType, string value)
         {
-            var ability = AbilityMappings.Abilities[value];
+            var ability = AbilityMappings.SoraAbilities[value];
 
             var memoryObject = new MemoryObject { Address = 0x2032E074, Type = DataType.Byte, ManipulationType = manipulationType, Value = ability.Value.ToString(), IsValueHex = true };
 
-            CheckMemoryForAbility(memoryObject, ability.MaxNumber, ability.ToggleValue); // Add Ability map to account for how max/ toggleValue are assigned
+            memoryProcessor.UpdateAbilityMemory(memoryObject, ability.MaxNumber, ability.ToggleValue, 148); // Add Ability map to account for how max/ toggleValue are assigned
 
             return true;
         }
 
         public static bool SendSoraDeactivateAbilityMessage(ManipulationType manipulationType, string value)
         {
-            var ability = AbilityMappings.Abilities[value];
+            var ability = AbilityMappings.SoraAbilities[value];
 
             var memoryObject = new MemoryObject { Address = 0x2032E074, Type = DataType.Byte, ManipulationType = manipulationType, Value = ability.Value.ToString(), IsValueHex = true };
 
-            CheckMemoryForAbility(memoryObject, ability.MaxNumber, ability.ToggleValue - 128); // Add Ability map to account for how max/ toggleValue are assigned
+            memoryProcessor.UpdateAbilityMemory(memoryObject, ability.MaxNumber, ability.ToggleValue - 128, 148); // Add Ability map to account for how max/ toggleValue are assigned
 
             return true;
         }
