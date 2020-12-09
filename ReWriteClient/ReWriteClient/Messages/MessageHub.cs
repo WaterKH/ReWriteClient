@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.SignalR;
 using Microsoft.AspNetCore.SignalR.Client;
+using ReWriteClient.Data;
 using ReWriteClient.Events;
 using System;
 using System.Collections.Generic;
@@ -64,8 +65,10 @@ namespace ReWriteClient.Messages
             {
                 await this.messageHubConnection.InvokeAsync("SendResponseMessage", response);
             }
-            catch(Exception)
-            { }
+            catch(Exception e)
+            {
+                Logger.Instance.Error(e.Message, "SendResponseMessage");
+            }
         }
 
         public void UpdateOptionsMessage()
@@ -75,7 +78,9 @@ namespace ReWriteClient.Messages
                 this.messageHubConnection.InvokeAsync("RequestUpdateOptionsMessage", username);
             }
             catch (Exception e)
-            { }
+            {
+                Logger.Instance.Error(e.Message, "UpdateOptionsMessage");
+            }
         }
 
         private static void SendServerLogReceived(object sender, MessageHubArgs e)

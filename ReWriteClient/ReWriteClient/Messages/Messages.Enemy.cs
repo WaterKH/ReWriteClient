@@ -7,19 +7,19 @@ namespace ReWriteClient.Messages
 {
     public partial class Messages
     {
-        public static Timer HealthTimer = new Timer
+        public static Timer EnemyHealthTimer = new Timer
         {
             AutoReset = true,
             Interval = 60000
         };
 
-        public static Timer StrengthTimer = new Timer
+        public static Timer EnemyStrengthTimer = new Timer
         {
             AutoReset = true,
             Interval = 60000
         };
 
-        public static Timer DefenseTimer = new Timer
+        public static Timer EnemyDefenseTimer = new Timer
         {
             AutoReset = true,
             Interval = 60000
@@ -51,7 +51,7 @@ namespace ReWriteClient.Messages
         {
             var entitySlot = EntitySlotMappings.EntitySlots[EnemyMappings.Enemies[value].EntitySlot];
 
-            HealthTimer.Elapsed += (sender, obj) =>
+            EnemyHealthTimer.Elapsed += (sender, obj) =>
             {
                 memoryProcessor.UpdateEntitySlotMemory(new MemoryObject
                 {
@@ -61,14 +61,15 @@ namespace ReWriteClient.Messages
                 }, true);
             };
 
-            HealthTimer.Start();
+            EnemyHealthTimer.Start();
 
             return true;
         }
 
         public static bool SendBossDeactivateHealthTimerMessage(ManipulationType manipulationType, string value)
         {
-            HealthTimer.Stop();
+            EnemyHealthTimer.Stop();
+            EnemyHealthTimer.Stop();
 
             return true;
         }
@@ -77,7 +78,7 @@ namespace ReWriteClient.Messages
         {
             var entitySlot = EntitySlotMappings.EntitySlots[EnemyMappings.Enemies[value].EntitySlot];
 
-            StrengthTimer.Elapsed += (sender, obj) =>
+            EnemyStrengthTimer.Elapsed += (sender, obj) =>
             {
                 memoryProcessor.UpdateEntitySlotMemory(new MemoryObject
                 {
@@ -88,14 +89,15 @@ namespace ReWriteClient.Messages
                 }, false);
             };
 
-            StrengthTimer.Start();
+            EnemyStrengthTimer.Start();
 
             return true;
         }
 
         public static bool SendBossDeactivateStrengthTimerMessage(ManipulationType manipulationType, string value)
         {
-            StrengthTimer.Stop();
+            EnemyStrengthTimer.Stop();
+            EnemyStrengthTimer.Stop();
 
             return true;
         }
@@ -104,7 +106,7 @@ namespace ReWriteClient.Messages
         {
             var entitySlot = EntitySlotMappings.EntitySlots[EnemyMappings.Enemies[value].EntitySlot];
 
-            DefenseTimer.Elapsed += (sender, obj) =>
+            EnemyDefenseTimer.Elapsed += (sender, obj) =>
             {
                 memoryProcessor.UpdateEntitySlotMemory(new MemoryObject
                 {
@@ -115,14 +117,15 @@ namespace ReWriteClient.Messages
                 }, false);
             };
 
-            DefenseTimer.Start();
+            EnemyDefenseTimer.Start();
 
             return true;
         }
 
         public static bool SendBossDeactivateDefenseTimerMessage(ManipulationType manipulationType, string value)
         {
-            DefenseTimer.Stop();
+            EnemyDefenseTimer.Stop();
+            EnemyDefenseTimer.Stop();
 
             return true;
         }

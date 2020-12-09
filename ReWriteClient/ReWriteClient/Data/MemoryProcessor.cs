@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using Waterkh.Common.Memory;
 
 namespace ReWriteClient.Data
@@ -38,7 +39,7 @@ namespace ReWriteClient.Data
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                Logger.Instance.Error(e.Message, "ConnectToProcess");
 
                 return false;
             }
@@ -85,8 +86,10 @@ namespace ReWriteClient.Data
 
                 WriteProcessMemory(ProcessHandle, (IntPtr)obj.Address, data, data.Length, out _);
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                Logger.Instance.Error(e.Message, "UpdateMemory");
+
                 return false;
             }
 
@@ -197,85 +200,207 @@ namespace ReWriteClient.Data
             }
             catch(Exception e)
             {
+                Logger.Instance.Error(e.Message, "UpdateEntitySlotMemory");
+
                 return false;
             }
         }
 
+        public bool UpdateSoraMemory(MemoryObject obj)
+        {
+            try
+            {
+                if (ProcessHandle == IntPtr.Zero)
+                    return false;
+
+                byte[] readMemory = new byte[4];
+
+                ReadProcessMemory(ProcessHandle, (IntPtr)obj.Address, readMemory, readMemory.Length, out _);
+
+                byte[] data = this.SubtractBytes(DataType.FourBytes, readMemory, new byte[4] { 1, 0, 0, 0 });
+
+                if (data[0] == 0 && data[1] == 0 && data[2] == 0 && data[3] == 0)
+                    data = new byte[4] { 1, 0, 0, 0 };
+
+                WriteProcessMemory(ProcessHandle, (IntPtr)obj.Address, data, data.Length, out _);
+                
+                return true;
+            }
+            catch (Exception e)
+            {
+                Logger.Instance.Error(e.Message, "UpdateSoraMemory");
+
+                return false;
+            }
+        }
 
         public void CheckForEvent()
         {
-            if (ProcessHandle == IntPtr.Zero)
-                return;
-
-            byte[] world = new byte[1];
-            byte[] room = new byte[1];
-
-            ReadProcessMemory(ProcessHandle, (IntPtr)0x2032BAE0, world, 1, out _);
-            ReadProcessMemory(ProcessHandle, (IntPtr)0x2032BAE1, room, 1, out _);
-
-            EventMappings.Instance.Events.TryGetValue((int)world[0], out var rooms);
-
-            if (rooms == null)
-                return;
-
-            rooms.TryGetValue((int)room[0], out var values);
-
-            if (values == null)
-                return;
-
-            byte[] event1 = new byte[1];
-            byte[] event2 = new byte[1];
-            byte[] event3 = new byte[1];
-
-            ReadProcessMemory(ProcessHandle, (IntPtr)0x2032BAE4, event1, 1, out _);
-            ReadProcessMemory(ProcessHandle, (IntPtr)0x2032BAE6, event2, 1, out _);
-            ReadProcessMemory(ProcessHandle, (IntPtr)0x2032BAE8, event3, 1, out _);
-
-            bool isEvent = false;
-
-            foreach (var value in values)
+            try
             {
-                if (value.Count == 1)
+                if (ProcessHandle == IntPtr.Zero)
+                    return;
+
+                byte[] world = new byte[1];
+                byte[] room = new byte[1];
+
+                ReadProcessMemory(ProcessHandle, (IntPtr)0x2032BAE0, world, 1, out _);
+                ReadProcessMemory(ProcessHandle, (IntPtr)0x2032BAE1, room, 1, out _);
+
+                EventMappings.Instance.Events.TryGetValue((int)world[0], out var rooms);
+
+                if (rooms == null)
+                    return;
+
+                rooms.TryGetValue((int)room[0], out var values);
+
+                if (values == null)
+                    return;
+
+                byte[] event1 = new byte[1];
+                byte[] event2 = new byte[1];
+                byte[] event3 = new byte[1];
+
+                ReadProcessMemory(ProcessHandle, (IntPtr)0x2032BAE4, event1, 1, out _);
+                ReadProcessMemory(ProcessHandle, (IntPtr)0x2032BAE6, event2, 1, out _);
+                ReadProcessMemory(ProcessHandle, (IntPtr)0x2032BAE8, event3, 1, out _);
+
+                bool isEvent = false;
+
+                foreach (var value in values)
                 {
-                    // event 3
-                    if(isEvent = (value[0] == (int)event3[0]))
-                        break;
+                    if (value.Count == 1)
+                    {
+                        // event 3
+                        if (isEvent = (value[0] == (int)event3[0]))
+                            break;
+                    }
+                    else if (value.Count == 2)
+                    {
+                        // event 2, event 3
+                        if (isEvent = (value[0] == (int)event2[0] && value[1] == (int)event3[0]))
+                            break;
+                    }
+                    else if (value.Count == 3)
+                    {
+                        // event 1, event 2, event 3
+                        if (isEvent = (value[0] == (int)event1[0] && value[1] == (int)event2[0] && value[2] == (int)event3[0]))
+                            break;
+                    }
                 }
-                else if (value.Count == 2)
+
+                //var isEvent = values.Item1 == (int)event1[0] && values.Item2 == (int)event2[0] && values.Item3 == (int)event3[0];
+
+                // TODO Is there a better way to do this?
+                // TODO boss fights trigger this too - within same room/ world
+                if (MemoryCache.CurrentWorld != (int)world[0] || MemoryCache.CurrentRoom != (int)room[0])
                 {
-                    // event 2, event 3
-                    if(isEvent = (value[0] == (int)event2[0] && value[1] == (int)event3[0]))
-                        break;
-                }
-                else if(value.Count == 3)
-                { 
-                    // event 1, event 2, event 3
-                    if(isEvent = (value[0] == (int)event1[0] && value[1] == (int)event2[0] && value[2] == (int)event3[0]))
-                        break;
+                    switch (MemoryCache.CurrentWorld)
+                    {
+                        case 2: // Twilight Town
+
+                            this.UpdateMemory(new MemoryObject
+                            {
+                                Address = 0x21C6CC20,
+                                ManipulationType = ManipulationType.Set,
+                                Type = DataType.TwoBytes,
+                                Value = isEvent ? "90" : MemoryCache.SoraModelSwap.ToString()
+                            });
+
+                            break;
+                        case 10: // Pride Lands
+
+                            this.UpdateMemory(new MemoryObject
+                            {
+                                Address = 0x21CE1250,
+                                ManipulationType = ManipulationType.Set,
+                                Type = DataType.TwoBytes,
+                                Value = isEvent ? "650" : MemoryCache.SoraModelSwap.ToString()
+                            });
+
+                            break;
+                        //case 11: // Atlantica
+
+                        //    this.UpdateMemory(new MemoryObject
+                        //    {
+                        //        Address = 0x21C6CC20,
+                        //        ManipulationType = ManipulationType.Set,
+                        //        Type = DataType.TwoBytes,
+                        //        Value = isEvent ? "" : MemoryCache.SoraModelSwap.ToString()
+                        //    });
+
+                        //    break;
+                        case 13: // Timeless River
+
+                            this.UpdateMemory(new MemoryObject
+                            {
+                                Address = 0x21CE121C,
+                                ManipulationType = ManipulationType.Set,
+                                Type = DataType.TwoBytes,
+                                Value = isEvent ? "1623" : MemoryCache.SoraModelSwap.ToString()
+                            });
+
+                            break;
+                        case 14: // Halloween / Christmas Town
+
+                            if (MemoryCache.CurrentRoom < 5)
+                            {
+                                this.UpdateMemory(new MemoryObject
+                                {
+                                    Address = 0x21CE0FAC,
+                                    ManipulationType = ManipulationType.Set,
+                                    Type = DataType.TwoBytes,
+                                    Value = isEvent ? "693" : MemoryCache.SoraModelSwap.ToString()
+                                });
+                            }
+                            else
+                            {
+                                this.UpdateMemory(new MemoryObject
+                                {
+                                    Address = 0x21CE0FE0,
+                                    ManipulationType = ManipulationType.Set,
+                                    Type = DataType.TwoBytes,
+                                    Value = isEvent ? "2389" : MemoryCache.SoraModelSwap.ToString()
+                                });
+                            }
+
+                            break;
+                        case 17: // Space Paranoids
+
+                            this.UpdateMemory(new MemoryObject
+                            {
+                                Address = 0x21CE11E8,
+                                ManipulationType = ManipulationType.Set,
+                                Type = DataType.TwoBytes,
+                                Value = isEvent ? "1622" : MemoryCache.SoraModelSwap.ToString()
+                            });
+
+                            break;
+                        default:
+
+                            this.UpdateMemory(new MemoryObject
+                            {
+                                Address = 0x21C6CC20,
+                                ManipulationType = ManipulationType.Set,
+                                Type = DataType.TwoBytes,
+                                Value = isEvent ? "84" : MemoryCache.SoraModelSwap.ToString()
+                            });
+
+                            break;
+                    }
+
+                    if (!isEvent)
+                    {
+                        MemoryCache.CurrentWorld = (int)world[0];
+                        MemoryCache.CurrentRoom = (int)room[0];
+                    }
+
+                    MemoryCache.AllowedToWrite = isEvent;
                 }
             }
-
-            //var isEvent = values.Item1 == (int)event1[0] && values.Item2 == (int)event2[0] && values.Item3 == (int)event3[0];
-
-            // TODO Is there a better way to do this?
-            // TODO boss fights trigger this too - within same room/ world
-            if (MemoryCache.CurrentWorld != (int)world[0] || MemoryCache.CurrentRoom != (int)room[0])
+            catch(Exception e)
             {
-                this.UpdateMemory(new MemoryObject
-                {
-                    Address = 0x21C6CC20,
-                    ManipulationType = ManipulationType.Set,
-                    Type = DataType.TwoBytes,
-                    Value = isEvent ? "84" : MemoryCache.SoraModelSwap.ToString()
-                });
-
-                if (!isEvent)
-                {
-                    MemoryCache.CurrentWorld = (int)world[0];
-                    MemoryCache.CurrentRoom = (int)room[0];
-                }
-
-                MemoryCache.AllowedToWrite = isEvent;
+                Logger.Instance.Error(e.Message, "CheckForEvent");
             }
         }
 
@@ -298,6 +423,98 @@ namespace ReWriteClient.Data
 
             return false;
         }
+
+        public bool CheckTPose()
+        {
+            try
+            {
+                if (ProcessHandle == IntPtr.Zero)
+                    return false;
+
+                byte[] readMemory = new byte[8];
+                byte[] tPose = new byte[2];
+
+                // TODO Make a Pointer Handler
+                ReadProcessMemory(ProcessHandle, (IntPtr)0x20341708, readMemory, readMemory.Length, out _);
+                ReadProcessMemory(ProcessHandle, (IntPtr)(BitConverter.ToInt32(readMemory) + 0x2000014C), tPose, tPose.Length, out _);
+
+                if (tPose[0] == 0 && tPose[1] == 0)
+                {
+                    return true;
+                }
+
+                return false;
+            }
+            catch (Exception e)
+            {
+                Logger.Instance.Error(e.Message, "CheckTPose");
+
+                return false;
+            }
+        }
+
+        public bool FixTPose()
+        {
+            try
+            {
+                byte[] readMemory = new byte[8];
+
+                var cameraLock = new byte[1];
+                //var cameraRotation = new byte[16]; 
+                
+                // TODO Make a Pointer Handler
+                ReadProcessMemory(ProcessHandle, (IntPtr)0x20341708, readMemory, readMemory.Length, out _);
+
+                ReadProcessMemory(ProcessHandle, (IntPtr)0x2033CC38, cameraLock, cameraLock.Length, out _);
+                //ReadProcessMemory(ProcessHandle, (IntPtr)0x2034D3E0, cameraRotation, cameraRotation.Length, out _);
+
+                //var isCameraRotated = false;
+                //foreach (var b in cameraRotation)
+                //{
+                //    if (b != 0)
+                //    {
+                //        isCameraRotated = true;
+
+                //        break;
+                //    }
+                //}
+
+                if(cameraLock[0] == 0)// && !isCameraRotated)
+                {
+                    //var playerIdleAnimation = GetPlayerIdleAnimation();
+
+                    WriteProcessMemory(ProcessHandle, (IntPtr)(BitConverter.ToInt32(readMemory) + 0x2000000C), new byte[2] { 64, 0 }, 2, out _);
+                }
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                Logger.Instance.Error(e.Message, "CheckTPose");
+
+                return false;
+            }
+        }
+
+        //public byte[] GetPlayerIdleAnimation()
+        //{
+        //    byte[] readMemory = new byte[8];
+        //    byte[] readPlayerPointerMemory = new byte[8];
+        //    byte[] playerNameMemory = new byte[7];
+
+        //    // TODO Make a Pointer Handler
+        //    ReadProcessMemory(ProcessHandle, (IntPtr)0x20341708, readMemory, readMemory.Length, out _);
+        //    ReadProcessMemory(ProcessHandle, (IntPtr)(BitConverter.ToInt32(readMemory) + 0x2000000C), readPlayerPointerMemory, readPlayerPointerMemory.Length, out _);
+        //    ReadProcessMemory(ProcessHandle, (IntPtr)(BitConverter.ToInt32(readPlayerPointerMemory) + 0x20000008), playerNameMemory, playerNameMemory.Length, out _);
+
+        //    var playerName = Encoding.ASCII.GetString(playerNameMemory);
+
+        //    var idleAnimation = IdleAnimationMappings.IdleAnimations[playerName];
+
+        //    return ConvertToBytes(DataType.FourBytes, idleAnimation, false);
+        //}
+
+        #region Conversions
 
         public byte[] ConvertToBytes(DataType type, string value, bool isValueHex) => type switch
         {
@@ -332,5 +549,7 @@ namespace ReWriteClient.Data
             DataType.Float => BitConverter.GetBytes(BitConverter.ToDouble(arr1) + BitConverter.ToDouble(arr2)),
             DataType.Double => BitConverter.GetBytes(BitConverter.ToDouble(arr1) + BitConverter.ToDouble(arr2)),
         };
+
+        #endregion Conversions
     }
 }

@@ -1,11 +1,42 @@
 ﻿using ReWriteClient.Data;
 using ReWriteClient.Enums;
+using System.Timers;
 using Waterkh.Common.Memory;
 
 namespace ReWriteClient.Messages
 {
     public partial class Messages
     {
+        public static Timer SoraStrengthStatTimer = new Timer
+        {
+            AutoReset = true,
+            Interval = 1000
+        };
+
+        public static Timer SoraMagicStatTimer = new Timer
+        {
+            AutoReset = true,
+            Interval = 1000
+        };
+
+        public static Timer SoraDefenseStatTimer = new Timer
+        {
+            AutoReset = true,
+            Interval = 1000
+        };
+
+        public static Timer SoraHealthTimer = new Timer
+        {
+            AutoReset = true,
+            Interval = 2000
+        };
+
+        public static Timer SoraMagicTimer = new Timer
+        {
+            AutoReset = true,
+            Interval = 2000
+        };
+
         #region Stats
 
         public static bool SendSoraLevelMessage(ManipulationType manipulationType, string value)
@@ -41,7 +72,158 @@ namespace ReWriteClient.Messages
             });
         }
 
-        public static bool SendSoraAPMessage(ManipulationType manipulationType, string value)
+        public static bool SendSoraHealthTimerMessage(ManipulationType manipulationType, string value)
+        {
+            if (value == "Off")
+            {
+                SoraHealthTimer.Stop();
+                SoraHealthTimer.Dispose();
+            }
+            else
+            {
+
+                SoraHealthTimer.Elapsed += (sender, obj) =>
+                {
+                    memoryProcessor.UpdateSoraMemory(new MemoryObject
+                    {
+                        Address = 0x21C6C750,
+                        Type = DataType.FourBytes,
+                        ManipulationType = manipulationType,
+                    });
+                };
+
+                SoraHealthTimer.Start();
+            }
+
+            return true;
+        }
+
+        public static bool SendSoraCurrentMagicMessage(ManipulationType manipulationType, string value)
+        {
+            return memoryProcessor.UpdateMemory(new MemoryObject
+            {
+                Address = 0x21C6C8D0,
+                Type = DataType.FourBytes,
+                ManipulationType = manipulationType,
+                Value = value
+            });
+        }
+
+        public static bool SendSoraMaxMagicMessage(ManipulationType manipulationType, string value)
+        {
+            return memoryProcessor.UpdateMemory(new MemoryObject
+            {
+                Address = 0x21C6C8D4,
+                Type = DataType.FourBytes,
+                ManipulationType = manipulationType,
+                Value = value
+            });
+        }
+
+        public static bool SendSoraMagicTimerMessage(ManipulationType manipulationType, string value)
+        {
+            if (value == "Off")
+            {
+                SoraMagicTimer.Stop();
+                SoraMagicTimer.Dispose();
+            }
+            else
+            {
+                SoraMagicTimer.Elapsed += (sender, obj) =>
+                {
+                    memoryProcessor.UpdateSoraMemory(new MemoryObject
+                    {
+                        Address = 0x21C6C8D0,
+                        Type = DataType.FourBytes,
+                        ManipulationType = manipulationType,
+                    });
+                };
+
+                SoraMagicTimer.Start();
+            }
+
+            return true;
+        }
+
+        public static bool SendSoraStrengthStatMessage(ManipulationType manipulationType, string value)
+        {
+            if (value == "1")
+            {
+                SoraStrengthStatTimer.Stop();
+                SoraStrengthStatTimer.Dispose();
+            }
+            else
+            {
+                SoraStrengthStatTimer.Elapsed += (sender, obj) =>
+                {
+                    memoryProcessor.UpdateMemory(new MemoryObject
+                    {
+                        Address = 0x21C6C8D8,
+                        Type = DataType.Byte,
+                        ManipulationType = manipulationType,
+                        Value = value
+                    });
+                };
+
+                SoraStrengthStatTimer.Start();
+            }
+
+            return true;
+        }
+
+        public static bool SendSoraMagicStatMessage(ManipulationType manipulationType, string value)
+        {
+            if (value == "1")
+            {
+                SoraMagicStatTimer.Stop();
+                SoraMagicStatTimer.Stop();
+            }
+            else
+            {
+                SoraMagicStatTimer.Elapsed += (sender, obj) =>
+                {
+                    memoryProcessor.UpdateMemory(new MemoryObject
+                    {
+                        Address = 0x21C6C8DA,
+                        Type = DataType.Byte,
+                        ManipulationType = manipulationType,
+                        Value = value
+                    });
+                };
+
+                SoraMagicStatTimer.Start();
+            }
+
+            return true;
+        }
+
+        public static bool SendSoraDefenseStatMessage(ManipulationType manipulationType, string value)
+        {
+            if (value == "1")
+            {
+                SoraDefenseStatTimer.Stop();
+                SoraDefenseStatTimer.Stop();
+            }
+            else
+            {
+                SoraDefenseStatTimer.Elapsed += (sender, obj) =>
+                {
+                    memoryProcessor.UpdateMemory(new MemoryObject
+                    {
+                        Address = 0x21C6C8DC,
+                        Type = DataType.Byte,
+                        ManipulationType = manipulationType,
+                        Value = value
+                    });
+                };
+
+                SoraDefenseStatTimer.Start();
+            }
+
+            return true;
+        }
+
+        public static bool SendSoraAPBoostMessage(ManipulationType manipulationType, string value)
         {
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
@@ -52,7 +234,7 @@ namespace ReWriteClient.Messages
             });
         }
 
-        public static bool SendSoraStrengthMessage(ManipulationType manipulationType, string value)
+        public static bool SendSoraStrengthBoostMessage(ManipulationType manipulationType, string value)
         {
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
@@ -63,7 +245,7 @@ namespace ReWriteClient.Messages
             });
         }
 
-        public static bool SendSoraMagicMessage(ManipulationType manipulationType, string value)
+        public static bool SendSoraMagicBoostMessage(ManipulationType manipulationType, string value)
         {
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
@@ -74,7 +256,7 @@ namespace ReWriteClient.Messages
             });
         }
 
-        public static bool SendSoraDefenseMessage(ManipulationType manipulationType, string value)
+        public static bool SendSoraDefenseBoostMessage(ManipulationType manipulationType, string value)
         {
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
@@ -99,28 +281,6 @@ namespace ReWriteClient.Messages
         #endregion Stats
 
         #region Magic
-
-        public static bool SendSoraCurrentMagicMessage(ManipulationType manipulationType, string value)
-        {
-            return memoryProcessor.UpdateMemory(new MemoryObject
-            {
-                Address = 0x21C6C8D0,
-                Type = DataType.FourBytes,
-                ManipulationType = manipulationType,
-                Value = value
-            });
-        }
-
-        public static bool SendSoraMaxMagicMessage(ManipulationType manipulationType, string value)
-        {
-            return memoryProcessor.UpdateMemory(new MemoryObject
-            {
-                Address = 0x21C6C8D4,
-                Type = DataType.FourBytes,
-                ManipulationType = manipulationType,
-                Value = value
-            });
-        }
 
         public static bool SendSoraRechargeMagicMessage(ManipulationType manipulationType, string value)
         {

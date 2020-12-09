@@ -19,6 +19,61 @@ namespace ReWriteClient.Messages
             });
         }
 
+        public static bool SendSoraLionModelMessage(ManipulationType manipulationType, string value)
+        {
+            return memoryProcessor.UpdateMemory(new MemoryObject
+            {
+                Address = 0x21CE1250,
+                Type = DataType.TwoBytes,
+                ManipulationType = manipulationType,
+                Value = value
+            });
+        }
+
+        public static bool SendSoraTimelessRiverModelMessage(ManipulationType manipulationType, string value)
+        {
+            return memoryProcessor.UpdateMemory(new MemoryObject
+            {
+                Address = 0x21CE121C,
+                Type = DataType.TwoBytes,
+                ManipulationType = manipulationType,
+                Value = value
+            });
+        }
+
+        public static bool SendSoraHalloweenModelMessage(ManipulationType manipulationType, string value)
+        {
+            return memoryProcessor.UpdateMemory(new MemoryObject
+            {
+                Address = 0x21CE0FAC,
+                Type = DataType.TwoBytes,
+                ManipulationType = manipulationType,
+                Value = value
+            });
+        }
+
+        public static bool SendSoraChristmasModelMessage(ManipulationType manipulationType, string value)
+        {
+            return memoryProcessor.UpdateMemory(new MemoryObject
+            {
+                Address = 0x21CE0FE0,
+                Type = DataType.TwoBytes,
+                ManipulationType = manipulationType,
+                Value = value
+            });
+        }
+
+        public static bool SendSoraSpaceParanoidsModelMessage(ManipulationType manipulationType, string value)
+        {
+            return memoryProcessor.UpdateMemory(new MemoryObject
+            {
+                Address = 0x21CE11E8,
+                Type = DataType.TwoBytes,
+                ManipulationType = manipulationType,
+                Value = value
+            });
+        }
+
         #endregion Sora
 
         #region Donald

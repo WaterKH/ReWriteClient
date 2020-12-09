@@ -30,8 +30,7 @@ namespace ReWriteClient.Data
             { 1, new Dictionary<string, int> {
                 { "The Dark Margin", 0 }, { "Loop Demo", 1 }, }
             },
-            { 2, new Dictionary<string, int> 
-                {
+            { 2, new Dictionary<string, int> {
                 { "The Empty Realm", 0 },
                      { "Roxas's Room", 1 },
                      { "The Usual Spot", 2 },

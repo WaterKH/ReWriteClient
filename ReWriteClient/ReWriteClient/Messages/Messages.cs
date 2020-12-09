@@ -27,18 +27,23 @@ namespace ReWriteClient.Messages
                     { "SendSoraLevelMessage", SendSoraLevelMessage },
                     { "SendSoraCurrentHPMessage", SendSoraCurrentHPMessage },
                     { "SendSoraMaxHPMessage", SendSoraMaxHPMessage },
-                    { "SendSoraAPMessage", SendSoraAPMessage },
-                    { "SendSoraStrengthMessage", SendSoraStrengthMessage },
-                    { "SendSoraMagicMessage", SendSoraMagicMessage },
-                    { "SendSoraDefenseMessage", SendSoraDefenseMessage },
+                    { "SendSoraHealthTimerMessage", SendSoraHealthTimerMessage },
+                    { "SendSoraCurrentMagicMessage", SendSoraCurrentMagicMessage },
+                    { "SendSoraMaxMagicMessage", SendSoraMaxMagicMessage },
+                    { "SendSoraMagicTimerMessage", SendSoraMagicTimerMessage },
+                    { "SendSoraStrengthStatMessage", SendSoraStrengthStatMessage },
+                    { "SendSoraMagicStatMessage", SendSoraMagicStatMessage },
+                    { "SendSoraDefenseStatMessage", SendSoraDefenseStatMessage },
+                    { "SendSoraAPBoostMessage", SendSoraAPBoostMessage },
+                    { "SendSoraStrengthBoostMessage", SendSoraStrengthBoostMessage },
+                    { "SendSoraMagicBoostMessage", SendSoraMagicBoostMessage },
+                    { "SendSoraDefenseBoostMessage", SendSoraDefenseBoostMessage },
                     { "SendSoraSpeedMessage", SendSoraSpeedMessage },
 
                     #endregion Stats
 
                     #region Magic
 
-                    { "SendSoraCurrentMagicMessage", SendSoraCurrentMagicMessage },
-                    { "SendSoraMaxMagicMessage", SendSoraMaxMagicMessage },
                     { "SendSoraRechargeMagicMessage", SendSoraRechargeMagicMessage },
                     { "SendFireMagicMessage", SendFireMagicMessage },
                     { "SendBlizzardMagicMessage", SendBlizzardMagicMessage },
@@ -334,6 +339,12 @@ namespace ReWriteClient.Messages
             { "ModelSwap", new Dictionary<string, Func<ManipulationType, string, bool>>
                 {
                     { "SendSoraModelMessage", SendSoraModelMessage },
+                    { "SendSoraLionModelMessage", SendSoraLionModelMessage },
+                    { "SendSoraTimelessRiverModelMessage", SendSoraTimelessRiverModelMessage },
+                    { "SendSoraHalloweenModelMessage", SendSoraHalloweenModelMessage },
+                    { "SendSoraChristmasModelMessage", SendSoraChristmasModelMessage },
+                    { "SendSoraSpaceParanoidsModelMessage", SendSoraSpaceParanoidsModelMessage },
+
                     { "SendDonaldAllyModelMessage", SendDonaldAllyModelMessage },
                     { "SendDonaldEnemyModelMessage", SendDonaldEnemyModelMessage },
                     { "SendGoofyAllyModelMessage", SendGoofyAllyModelMessage },

@@ -19,8 +19,8 @@ namespace ReWriteClient
         private MessageHub messageHub;
         private readonly MemoryProcessor memoryProcessor = MemoryProcessor.Instance;
 
-        private readonly string connectionUrl = "https://localhost:44362/MessageHub";
-        //private readonly string connectionUrl = "https://memoryscape.azurewebsites.net/MessageHub";
+        //private readonly string connectionUrl = "https://localhost:44362/MessageHub";
+        private readonly string connectionUrl = "https://memoryscape.azurewebsites.net/MessageHub";
 
         private bool serverConnected = false;
         private bool clientConnected = false;
@@ -46,6 +46,8 @@ namespace ReWriteClient
 
                     this.memoryProcessor.Process.Exited += UpdateClientConnectionStatus;
 
+                    Logger.Instance.Info("Client Connection Established", "ClientConnectClicked");
+
                     this.clientConnected = true;
 
                     return;
@@ -56,6 +58,8 @@ namespace ReWriteClient
             catch (Exception ex)
             {
                 this.ClientConnectionStatusMessage.Content = ex.Message;
+
+                Logger.Instance.Error(ex.Message, "ClientConnectClicked");
             }
 
             this.clientConnected = false;
@@ -86,6 +90,8 @@ namespace ReWriteClient
                 this.ServerConnectionStatusMessage.Content = ex.Message;
 
                 this.serverConnected = false;
+
+                Logger.Instance.Error(ex.Message, "ServerConnectClicked");
             }
         }
 
@@ -106,6 +112,8 @@ namespace ReWriteClient
                 this.ClientConnectionStatusMessage.Content = $"Connection Status: Disconnected";
 
                 this.clientConnected = false;
+
+                Logger.Instance.Error("Client Connection Disconnected Forcebly", "UpdateClientConnectionStatus");
             });
         }
 
@@ -124,6 +132,8 @@ namespace ReWriteClient
                     this.ServerConnectionStatusMessage.Content = $"Connection Status: {this.connection.State}";
 
                     this.serverConnected = false;
+
+                    Logger.Instance.Error("Server Connection Disconnected Forcebly", "ConnectToServer");
                 });
 
                 await this.connection.StartAsync();
@@ -134,6 +144,8 @@ namespace ReWriteClient
                 this.ServerConnectionStatusMessage.Content = $"Connection Status: {this.connection.State}";
 
                 this.serverConnected = true;
+
+                Logger.Instance.Info("Server Connection Established", "ConnectToServer");
             });
 
             this.messageHub = new MessageHub(this.connection, username);
@@ -142,6 +154,8 @@ namespace ReWriteClient
         public Task AddToServerLog(object sender, MessageHubArgs args)
         {
             this.ServerLog.Items.Add(new ServerLogItem { Viewer = args.Viewer, MethodName = args.MethodName, Value = args.Value });
+
+            Logger.Instance.Info($"{args.Viewer} sent {args.MethodName} with {args.Value}", "AddToServerLog");
 
             return null;
         }

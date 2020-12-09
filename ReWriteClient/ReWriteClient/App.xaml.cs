@@ -16,6 +16,7 @@ namespace ReWriteClient
         public App()
         {
             this.SetupMemoryChecker();
+            this.SetupTPoseFixer();
         }
 
         public void SetupMemoryChecker()
@@ -29,6 +30,25 @@ namespace ReWriteClient
             Timer.Elapsed += (sender, obj) =>
             {
                 this.memoryProcessor.CheckForEvent();
+            };
+
+            Timer.Start();
+        }
+
+        public void SetupTPoseFixer()
+        {
+            Timer = new Timer
+            {
+                AutoReset = true,
+                Interval = 100
+            };
+
+            Timer.Elapsed += (sender, obj) =>
+            {
+                if (this.memoryProcessor.CheckTPose())
+                {
+                    this.memoryProcessor.FixTPose();
+                }
             };
 
             Timer.Start();
