@@ -11,12 +11,13 @@ namespace ReWriteClient
     {
         public Timer Timer;
         private readonly MemoryProcessor memoryProcessor = MemoryProcessor.Instance;
-        private readonly Messages.Messages messages = Messages.Messages.Instance;
 
         public App()
         {
             this.SetupMemoryChecker();
             this.SetupTPoseFixer();
+
+            ClientCache.Instance.SetupUpdateTimer();
         }
 
         public void SetupMemoryChecker()

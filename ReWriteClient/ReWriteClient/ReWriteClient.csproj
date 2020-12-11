@@ -4,7 +4,7 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
-    <Version>0.5.0</Version>
+    <Version>0.6.0</Version>
     <Authors>WaterKH</Authors>
     <PackageReleaseNotes>0.5.0 - Updated according to Project Release 0.5.0 
 0.4.0 - Updated according to Project Release 0.4.0 
@@ -12,6 +12,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Data\ClientCache.cs~RF399b556.TMP" />
+    <None Remove="Data\ClientCache\ClientCache.Drive.cs~RF4cb2b94.TMP" />
+    <None Remove="Data\ClientCache\ClientCache.Item.cs~RF4c85998.TMP" />
+    <None Remove="Data\ClientCache\ClientCache.Party.cs~RF39da814.TMP" />
     <None Remove="Data\EntitySlot.cs~RFbffab0b.TMP" />
     <None Remove="Data\EntitySlotMappings.cs~RFbfe6a5e.TMP" />
     <None Remove="Data\MemoryCache.cs~RF3ebf0c.TMP" />
@@ -20,6 +24,7 @@
     <None Remove="Messages\MessageHub.cs~RF19d3da08.TMP" />
     <None Remove="Messages\MessageHub.cs~RF1a749ca2.TMP" />
     <None Remove="Messages\Messages.cs~RF1a862eed.TMP" />
+    <None Remove="Messages\Messages.ModelSwap.cs~RF94e4f66.TMP" />
   </ItemGroup>
 
   <ItemGroup>

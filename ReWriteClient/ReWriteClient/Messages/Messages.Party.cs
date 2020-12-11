@@ -12,6 +12,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendEquipStaffMessage(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.DonaldStaff = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E134,
@@ -27,6 +29,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendDonaldArmorSlotsMessage(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.DonaldArmorSlots = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E144,
@@ -38,6 +42,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendDonaldArmorSlot1Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.DonaldArmorSlot1 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E148,
@@ -49,6 +55,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendDonaldArmorSlot2Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.DonaldArmorSlot2 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E14A,
@@ -64,6 +72,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendDonaldAccessorySlotsMessage(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.DonaldAccessorySlots = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E145,
@@ -75,6 +85,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendDonaldAccessorySlot1Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.DonaldAccessorySlot1 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E158,
@@ -86,6 +98,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendDonaldAccessorySlot2Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.DonaldAccessorySlot2 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E15A,
@@ -97,6 +111,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendDonaldAccessorySlot3Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.DonaldAccessorySlot3 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E15A,
@@ -112,6 +128,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendDonaldItemSlotsMessage(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.DonaldItemSlots = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E146,
@@ -123,6 +141,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendDonaldItemSlot1Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.DonaldItemSlot1 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E168,
@@ -134,6 +154,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendDonaldItemSlot2Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.DonaldItemSlot2 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E16A,
@@ -179,6 +201,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendEquipShieldMessage(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.GoofyShield = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E248,
@@ -194,6 +218,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendGoofyArmorSlotsMessage(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.GoofyArmorSlots = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E258,
@@ -205,6 +231,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendGoofyArmorSlot1Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.GoofyArmorSlot1 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E25C,
@@ -216,6 +244,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendGoofyArmorSlot2Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.GoofyArmorSlot2 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E25E,
@@ -227,6 +257,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendGoofyArmorSlot3Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.GoofyArmorSlot3 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E260,
@@ -242,6 +274,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendGoofyAccessorySlotsMessage(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.GoofyAccessorySlots = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E259,
@@ -253,6 +287,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendGoofyAccessorySlot1Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.GoofyAccessorySlot1 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E26C,
@@ -264,6 +300,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendGoofyAccessorySlot2Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.GoofyAccessorySlot2 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E26E,
@@ -279,6 +317,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendGoofyItemSlotsMessage(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.GoofyItemSlots = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E25A,
@@ -290,6 +330,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendGoofyItemSlot1Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.GoofyItemSlot1 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E27C,
@@ -301,6 +343,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendGoofyItemSlot2Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.GoofyItemSlot2 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E27E,
@@ -312,6 +356,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendGoofyItemSlot3Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.GoofyItemSlot3 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E280,
@@ -323,6 +369,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendGoofyItemSlot4Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.GoofyItemSlot4 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E282,
@@ -368,6 +416,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendMulanArmorSlotsMessage(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.MulanArmorSlots = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E594,
@@ -379,6 +429,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendMulanArmorSlot1Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.MulanArmorSlot1 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E598,
@@ -394,6 +446,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendMulanAccessorySlotsMessage(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.MulanItemSlots = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E595,
@@ -405,6 +459,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendMulanAccessorySlot1Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.MulanItemSlot1 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E5A8,
@@ -420,6 +476,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendMulanItemSlotsMessage(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.MulanItemSlots = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E596,
@@ -431,6 +489,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendMulanItemSlot1Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.MulanItemSlot1 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E5B8,
@@ -442,6 +502,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendMulanItemSlot2Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.MulanItemSlot2 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E5BA,
@@ -453,6 +515,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendMulanItemSlot3Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.MulanItemSlot3 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E5BC,
@@ -498,6 +562,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendBeastAccessorySlotsMessage(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.BeastAccessorySlots = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E8D1,
@@ -509,6 +575,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendBeastAccessorySlot1Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.BeastAccessorySlot1 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E8E4,
@@ -524,6 +592,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendBeastItemSlotsMessage(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.BeastItemSlots = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E8D2,
@@ -535,6 +605,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendBeastItemSlot1Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.BeastItemSlot1 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E8F4,
@@ -546,6 +618,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendBeastItemSlot2Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.BeastItemSlot2 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E8F6,
@@ -557,6 +631,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendBeastItemSlot3Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.BeastItemSlot3 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E8F8,
@@ -568,6 +644,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendBeastItemSlot4Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.BeastItemSlot4 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E8FA,
@@ -613,6 +691,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendAuronArmorSlotsMessage(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.AuronArmorSlots = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E480,
@@ -624,6 +704,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendAuronArmorSlot1Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.AuronArmorSlot1 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E484,
@@ -639,6 +721,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendAuronItemSlotsMessage(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.AuronItemSlots = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E482,
@@ -650,6 +734,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendAuronItemSlot1Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.AuronItemSlot1 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E4A4,
@@ -661,6 +747,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendAuronItemSlot2Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.AuronItemSlot2 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E4A6,
@@ -706,6 +794,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendCaptainJackSparrowArmorSlotsMessage(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.CaptainJackSparrowArmorSlots = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E7BC,
@@ -717,6 +807,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendCaptainJackSparrowArmorSlot1Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.CaptainJackSparrowArmorSlot1 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E7C0,
@@ -732,6 +824,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendCaptainJackSparrowAccessorySlotsMessage(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.CaptainJackSparrowAccessorySlots = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E7BD,
@@ -743,6 +837,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendCaptainJackSparrowAccessorySlot1Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.CaptainJackSparrowAccessorySlot1 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E7D0,
@@ -758,6 +854,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendCaptainJackSparrowItemSlotsMessage(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.CaptainJackSparrowItemSlots = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E7BE,
@@ -769,6 +867,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendCaptainJackSparrowItemSlot1Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.CaptainJackSparrowItemSlot1 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E7E0,
@@ -780,6 +880,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendCaptainJackSparrowItemSlot2Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.CaptainJackSparrowItemSlot2 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E7E2,
@@ -791,6 +893,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendCaptainJackSparrowItemSlot3Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.CaptainJackSparrowItemSlot3 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E7E4,
@@ -802,6 +906,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendCaptainJackSparrowItemSlot4Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.CaptainJackSparrowItemSlot4 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E7E6,
@@ -847,6 +953,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendAladdinArmorSlotsMessage(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.AladdinArmorSlots = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E6A8,
@@ -858,6 +966,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendAladdinArmorSlot1Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.AladdinArmorSlot1 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E6AC,
@@ -869,6 +979,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendAladdinArmorSlot2Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.AladdinArmorSlot2 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E6AE,
@@ -884,6 +996,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendAladdinItemSlotsMessage(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.AladdinItemSlots = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E6A8,
@@ -895,6 +1009,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendAladdinItemSlot1Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.AladdinItemSlot1 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E6CC,
@@ -906,6 +1022,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendAladdinItemSlot2Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.AladdinItemSlot2 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E6CE,
@@ -917,6 +1035,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendAladdinItemSlot3Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.AladdinItemSlot3 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E6D0,
@@ -928,6 +1048,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendAladdinItemSlot4Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.AladdinItemSlot4 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E6D2,
@@ -939,6 +1061,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendAladdinItemSlot5Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.AladdinItemSlot5 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E6D4,
@@ -984,6 +1108,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendJackSkellingtonAccessorySlotsMessage(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.JackSkellingtonAccessorySlots = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E9E5,
@@ -995,6 +1121,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendJackSkellingtonAccessorySlot1Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.JackSkellingtonAccessorySlot1 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E9F8,
@@ -1006,6 +1134,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendJackSkellingtonAccessorySlot2Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.JackSkellingtonAccessorySlot2 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E9FA,
@@ -1021,6 +1151,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendJackSkellingtonItemSlotsMessage(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.JackSkellingtonItemSlots = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E9E5,
@@ -1032,6 +1164,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendJackSkellingtonItemSlot1Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.JackSkellingtonItemSlot1 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032EA08,
@@ -1043,6 +1177,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendJackSkellingtonItemSlot2Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.JackSkellingtonItemSlot2 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032EA0A,
@@ -1054,6 +1190,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendJackSkellingtonItemSlot3Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.JackSkellingtonItemSlot3 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032EA0C,
@@ -1099,6 +1237,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendSimbaAccessorySlotsMessage(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.SimbaAccessorySlots = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032EAF9,
@@ -1110,6 +1250,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendSimbaAccessorySlot1Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.SimbaAccessorySlot1 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032EB0C,
@@ -1121,6 +1263,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendSimbaAccessorySlot2Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.SimbaAccessorySlot2 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032EB0E,
@@ -1136,6 +1280,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendSimbaItemSlotsMessage(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.SimbaItemSlots = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032EAFA,
@@ -1147,6 +1293,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendSimbaItemSlot1Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.SimbaItemSlot1 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032EB1C,
@@ -1158,6 +1306,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendSimbaItemSlot2Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.SimbaItemSlot2 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032EB1E,
@@ -1169,6 +1319,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendSimbaItemSlot3Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.SimbaItemSlot3 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032EB20,
@@ -1214,6 +1366,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendTronArmorSlotsMessage(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.TronArmorSlots = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032EC0C,
@@ -1225,6 +1379,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendTronArmorSlot1Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.TronArmorSlot1 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032EC10,
@@ -1240,6 +1396,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendTronAccessorySlotsMessage(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.TronAccessorySlots = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032EC0D,
@@ -1251,6 +1409,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendTronAccessorySlot1Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.TronAccessorySlot1 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032EC20,
@@ -1266,6 +1426,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendTronItemSlotsMessage(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.TronItemSlots = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032EC0E,
@@ -1277,6 +1439,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendTronItemSlot1Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.TronItemSlot1 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032EC30,
@@ -1288,6 +1452,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendTronItemSlot2Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.TronItemSlot2 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032EC32,
@@ -1333,6 +1499,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendRikuArmorSlotsMessage(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.RikuArmorSlots = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032ED20,
@@ -1344,6 +1512,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendRikuArmorSlot1Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.RikuArmorSlot1 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032ED24,
@@ -1355,6 +1525,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendRikuArmorSlot2Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.RikuArmorSlot2 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032ED26,
@@ -1370,6 +1542,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendRikuAccessorySlotsMessage(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.RikuAccessorySlots = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032ED21,
@@ -1381,6 +1555,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendRikuAccessorySlot1Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.RikuAccessorySlot1 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032ED34,
@@ -1396,6 +1572,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendRikuItemSlotsMessage(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.RikuItemSlots = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032ED22,
@@ -1407,6 +1585,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendRikuItemSlot1Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.RikuItemSlot1 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032ED44,
@@ -1418,6 +1598,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendRikuItemSlot2Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.RikuItemSlot2 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032ED46,
@@ -1429,6 +1611,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendRikuItemSlot3Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.RikuItemSlot3 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032ED48,
@@ -1440,6 +1624,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendRikuItemSlot4Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.RikuItemSlot4 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032ED4A,
@@ -1451,6 +1637,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendRikuItemSlot5Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.RikuItemSlot5 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032ED4C,
@@ -1462,6 +1650,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendRikuItemSlot6Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.RikuItemSlot6 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032ED4E,

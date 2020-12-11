@@ -41,6 +41,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendSoraLevelMessage(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.SoraLevel = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E02F,
@@ -52,6 +54,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendSoraCurrentHPMessage(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.SoraCurrentHP = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x21C6C750,
@@ -63,6 +67,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendSoraMaxHPMessage(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.SoraMaxHP = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x21C6C754,
@@ -100,6 +106,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendSoraCurrentMagicMessage(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.SoraCurrentMagic = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x21C6C8D0,
@@ -111,6 +119,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendSoraMaxMagicMessage(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.SoraMaxMagic = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x21C6C8D4,
@@ -225,6 +235,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendSoraAPBoostMessage(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.SoraAPBoost = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E028,
@@ -236,6 +248,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendSoraStrengthBoostMessage(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.SoraStrengthBoost = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E029,
@@ -247,6 +261,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendSoraMagicBoostMessage(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.SoraMagicBoost = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E02A,
@@ -258,6 +274,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendSoraDefenseBoostMessage(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.SoraDefenseBoost = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E02B,
@@ -269,6 +287,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendSoraSpeedMessage(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.SoraSpeed = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x21CE2FE4,
@@ -295,6 +315,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendFireMagicMessage(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.SoraFireMagic = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032F0C4,
@@ -306,6 +328,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendBlizzardMagicMessage(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.SoraBlizzardMagic = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032F0C5,
@@ -317,6 +341,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendThunderMagicMessage(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.SoraThunderMagic = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032F0C6,
@@ -328,6 +354,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendCureMagicMessage(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.SoraCureMagic = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032F0C7,
@@ -339,6 +367,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendMagnetMagicMessage(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.SoraMagnetMagic = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032F0FF,
@@ -350,6 +380,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendReflectMagicMessage(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.SoraReflectMagic = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032F100,
@@ -365,6 +397,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendEquipKeybladeMessage(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.SoraKeyblade = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E020,
@@ -376,6 +410,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendEquipValorKeybladeMessage(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.SoraValorKeyblade = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032EE24,
@@ -387,6 +423,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendEquipMasterKeybladeMessage(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.SoraMasterKeyblade = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032EECC,
@@ -398,6 +436,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendEquipFinalKeybladeMessage(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.SoraFinalKeyblade = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032EF04,
@@ -413,6 +453,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendSoraArmorSlotsMessage(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.SoraArmorSlots = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E030,
@@ -424,6 +466,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendSoraArmorSlot1Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.SoraArmorSlot1 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E034,
@@ -435,6 +479,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendSoraArmorSlot2Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.SoraArmorSlot2 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E036,
@@ -446,6 +492,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendSoraArmorSlot3Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.SoraArmorSlot3 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E038,
@@ -457,6 +505,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendSoraArmorSlot4Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.SoraArmorSlot4 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E03A,
@@ -472,6 +522,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendSoraAccessorySlotsMessage(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.SoraAccessorySlots = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E031,
@@ -483,6 +535,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendSoraAccessorySlot1Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.SoraAccessorySlot1 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E044,
@@ -494,6 +548,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendSoraAccessorySlot2Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.SoraAccessorySlot2 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E046,
@@ -505,6 +561,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendSoraAccessorySlot3Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.SoraAccessorySlot3 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E048,
@@ -516,6 +574,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendSoraAccessorySlot4Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.SoraAccessorySlot4 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E04A,
@@ -531,6 +591,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendSoraItemSlotsMessage(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.SoraItemSlots = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E032,
@@ -542,6 +604,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendSoraItemSlot1Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.SoraItemSlot1 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E054,
@@ -553,6 +617,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendSoraItemSlot2Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.SoraItemSlot2 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E056,
@@ -564,6 +630,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendSoraItemSlot3Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.SoraItemSlot3 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E058,
@@ -575,6 +643,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendSoraItemSlot4Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.SoraItemSlot4 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E05A,
@@ -586,6 +656,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendSoraItemSlot5Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.SoraItemSlot5 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E05C,
@@ -597,6 +669,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendSoraItemSlot6Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.SoraItemSlot6 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E05E,
@@ -608,6 +682,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendSoraItemSlot7Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.SoraItemSlot7 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E060,
@@ -619,6 +695,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendSoraItemSlot8Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.SoraItemSlot8 = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x2032E062,
@@ -634,7 +712,9 @@ namespace ReWriteClient.Messages
 
         public static bool SendSoraQuickMenuSlot1Message(ManipulationType manipulationType, string value)
         {
-            if(Conversions.QuickMenuToItem.TryGetValue(value, out var convertedValue))
+            ClientCache.Instance.SoraQuickMenuSlot1 = value;
+
+            if (Conversions.QuickMenuToItem.TryGetValue(value, out var convertedValue))
                 SendSoraItemSlot1Message(ManipulationType.Set, convertedValue);
 
             return memoryProcessor.UpdateMemory(new MemoryObject
@@ -648,6 +728,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendSoraQuickMenuSlot2Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.SoraQuickMenuSlot2 = value;
+
             if (Conversions.QuickMenuToItem.TryGetValue(value, out var convertedValue))
                 SendSoraItemSlot2Message(ManipulationType.Set, convertedValue);
 
@@ -662,6 +744,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendSoraQuickMenuSlot3Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.SoraQuickMenuSlot3 = value;
+
             if (Conversions.QuickMenuToItem.TryGetValue(value, out var convertedValue))
                 SendSoraItemSlot3Message(ManipulationType.Set, convertedValue);
 
@@ -676,6 +760,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendSoraQuickMenuSlot4Message(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.SoraQuickMenuSlot4 = value;
+
             if (Conversions.QuickMenuToItem.TryGetValue(value, out var convertedValue))
                 SendSoraItemSlot4Message(ManipulationType.Set, convertedValue);
 
@@ -698,7 +784,10 @@ namespace ReWriteClient.Messages
 
             var memoryObject = new MemoryObject { Address = 0x2032E074, Type = DataType.Byte, ManipulationType = manipulationType, Value = ability.Value.ToString(), IsValueHex = true };
 
-            memoryProcessor.UpdateAbilityMemory(memoryObject, ability.MaxNumber, ability.ToggleValue, 148); // Add Ability map to account for how max/ toggleValue are assigned
+            if(memoryProcessor.UpdateAbilityMemory(memoryObject, ability.MaxNumber, ability.ToggleValue, 148)) // Add Ability map to account for how max/ toggleValue are assigned
+            {
+                ClientCache.Instance.SoraAbilities.Add(value);
+            }
 
             return true;
         }
@@ -709,7 +798,10 @@ namespace ReWriteClient.Messages
 
             var memoryObject = new MemoryObject { Address = 0x2032E074, Type = DataType.Byte, ManipulationType = manipulationType, Value = ability.Value.ToString(), IsValueHex = true };
 
-            memoryProcessor.UpdateAbilityMemory(memoryObject, ability.MaxNumber, ability.ToggleValue - 128, 148); // Add Ability map to account for how max/ toggleValue are assigned
+            if(memoryProcessor.UpdateAbilityMemory(memoryObject, ability.MaxNumber, ability.ToggleValue - 128, 148)) // Add Ability map to account for how max/ toggleValue are assigned
+            {
+                ClientCache.Instance.SoraAbilities.Remove(value);
+            }
 
             return true;
         }

@@ -11,7 +11,8 @@ namespace ReWriteClient.Messages
     {
         private static readonly MemoryProcessor memoryProcessor = MemoryProcessor.Instance;
 
-        public static Messages Instance { get; set; } = new Messages();
+        private static Messages instance;
+        public static Messages Instance { get; set; } = instance ?? new Messages();
 
         private Messages()
         { }
@@ -47,6 +48,7 @@ namespace ReWriteClient.Messages
                     { "SendSoraRechargeMagicMessage", SendSoraRechargeMagicMessage },
                     { "SendFireMagicMessage", SendFireMagicMessage },
                     { "SendBlizzardMagicMessage", SendBlizzardMagicMessage },
+                    { "SendThunderMagicMessage", SendThunderMagicMessage },
                     { "SendCureMagicMessage", SendCureMagicMessage },
                     { "SendMagnetMagicMessage", SendMagnetMagicMessage },
                     { "SendReflectMagicMessage", SendReflectMagicMessage },
@@ -345,51 +347,30 @@ namespace ReWriteClient.Messages
                     { "SendSoraChristmasModelMessage", SendSoraChristmasModelMessage },
                     { "SendSoraSpaceParanoidsModelMessage", SendSoraSpaceParanoidsModelMessage },
 
-                    { "SendDonaldAllyModelMessage", SendDonaldAllyModelMessage },
-                    { "SendDonaldEnemyModelMessage", SendDonaldEnemyModelMessage },
-                    { "SendGoofyAllyModelMessage", SendGoofyAllyModelMessage },
-                    { "SendGoofyEnemyModelMessage", SendGoofyEnemyModelMessage },
+                    { "SendDonaldModelMessage", SendDonaldModelMessage },
+                    { "SendGoofyModelMessage", SendGoofyModelMessage },
 
-                    { "SendHalloweenGoofyAllyModelMessage", SendHalloweenGoofyAllyModelMessage },
-                    { "SendHalloweenGoofyEnemyModelMessage", SendHalloweenGoofyEnemyModelMessage },
-                    { "SendChristmasGoofyAllyModelMessage", SendChristmasGoofyAllyModelMessage },
-                    { "SendChristmasGoofyEnemyModelMessage", SendChristmasGoofyEnemyModelMessage },
-                    { "SendTortoiseGoofyAllyModelMessage", SendTortoiseGoofyAllyModelMessage },
-                    { "SendTortoiseGoofyEnemyModelMessage", SendTortoiseGoofyEnemyModelMessage },
-                    { "SendSpaceParanoidsGoofyAllyModelMessage", SendSpaceParanoidsGoofyAllyModelMessage },
-                    { "SendSpaceParanoidsGoofyEnemyModelMessage", SendSpaceParanoidsGoofyEnemyModelMessage },
-                    { "SendTimelessRiverGoofyAllyModelMessage", SendTimelessRiverGoofyAllyModelMessage },
-                    { "SendTimelessRiverGoofyEnemyModelMessage", SendTimelessRiverGoofyEnemyModelMessage },
-
-                    { "SendHalloweenDonaldAllyModelMessage", SendHalloweenDonaldAllyModelMessage },
-                    { "SendHalloweenDonaldEnemyModelMessage", SendHalloweenDonaldEnemyModelMessage },
-                    { "SendChristmasDonaldAllyModelMessage", SendChristmasDonaldAllyModelMessage },
-                    { "SendChristmasDonaldEnemyModelMessage", SendChristmasDonaldEnemyModelMessage },
-                    { "SendBirdDonaldAllyModelMessage", SendBirdDonaldAllyModelMessage },
-                    { "SendBirdDonaldEnemyModelMessage", SendBirdDonaldEnemyModelMessage },
-                    { "SendSpaceParanoidsDonaldAllyModelMessage", SendSpaceParanoidsDonaldAllyModelMessage },
-                    { "SendSpaceParanoidsDonaldEnemyModelMessage", SendSpaceParanoidsDonaldEnemyModelMessage },
-                    { "SendTimelessRiverDonaldAllyModelMessage", SendTimelessRiverDonaldAllyModelMessage },
-                    { "SendTimelessRiverDonaldEnemyModelMessage", SendTimelessRiverDonaldEnemyModelMessage },
-
-                    { "SendMulanAllyModelMessage", SendMulanAllyModelMessage },
-                    { "SendMulanEnemyModelMessage", SendMulanEnemyModelMessage },
-                    { "SendBeastAllyModelMessage", SendBeastAllyModelMessage },
-                    { "SendBeastEnemyModelMessage", SendBeastEnemyModelMessage },
-                    { "SendAuronAllyModelMessage", SendAuronAllyModelMessage },
-                    { "SendAuronEnemyModelMessage", SendAuronEnemyModelMessage },
-                    { "SendCaptainJackSparrowAllyModelMessage", SendCaptainJackSparrowAllyModelMessage },
-                    { "SendCaptainJackSparrowEnemyModelMessage", SendCaptainJackSparrowEnemyModelMessage },
-                    { "SendAladdinAllyModelMessage", SendAladdinAllyModelMessage },
-                    { "SendAladdinEnemyModelMessage", SendAladdinEnemyModelMessage },
-                    { "SendJackSkellingtonAllyModelMessage", SendJackSkellingtonAllyModelMessage },
-                    { "SendJackSkellingtonEnemyModelMessage", SendJackSkellingtonEnemyModelMessage },
-                    { "SendSimbaAllyModelMessage", SendSimbaAllyModelMessage },
-                    { "SendSimbaEnemyModelMessage", SendSimbaEnemyModelMessage },
-                    { "SendTronAllyModelMessage", SendTronAllyModelMessage },
-                    { "SendTronEnemyModelMessage", SendTronEnemyModelMessage },
-                    { "SendRikuAllyModelMessage", SendRikuAllyModelMessage },
-                    { "SendRikuEnemyModelMessage", SendRikuEnemyModelMessage },
+                    { "SendHalloweenGoofyModelMessage", SendHalloweenGoofyModelMessage },
+                    { "SendChristmasGoofyModelMessage", SendChristmasGoofyModelMessage },
+                    { "SendTortoiseGoofyModelMessage", SendTortoiseGoofyModelMessage },
+                    { "SendSpaceParanoidsGoofyModelMessage", SendSpaceParanoidsGoofyModelMessage },
+                    { "SendTimelessRiverGoofyModelMessage", SendTimelessRiverGoofyModelMessage },
+                    
+                    { "SendHalloweenDonaldModelMessage", SendHalloweenDonaldModelMessage },
+                    { "SendChristmasDonaldModelMessage", SendChristmasDonaldModelMessage },
+                    { "SendBirdDonaldModelMessage", SendBirdDonaldModelMessage },
+                    { "SendSpaceParanoidsDonaldModelMessage", SendSpaceParanoidsDonaldModelMessage },
+                    { "SendTimelessRiverDonaldModelMessage", SendTimelessRiverDonaldModelMessage },
+                    
+                    { "SendMulanModelMessage", SendMulanModelMessage },
+                    { "SendBeastModelMessage", SendBeastModelMessage },
+                    { "SendAuronModelMessage", SendAuronModelMessage },
+                    { "SendCaptainJackSparrowModelMessage", SendCaptainJackSparrowModelMessage },
+                    { "SendAladdinModelMessage", SendAladdinModelMessage },
+                    { "SendJackSkellingtonModelMessage", SendJackSkellingtonModelMessage },
+                    { "SendSimbaModelMessage", SendSimbaModelMessage },
+                    { "SendTronModelMessage", SendTronModelMessage },
+                    { "SendRikuModelMessage", SendRikuModelMessage },
                 }
             },
 

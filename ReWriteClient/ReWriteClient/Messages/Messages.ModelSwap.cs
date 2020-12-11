@@ -10,6 +10,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendSoraModelMessage(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.SoraModel = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x21CE0B68,
@@ -21,6 +23,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendSoraLionModelMessage(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.SoraLionModel = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x21CE1250,
@@ -32,6 +36,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendSoraTimelessRiverModelMessage(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.SoraTimelessRiverModel = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x21CE121C,
@@ -43,6 +49,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendSoraHalloweenModelMessage(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.SoraHalloweenModel = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x21CE0FAC,
@@ -54,6 +62,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendSoraChristmasModelMessage(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.SoraChristmasModel = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x21CE0FE0,
@@ -65,6 +75,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendSoraSpaceParanoidsModelMessage(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.SoraSpaceParanoidsModel = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x21CE11E8,
@@ -78,8 +90,10 @@ namespace ReWriteClient.Messages
 
         #region Donald
 
-        public static bool SendDonaldAllyModelMessage(ManipulationType manipulationType, string value)
+        public static bool SendDonaldModelMessage(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.DonaldModel = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x21CE0B6A,
@@ -88,108 +102,10 @@ namespace ReWriteClient.Messages
                 Value = value
             });
         }
-
-        public static bool SendDonaldEnemyModelMessage(ManipulationType manipulationType, string value)
+        public static bool SendBirdDonaldModelMessage(ManipulationType manipulationType, string value)
         {
-            return memoryProcessor.UpdateMemory(new MemoryObject
-            {
-                Address = 0x21CE0B6A,
-                Type = DataType.TwoBytes,
-                ManipulationType = manipulationType,
-                Value = value
-            });
-        }
+            ClientCache.Instance.DonaldBirdModel = value;
 
-        public static bool SendHalloweenDonaldAllyModelMessage(ManipulationType manipulationType, string value)
-        {
-            return memoryProcessor.UpdateMemory(new MemoryObject
-            {
-                Address = 0x21CE0FAE,
-                Type = DataType.TwoBytes,
-                ManipulationType = manipulationType,
-                Value = value
-            });
-        }
-
-        public static bool SendHalloweenDonaldEnemyModelMessage(ManipulationType manipulationType, string value)
-        {
-            return memoryProcessor.UpdateMemory(new MemoryObject
-            {
-                Address = 0x21CE0FAE,
-                Type = DataType.TwoBytes,
-                ManipulationType = manipulationType,
-                Value = value
-            });
-        }
-
-        public static bool SendChristmasDonaldAllyModelMessage(ManipulationType manipulationType, string value)
-        {
-            return memoryProcessor.UpdateMemory(new MemoryObject
-            {
-                Address = 0x21CE0FE2,
-                Type = DataType.TwoBytes,
-                ManipulationType = manipulationType,
-                Value = value
-            });
-        }
-
-        public static bool SendChristmasDonaldEnemyModelMessage(ManipulationType manipulationType, string value)
-        {
-            return memoryProcessor.UpdateMemory(new MemoryObject
-            {
-                Address = 0x21CE0FE2,
-                Type = DataType.TwoBytes,
-                ManipulationType = manipulationType,
-                Value = value
-            });
-        }
-
-        public static bool SendSpaceParanoidsDonaldAllyModelMessage(ManipulationType manipulationType, string value)
-        {
-            return memoryProcessor.UpdateMemory(new MemoryObject
-            {
-                Address = 0x21CE11EA,
-                Type = DataType.TwoBytes,
-                ManipulationType = manipulationType,
-                Value = value
-            });
-        }
-
-        public static bool SendSpaceParanoidsDonaldEnemyModelMessage(ManipulationType manipulationType, string value)
-        {
-            return memoryProcessor.UpdateMemory(new MemoryObject
-            {
-                Address = 0x21CE11EA,
-                Type = DataType.TwoBytes,
-                ManipulationType = manipulationType,
-                Value = value
-            });
-        }
-
-        public static bool SendTimelessRiverDonaldAllyModelMessage(ManipulationType manipulationType, string value)
-        {
-            return memoryProcessor.UpdateMemory(new MemoryObject
-            {
-                Address = 0x21CE121E,
-                Type = DataType.TwoBytes,
-                ManipulationType = manipulationType,
-                Value = value
-            });
-        }
-
-        public static bool SendTimelessRiverDonaldEnemyModelMessage(ManipulationType manipulationType, string value)
-        {
-            return memoryProcessor.UpdateMemory(new MemoryObject
-            {
-                Address = 0x21CE121E,
-                Type = DataType.TwoBytes,
-                ManipulationType = manipulationType,
-                Value = value
-            });
-        }
-
-        public static bool SendBirdDonaldAllyModelMessage(ManipulationType manipulationType, string value)
-        {
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x21CE1252,
@@ -199,11 +115,52 @@ namespace ReWriteClient.Messages
             });
         }
 
-        public static bool SendBirdDonaldEnemyModelMessage(ManipulationType manipulationType, string value)
+        public static bool SendTimelessRiverDonaldModelMessage(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.DonaldTimelessRiverModel = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
-                Address = 0x21CE1252,
+                Address = 0x21CE121E,
+                Type = DataType.TwoBytes,
+                ManipulationType = manipulationType,
+                Value = value
+            });
+        }
+
+        public static bool SendHalloweenDonaldModelMessage(ManipulationType manipulationType, string value)
+        {
+            ClientCache.Instance.DonaldHalloweenModel = value;
+
+            return memoryProcessor.UpdateMemory(new MemoryObject
+            {
+                Address = 0x21CE0FAE,
+                Type = DataType.TwoBytes,
+                ManipulationType = manipulationType,
+                Value = value
+            });
+        }
+
+        public static bool SendChristmasDonaldModelMessage(ManipulationType manipulationType, string value)
+        {
+            ClientCache.Instance.DonaldChristmasModel = value;
+
+            return memoryProcessor.UpdateMemory(new MemoryObject
+            {
+                Address = 0x21CE0FE2,
+                Type = DataType.TwoBytes,
+                ManipulationType = manipulationType,
+                Value = value
+            });
+        }
+
+        public static bool SendSpaceParanoidsDonaldModelMessage(ManipulationType manipulationType, string value)
+        {
+            ClientCache.Instance.DonaldSpaceParanoidsModel = value;
+
+            return memoryProcessor.UpdateMemory(new MemoryObject
+            {
+                Address = 0x21CE11EA,
                 Type = DataType.TwoBytes,
                 ManipulationType = manipulationType,
                 Value = value
@@ -214,8 +171,10 @@ namespace ReWriteClient.Messages
 
         #region Goofy
 
-        public static bool SendGoofyAllyModelMessage(ManipulationType manipulationType, string value)
+        public static bool SendGoofyModelMessage(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.GoofyModel = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x21CE0B6C,
@@ -225,107 +184,10 @@ namespace ReWriteClient.Messages
             });
         }
 
-        public static bool SendGoofyEnemyModelMessage(ManipulationType manipulationType, string value)
+        public static bool SendTortoiseGoofyModelMessage(ManipulationType manipulationType, string value)
         {
-            return memoryProcessor.UpdateMemory(new MemoryObject
-            {
-                Address = 0x21CE0B6C,
-                Type = DataType.TwoBytes,
-                ManipulationType = manipulationType,
-                Value = value
-            });
-        }
+            ClientCache.Instance.GoofyTortoiseModel = value;
 
-        public static bool SendHalloweenGoofyAllyModelMessage(ManipulationType manipulationType, string value)
-        {
-            return memoryProcessor.UpdateMemory(new MemoryObject
-            {
-                Address = 0x21CE0FB0,
-                Type = DataType.TwoBytes,
-                ManipulationType = manipulationType,
-                Value = value
-            });
-        }
-
-        public static bool SendHalloweenGoofyEnemyModelMessage(ManipulationType manipulationType, string value)
-        {
-            return memoryProcessor.UpdateMemory(new MemoryObject
-            {
-                Address = 0x21CE0FB0,
-                Type = DataType.TwoBytes,
-                ManipulationType = manipulationType,
-                Value = value
-            });
-        }
-
-        public static bool SendChristmasGoofyAllyModelMessage(ManipulationType manipulationType, string value)
-        {
-            return memoryProcessor.UpdateMemory(new MemoryObject
-            {
-                Address = 0x21CE0FE4,
-                Type = DataType.TwoBytes,
-                ManipulationType = manipulationType,
-                Value = value
-            });
-        }
-
-        public static bool SendChristmasGoofyEnemyModelMessage(ManipulationType manipulationType, string value)
-        {
-            return memoryProcessor.UpdateMemory(new MemoryObject
-            {
-                Address = 0x21CE0FE4,
-                Type = DataType.TwoBytes,
-                ManipulationType = manipulationType,
-                Value = value
-            });
-        }
-
-        public static bool SendSpaceParanoidsGoofyAllyModelMessage(ManipulationType manipulationType, string value)
-        {
-            return memoryProcessor.UpdateMemory(new MemoryObject
-            {
-                Address = 0x21CE11EC,
-                Type = DataType.TwoBytes,
-                ManipulationType = manipulationType,
-                Value = value
-            });
-        }
-
-        public static bool SendSpaceParanoidsGoofyEnemyModelMessage(ManipulationType manipulationType, string value)
-        {
-            return memoryProcessor.UpdateMemory(new MemoryObject
-            {
-                Address = 0x21CE11EC,
-                Type = DataType.TwoBytes,
-                ManipulationType = manipulationType,
-                Value = value
-            });
-        }
-
-        public static bool SendTimelessRiverGoofyAllyModelMessage(ManipulationType manipulationType, string value)
-        {
-            return memoryProcessor.UpdateMemory(new MemoryObject
-            {
-                Address = 0x21CE1220,
-                Type = DataType.TwoBytes,
-                ManipulationType = manipulationType,
-                Value = value
-            });
-        }
-
-        public static bool SendTimelessRiverGoofyEnemyModelMessage(ManipulationType manipulationType, string value)
-        {
-            return memoryProcessor.UpdateMemory(new MemoryObject
-            {
-                Address = 0x21CE1220,
-                Type = DataType.TwoBytes,
-                ManipulationType = manipulationType,
-                Value = value
-            });
-        }
-
-        public static bool SendTortoiseGoofyAllyModelMessage(ManipulationType manipulationType, string value)
-        {
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x21CE1254,
@@ -335,11 +197,52 @@ namespace ReWriteClient.Messages
             });
         }
 
-        public static bool SendTortoiseGoofyEnemyModelMessage(ManipulationType manipulationType, string value)
+        public static bool SendTimelessRiverGoofyModelMessage(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.GoofyTimelessRiverModel = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
-                Address = 0x21CE1254,
+                Address = 0x21CE1220,
+                Type = DataType.TwoBytes,
+                ManipulationType = manipulationType,
+                Value = value
+            });
+        }
+
+        public static bool SendHalloweenGoofyModelMessage(ManipulationType manipulationType, string value)
+        {
+            ClientCache.Instance.GoofyHalloweenModel = value;
+
+            return memoryProcessor.UpdateMemory(new MemoryObject
+            {
+                Address = 0x21CE0FB0,
+                Type = DataType.TwoBytes,
+                ManipulationType = manipulationType,
+                Value = value
+            });
+        }
+
+        public static bool SendChristmasGoofyModelMessage(ManipulationType manipulationType, string value)
+        {
+            ClientCache.Instance.GoofyChristmasModel = value;
+
+            return memoryProcessor.UpdateMemory(new MemoryObject
+            {
+                Address = 0x21CE0FE4,
+                Type = DataType.TwoBytes,
+                ManipulationType = manipulationType,
+                Value = value
+            });
+        }
+
+        public static bool SendSpaceParanoidsGoofyModelMessage(ManipulationType manipulationType, string value)
+        {
+            ClientCache.Instance.GoofySpaceParanoidsModel = value;
+
+            return memoryProcessor.UpdateMemory(new MemoryObject
+            {
+                Address = 0x21CE11EC,
                 Type = DataType.TwoBytes,
                 ManipulationType = manipulationType,
                 Value = value
@@ -348,10 +251,12 @@ namespace ReWriteClient.Messages
 
         #endregion Goofy
 
-        #region Mulan
+        #region Party
 
-        public static bool SendMulanAllyModelMessage(ManipulationType manipulationType, string value)
+        public static bool SendMulanModelMessage(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.MulanModel = value;
+
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x21CE10B6,
@@ -361,23 +266,10 @@ namespace ReWriteClient.Messages
             });
         }
 
-        public static bool SendMulanEnemyModelMessage(ManipulationType manipulationType, string value)
+        public static bool SendBeastModelMessage(ManipulationType manipulationType, string value)
         {
-            return memoryProcessor.UpdateMemory(new MemoryObject
-            {
-                Address = 0x21CE10B6,
-                Type = DataType.TwoBytes,
-                ManipulationType = manipulationType,
-                Value = value
-            });
-        }
+            ClientCache.Instance.BeastModel = value;
 
-        #endregion Mulan
-
-        #region Beast
-
-        public static bool SendBeastAllyModelMessage(ManipulationType manipulationType, string value)
-        {
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x21CE104E,
@@ -387,23 +279,10 @@ namespace ReWriteClient.Messages
             });
         }
 
-        public static bool SendBeastEnemyModelMessage(ManipulationType manipulationType, string value)
+        public static bool SendAuronModelMessage(ManipulationType manipulationType, string value)
         {
-            return memoryProcessor.UpdateMemory(new MemoryObject
-            {
-                Address = 0x21CE104E,
-                Type = DataType.TwoBytes,
-                ManipulationType = manipulationType,
-                Value = value
-            });
-        }
+            ClientCache.Instance.AuronModel = value;
 
-        #endregion Beast
-
-        #region Auron
-
-        public static bool SendAuronAllyModelMessage(ManipulationType manipulationType, string value)
-        {
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x21CE0EE2,
@@ -413,23 +292,10 @@ namespace ReWriteClient.Messages
             });
         }
 
-        public static bool SendAuronEnemyModelMessage(ManipulationType manipulationType, string value)
+        public static bool SendCaptainJackSparrowModelMessage(ManipulationType manipulationType, string value)
         {
-            return memoryProcessor.UpdateMemory(new MemoryObject
-            {
-                Address = 0x21CE0EE2,
-                Type = DataType.TwoBytes,
-                ManipulationType = manipulationType,
-                Value = value
-            });
-        }
+            ClientCache.Instance.CaptainJackSparrowModel = value;
 
-        #endregion Auron
-
-        #region Captain Jack Sparrow
-
-        public static bool SendCaptainJackSparrowAllyModelMessage(ManipulationType manipulationType, string value)
-        {
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x21CE0DDE,
@@ -439,23 +305,10 @@ namespace ReWriteClient.Messages
             });
         }
 
-        public static bool SendCaptainJackSparrowEnemyModelMessage(ManipulationType manipulationType, string value)
+        public static bool SendAladdinModelMessage(ManipulationType manipulationType, string value)
         {
-            return memoryProcessor.UpdateMemory(new MemoryObject
-            {
-                Address = 0x21CE0DDE,
-                Type = DataType.TwoBytes,
-                ManipulationType = manipulationType,
-                Value = value
-            });
-        }
+            ClientCache.Instance.AladdinModel = value;
 
-        #endregion Captain Jack Sparrow
-
-        #region Aladdin
-
-        public static bool SendAladdinAllyModelMessage(ManipulationType manipulationType, string value)
-        {
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x21CE0F7E,
@@ -465,23 +318,10 @@ namespace ReWriteClient.Messages
             });
         }
 
-        public static bool SendAladdinEnemyModelMessage(ManipulationType manipulationType, string value)
+        public static bool SendJackSkellingtonModelMessage(ManipulationType manipulationType, string value)
         {
-            return memoryProcessor.UpdateMemory(new MemoryObject
-            {
-                Address = 0x21CE0F7E,
-                Type = DataType.TwoBytes,
-                ManipulationType = manipulationType,
-                Value = value
-            });
-        }
+            ClientCache.Instance.JackSkellingtonModel = value;
 
-        #endregion Aladdin
-
-        #region Jack Skellington
-
-        public static bool SendJackSkellingtonAllyModelMessage(ManipulationType manipulationType, string value)
-        {
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x21CE101A,
@@ -491,23 +331,10 @@ namespace ReWriteClient.Messages
             });
         }
 
-        public static bool SendJackSkellingtonEnemyModelMessage(ManipulationType manipulationType, string value)
+        public static bool SendSimbaModelMessage(ManipulationType manipulationType, string value)
         {
-            return memoryProcessor.UpdateMemory(new MemoryObject
-            {
-                Address = 0x21CE101A,
-                Type = DataType.TwoBytes,
-                ManipulationType = manipulationType,
-                Value = value
-            });
-        }
+            ClientCache.Instance.SimbaModel = value;
 
-        #endregion Jack Skellington
-
-        #region Simba
-
-        public static bool SendSimbaAllyModelMessage(ManipulationType manipulationType, string value)
-        {
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x21CE1256,
@@ -517,23 +344,10 @@ namespace ReWriteClient.Messages
             });
         }
 
-        public static bool SendSimbaEnemyModelMessage(ManipulationType manipulationType, string value)
+        public static bool SendTronModelMessage(ManipulationType manipulationType, string value)
         {
-            return memoryProcessor.UpdateMemory(new MemoryObject
-            {
-                Address = 0x21CE1256,
-                Type = DataType.TwoBytes,
-                ManipulationType = manipulationType,
-                Value = value
-            });
-        }
+            ClientCache.Instance.TronModel = value;
 
-        #endregion Simba
-
-        #region Tron
-
-        public static bool SendTronAllyModelMessage(ManipulationType manipulationType, string value)
-        {
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x21CE11EE,
@@ -543,23 +357,10 @@ namespace ReWriteClient.Messages
             });
         }
 
-        public static bool SendTronEnemyModelMessage(ManipulationType manipulationType, string value)
+        public static bool SendRikuModelMessage(ManipulationType manipulationType, string value)
         {
-            return memoryProcessor.UpdateMemory(new MemoryObject
-            {
-                Address = 0x21CE11EE,
-                Type = DataType.TwoBytes,
-                ManipulationType = manipulationType,
-                Value = value
-            });
-        }
+            ClientCache.Instance.RikuModel = value;
 
-        #endregion Tron
-
-        #region Riku
-
-        public static bool SendRikuAllyModelMessage(ManipulationType manipulationType, string value)
-        {
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x21CE10EA,
@@ -569,17 +370,6 @@ namespace ReWriteClient.Messages
             });
         }
 
-        public static bool SendRikuEnemyModelMessage(ManipulationType manipulationType, string value)
-        {
-            return memoryProcessor.UpdateMemory(new MemoryObject
-            {
-                Address = 0x21CE10EA,
-                Type = DataType.TwoBytes,
-                ManipulationType = manipulationType,
-                Value = value
-            });
-        }
-
-        #endregion Riku
+        #endregion Party
     }
 }

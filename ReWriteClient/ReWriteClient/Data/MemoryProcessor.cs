@@ -404,11 +404,20 @@ namespace ReWriteClient.Data
             }
         }
 
+        public bool CheckAnimationState(string value)
+        {
+            byte[] readMemory = new byte[8];
+            
+            ReadProcessMemory(ProcessHandle, (IntPtr)0x20341708, readMemory, readMemory.Length, out _);
+            
+            return CheckMemory(BitConverter.ToInt32(readMemory) + 0x2000000C, DataType.TwoBytes, value, false);
+        }
+
         public bool CheckMemory(int address, DataType type, string value, bool isValueHex)
         {
             // TODO Figure out a less janky way of doing this
             if (ProcessHandle == IntPtr.Zero)
-                return true;
+                return false;
 
             byte[] data;
 

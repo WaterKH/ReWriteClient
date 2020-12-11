@@ -695,7 +695,6 @@ namespace ReWriteClient.Messages
 
         #region Goofy
 
-
         public static bool SendKnightsShieldMessage(ManipulationType manipulationType, string value)
         {
             return memoryProcessor.UpdateMemory(new MemoryObject
