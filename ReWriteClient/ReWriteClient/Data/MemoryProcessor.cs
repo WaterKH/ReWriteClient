@@ -293,9 +293,9 @@ namespace ReWriteClient.Data
 
                 // TODO Is there a better way to do this?
                 // TODO boss fights trigger this too - within same room/ world
-                if (MemoryCache.CurrentWorld != (int)world[0] || MemoryCache.CurrentRoom != (int)room[0])
+                if (ClientCache.Instance.CurrentWorld != (int)world[0] || ClientCache.Instance.CurrentRoom != (int)room[0])
                 {
-                    switch (MemoryCache.CurrentWorld)
+                    switch (ClientCache.Instance.CurrentWorld)
                     {
                         case 2: // Twilight Town
 
@@ -304,7 +304,7 @@ namespace ReWriteClient.Data
                                 Address = 0x21C6CC20,
                                 ManipulationType = ManipulationType.Set,
                                 Type = DataType.TwoBytes,
-                                Value = isEvent ? "90" : MemoryCache.SoraModelSwap.ToString()
+                                Value = isEvent ? "90" : (ClientCache.Instance.SoraModel == null) ? "90" : ClientCache.Instance.SoraModel.ToString()
                             });
 
                             break;
@@ -315,7 +315,7 @@ namespace ReWriteClient.Data
                                 Address = 0x21CE1250,
                                 ManipulationType = ManipulationType.Set,
                                 Type = DataType.TwoBytes,
-                                Value = isEvent ? "650" : MemoryCache.SoraModelSwap.ToString()
+                                Value = isEvent ? "650" : (ClientCache.Instance.SoraLionModel == null) ? "650" : ClientCache.Instance.SoraLionModel.ToString()
                             });
 
                             break;
@@ -337,20 +337,20 @@ namespace ReWriteClient.Data
                                 Address = 0x21CE121C,
                                 ManipulationType = ManipulationType.Set,
                                 Type = DataType.TwoBytes,
-                                Value = isEvent ? "1623" : MemoryCache.SoraModelSwap.ToString()
+                                Value = isEvent ? "1623" : (ClientCache.Instance.SoraTimelessRiverModel == null) ? "1623" : ClientCache.Instance.SoraTimelessRiverModel.ToString()
                             });
 
                             break;
                         case 14: // Halloween / Christmas Town
 
-                            if (MemoryCache.CurrentRoom < 5)
+                            if (ClientCache.Instance.CurrentRoom < 5)
                             {
                                 this.UpdateMemory(new MemoryObject
                                 {
                                     Address = 0x21CE0FAC,
                                     ManipulationType = ManipulationType.Set,
                                     Type = DataType.TwoBytes,
-                                    Value = isEvent ? "693" : MemoryCache.SoraModelSwap.ToString()
+                                    Value = isEvent ? "693" : (ClientCache.Instance.SoraHalloweenModel == null) ? "693" : ClientCache.Instance.SoraHalloweenModel.ToString()
                                 });
                             }
                             else
@@ -360,7 +360,7 @@ namespace ReWriteClient.Data
                                     Address = 0x21CE0FE0,
                                     ManipulationType = ManipulationType.Set,
                                     Type = DataType.TwoBytes,
-                                    Value = isEvent ? "2389" : MemoryCache.SoraModelSwap.ToString()
+                                    Value = isEvent ? "2389" : (ClientCache.Instance.SoraChristmasModel == null) ? "2389" : ClientCache.Instance.SoraChristmasModel.ToString()
                                 });
                             }
 
@@ -372,7 +372,7 @@ namespace ReWriteClient.Data
                                 Address = 0x21CE11E8,
                                 ManipulationType = ManipulationType.Set,
                                 Type = DataType.TwoBytes,
-                                Value = isEvent ? "1622" : MemoryCache.SoraModelSwap.ToString()
+                                Value = isEvent ? "1622" : (ClientCache.Instance.SoraSpaceParanoidsModel == null) ? "1622" : ClientCache.Instance.SoraSpaceParanoidsModel.ToString()
                             });
 
                             break;
@@ -383,7 +383,7 @@ namespace ReWriteClient.Data
                                 Address = 0x21C6CC20,
                                 ManipulationType = ManipulationType.Set,
                                 Type = DataType.TwoBytes,
-                                Value = isEvent ? "84" : MemoryCache.SoraModelSwap.ToString()
+                                Value = isEvent ? "84" : (ClientCache.Instance.SoraModel == null) ? "84" : ClientCache.Instance.SoraModel.ToString()
                             });
 
                             break;
@@ -391,11 +391,9 @@ namespace ReWriteClient.Data
 
                     if (!isEvent)
                     {
-                        MemoryCache.CurrentWorld = (int)world[0];
-                        MemoryCache.CurrentRoom = (int)room[0];
+                        ClientCache.Instance.CurrentWorld = (int)world[0];
+                        ClientCache.Instance.CurrentRoom = (int)room[0];
                     }
-
-                    MemoryCache.AllowedToWrite = isEvent;
                 }
             }
             catch(Exception e)
@@ -490,9 +488,13 @@ namespace ReWriteClient.Data
 
                 if(cameraLock[0] == 0)// && !isCameraRotated)
                 {
-                    //var playerIdleAnimation = GetPlayerIdleAnimation();
+                    var animationState = new byte[2];
+                    ReadProcessMemory(ProcessHandle, (IntPtr)(BitConverter.ToInt32(readMemory) + 0x2000000C), animationState, animationState.Length, out _);
 
-                    WriteProcessMemory(ProcessHandle, (IntPtr)(BitConverter.ToInt32(readMemory) + 0x2000000C), new byte[2] { 64, 0 }, 2, out _);
+                    if (BitConverter.ToUInt16(animationState) != 32769)
+                    {
+                        WriteProcessMemory(ProcessHandle, (IntPtr)(BitConverter.ToInt32(readMemory) + 0x2000000C), new byte[2] { 64, 0 }, 2, out _);
+                    }
                 }
 
                 return true;

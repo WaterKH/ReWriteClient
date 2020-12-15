@@ -14,6 +14,9 @@ namespace ReWriteClient.Data
         private Timer updateTimer;
         private Timer refreshTimer;
 
+        public int CurrentWorld;
+        public int CurrentRoom;
+
         // TODO Maybe make a timer for each property? That way when they aren't forever updating?
         private ClientCache() { }
 
