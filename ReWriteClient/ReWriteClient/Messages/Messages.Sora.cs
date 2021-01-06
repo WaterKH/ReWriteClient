@@ -69,13 +69,100 @@ namespace ReWriteClient.Messages
         {
             ClientCache.Instance.SoraMaxHP = value;
 
-            return memoryProcessor.UpdateMemory(new MemoryObject
+            if (value == "0")
             {
-                Address = 0x21C6C754,
-                Type = DataType.FourBytes,
-                ManipulationType = manipulationType,
-                Value = value
-            });
+                return SendSoraInvulnerabilityMessage(ManipulationType.Set, "true");
+            }
+            else
+            {
+                SendSoraInvulnerabilityMessage(ManipulationType.Set, "false");
+
+                return memoryProcessor.UpdateMemory(new MemoryObject
+                {
+                    Address = 0x21C6C754,
+                    Type = DataType.FourBytes,
+                    ManipulationType = manipulationType,
+                    Value = value
+                });
+            }
+        }
+
+        public static bool SendSoraInvulnerabilityMessage(ManipulationType manipulationType, string value)
+        {
+            ClientCache.Instance.IsSoraInvincible = value == "true";
+
+            if (value == "true")
+            {
+                memoryProcessor.UpdateMemory(new MemoryObject
+                {
+                    Address = 0x200F7000,
+                    Type = DataType.FourBytes,
+                    ManipulationType = manipulationType,
+                    Value = "2357329924"
+                });
+
+                memoryProcessor.UpdateMemory(new MemoryObject
+                {
+                    Address = 0x200F7004,
+                    Type = DataType.FourBytes,
+                    ManipulationType = manipulationType,
+                    Value = "134646046"
+                });
+
+                memoryProcessor.UpdateMemory(new MemoryObject
+                {
+                    Address = 0x200F7008,
+                    Type = DataType.FourBytes,
+                    ManipulationType = manipulationType,
+                    Value = "2894200832"
+                });
+
+                memoryProcessor.UpdateMemory(new MemoryObject
+                {
+                    Address = 0x201666F8,
+                    Type = DataType.FourBytes,
+                    ManipulationType = manipulationType,
+                    Value = "201586688"
+                });
+
+                return true;
+            }
+            else
+            {
+                memoryProcessor.UpdateMemory(new MemoryObject
+                {
+                    Address = 0x200F7000,
+                    Type = DataType.FourBytes,
+                    ManipulationType = manipulationType,
+                    Value = "0"
+                });
+
+                memoryProcessor.UpdateMemory(new MemoryObject
+                {
+                    Address = 0x200F7004,
+                    Type = DataType.FourBytes,
+                    ManipulationType = manipulationType,
+                    Value = "0"
+                });
+
+                memoryProcessor.UpdateMemory(new MemoryObject
+                {
+                    Address = 0x200F7008,
+                    Type = DataType.FourBytes,
+                    ManipulationType = manipulationType,
+                    Value = "0"
+                });
+
+                memoryProcessor.UpdateMemory(new MemoryObject
+                {
+                    Address = 0x201666F8,
+                    Type = DataType.FourBytes,
+                    ManipulationType = manipulationType,
+                    Value = "820510719"
+                });
+
+                return true;
+            }
         }
 
         public static bool SendSoraHealthTimerMessage(ManipulationType manipulationType, string value)

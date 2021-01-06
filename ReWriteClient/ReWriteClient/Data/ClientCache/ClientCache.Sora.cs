@@ -14,6 +14,7 @@ namespace ReWriteClient.Data
         public string SoraLevel { get; set; }
         public string SoraCurrentHP { get; set; }
         public string SoraMaxHP { get; set; }
+        public bool IsSoraInvincible { get; set; }
         public string SoraCurrentMagic { get; set; }
         public string SoraMaxMagic { get; set; }
         public string SoraAPBoost { get; set; }

@@ -295,7 +295,7 @@ namespace ReWriteClient.Data
                 // TODO boss fights trigger this too - within same room/ world
                 if (ClientCache.Instance.CurrentWorld != (int)world[0] || ClientCache.Instance.CurrentRoom != (int)room[0])
                 {
-                    switch (ClientCache.Instance.CurrentWorld)
+                    switch (world[0])
                     {
                         case 2: // Twilight Town
 
@@ -343,7 +343,7 @@ namespace ReWriteClient.Data
                             break;
                         case 14: // Halloween / Christmas Town
 
-                            if (ClientCache.Instance.CurrentRoom < 5)
+                            if (room[0] < 5)
                             {
                                 this.UpdateMemory(new MemoryObject
                                 {
@@ -389,11 +389,8 @@ namespace ReWriteClient.Data
                             break;
                     }
 
-                    if (!isEvent)
-                    {
-                        ClientCache.Instance.CurrentWorld = (int)world[0];
-                        ClientCache.Instance.CurrentRoom = (int)room[0];
-                    }
+                    ClientCache.Instance.CurrentWorld = (int)world[0];
+                    ClientCache.Instance.CurrentRoom = (int)room[0];
                 }
             }
             catch(Exception e)
@@ -532,7 +529,7 @@ namespace ReWriteClient.Data
             DataType.Binary => BitConverter.GetBytes(byte.Parse(value)), // ?
             DataType.Byte => new byte[] { isValueHex ? byte.Parse(Convert.ToInt32(value, 16).ToString()) : byte.Parse(Convert.ToInt32(value).ToString()) },
             DataType.TwoBytes => BitConverter.GetBytes(short.Parse(value)),
-            DataType.FourBytes => BitConverter.GetBytes(int.Parse(value)),
+            DataType.FourBytes => BitConverter.GetBytes(uint.Parse(value)),
             DataType.EightBytes => BitConverter.GetBytes(long.Parse(value)),
             DataType.Float => BitConverter.GetBytes(float.Parse(value)),
             DataType.Double => BitConverter.GetBytes(double.Parse(value)),
