@@ -55,6 +55,25 @@ namespace ReWriteClient.Messages
 
                     #endregion Magic
 
+                    #region Drive
+
+                    { "SendCurrentDriveCounterMessage", SendCurrentDriveCounterMessage },
+                    { "SendMaxDriveCounterMessage", SendMaxDriveCounterMessage },
+                    { "SendDriveTimeMessage", SendDriveTimeMessage },
+                    { "SendDisableDriveMessage", SendDisableDriveMessage },
+                    { "SendValorWisdomMasterFinalAntiMessage", SendValorWisdomMasterFinalAntiMessage },
+                    { "SendLimitMessage", SendLimitMessage },
+                    { "SendActivateFormMessage", SendActivateFormMessage },
+
+                    #endregion Drive
+
+                    #region Summon
+                    
+                    { "SendUkuleleBaseballMessage", SendUkuleleBaseballMessage },
+                    { "SendLampFeatherMessage", SendLampFeatherMessage },
+
+                    #endregion Summon
+
                     #region Equipment
             
                     { "SendEquipKeybladeMessage", SendEquipKeybladeMessage },
@@ -112,38 +131,12 @@ namespace ReWriteClient.Messages
                     { "SendSoraActivateAbilityMessage", SendSoraActivateAbilityMessage },
                     { "SendSoraDeactivateAbilityMessage", SendSoraDeactivateAbilityMessage },
 
-                    #endregion Abilities
+                #endregion Abilities
+
                 }
             },
 
             #endregion Sora
-
-            #region Drive
-            
-            { "Drive", new Dictionary<string, Func<ManipulationType, string, bool>>
-                {
-                    { "SendCurrentDriveCounterMessage", SendCurrentDriveCounterMessage },
-                    { "SendMaxDriveCounterMessage", SendMaxDriveCounterMessage },
-                    { "SendDriveTimeMessage", SendDriveTimeMessage },
-                    { "SendDisableDriveMessage", SendDisableDriveMessage },
-                    { "SendValorWisdomMasterFinalAntiMessage", SendValorWisdomMasterFinalAntiMessage },
-                    { "SendLimitMessage", SendLimitMessage },
-                    { "SendActivateFormMessage", SendActivateFormMessage },
-                }
-            },
-
-            #endregion Drive
-
-            #region Summon
-
-            { "Summon", new Dictionary<string, Func<ManipulationType, string, bool>>
-                {
-                    { "SendUkuleleBaseballMessage", SendUkuleleBaseballMessage },
-                    { "SendLampFeatherMessage", SendLampFeatherMessage },
-                }
-            },
-
-            #endregion Summon
 
             #region Items
             
@@ -331,6 +324,9 @@ namespace ReWriteClient.Messages
                     { "SendLuckyRingMessage", SendLuckyRingMessage },
 
                     #endregion Accessories
+
+                    
+                    { "SendMunnyMessage", SendMunnyMessage },
                 }
             },
 
@@ -340,6 +336,8 @@ namespace ReWriteClient.Messages
             
             { "ModelSwap", new Dictionary<string, Func<ManipulationType, string, bool>>
                 {
+                    { "SendResetModelSwapsMessage", SendResetModelSwapsMessage },
+
                     { "SendSoraModelMessage", SendSoraModelMessage },
                     { "SendSoraLionModelMessage", SendSoraLionModelMessage },
                     { "SendSoraTimelessRiverModelMessage", SendSoraTimelessRiverModelMessage },
@@ -836,16 +834,6 @@ namespace ReWriteClient.Messages
             },
 
             #endregion Enemy
-
-            #region Misc
-
-            { "Misc", new Dictionary<string, Func<ManipulationType, string, bool>>
-                {
-                    { "SendMunnyMessage", SendMunnyMessage },
-                }
-            },
-
-            #endregion Misc
         };
 
         private static void CreateInterval(MemoryObject obj, int interval = 1)
@@ -853,6 +841,7 @@ namespace ReWriteClient.Messages
             var timer = new Timer(interval)
             {
                 Enabled = true,
+                AutoReset = true
             };
 
             switch (obj.Name)

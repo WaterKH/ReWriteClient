@@ -8,6 +8,10 @@ namespace ReWriteClient.Data
         {
             return new Dictionary<int, List<List<int>>> {
 
+                { WorldRoomMappings.Rooms[7]["Agrabah"], new List<List<int>> {
+                new List<int> { 1 }, new List<int> { 2 }, new List<int> { 3 }, new List<int> { 5 }, new List<int> { 6 }, new List<int> { 10 }, new List<int> { 22 }, new List<int> { 57 }, new List<int> { 110 }, new List<int> { 113 },  }
+                 },
+
                 { WorldRoomMappings.Rooms[7]["The Peddler's Shop (1st Visit)"], new List<List<int>> {
                 new List<int> { 1 }, new List<int> { 2 }, new List<int> { 3 }, }
                  },

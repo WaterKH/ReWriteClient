@@ -273,7 +273,7 @@ namespace ReWriteClient.Messages
             if (value == "1")
             {
                 SoraMagicStatTimer.Stop();
-                SoraMagicStatTimer.Stop();
+                SoraMagicStatTimer.Dispose();
             }
             else
             {
@@ -299,7 +299,7 @@ namespace ReWriteClient.Messages
             if (value == "1")
             {
                 SoraDefenseStatTimer.Stop();
-                SoraDefenseStatTimer.Stop();
+                SoraDefenseStatTimer.Dispose();
             }
             else
             {
@@ -802,7 +802,22 @@ namespace ReWriteClient.Messages
             ClientCache.Instance.SoraQuickMenuSlot1 = value;
 
             if (Conversions.QuickMenuToItem.TryGetValue(value, out var convertedValue))
+            {
                 SendSoraItemSlot1Message(ManipulationType.Set, convertedValue);
+            }
+            else if (Conversions.QuickMenuToMagicAddress.TryGetValue(value, out var convertedMagicValue))
+            {
+                if (memoryProcessor.GetMemory(convertedMagicValue, 1) == 0)
+                {
+                    memoryProcessor.UpdateMemory(new MemoryObject
+                    {
+                        Address = convertedMagicValue,
+                        Type = DataType.Byte,
+                        ManipulationType = manipulationType,
+                        Value = "1"
+                    });
+                }
+            }
 
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
@@ -818,7 +833,22 @@ namespace ReWriteClient.Messages
             ClientCache.Instance.SoraQuickMenuSlot2 = value;
 
             if (Conversions.QuickMenuToItem.TryGetValue(value, out var convertedValue))
+            {
                 SendSoraItemSlot2Message(ManipulationType.Set, convertedValue);
+            }
+            else if (Conversions.QuickMenuToMagicAddress.TryGetValue(value, out var convertedMagicValue))
+            {
+                if (memoryProcessor.GetMemory(convertedMagicValue, 1) == 0)
+                {
+                    memoryProcessor.UpdateMemory(new MemoryObject
+                    {
+                        Address = convertedMagicValue,
+                        Type = DataType.Byte,
+                        ManipulationType = manipulationType,
+                        Value = "1"
+                    });
+                }
+            }
 
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
@@ -834,7 +864,22 @@ namespace ReWriteClient.Messages
             ClientCache.Instance.SoraQuickMenuSlot3 = value;
 
             if (Conversions.QuickMenuToItem.TryGetValue(value, out var convertedValue))
+            {
                 SendSoraItemSlot3Message(ManipulationType.Set, convertedValue);
+            }
+            else if (Conversions.QuickMenuToMagicAddress.TryGetValue(value, out var convertedMagicValue))
+            {
+                if (memoryProcessor.GetMemory(convertedMagicValue, 1) == 0)
+                {
+                    memoryProcessor.UpdateMemory(new MemoryObject
+                    {
+                        Address = convertedMagicValue,
+                        Type = DataType.Byte,
+                        ManipulationType = manipulationType,
+                        Value = "1"
+                    });
+                }
+            }
 
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
@@ -850,7 +895,22 @@ namespace ReWriteClient.Messages
             ClientCache.Instance.SoraQuickMenuSlot4 = value;
 
             if (Conversions.QuickMenuToItem.TryGetValue(value, out var convertedValue))
+            {
                 SendSoraItemSlot4Message(ManipulationType.Set, convertedValue);
+            }
+            else if (Conversions.QuickMenuToMagicAddress.TryGetValue(value, out var convertedMagicValue))
+            {
+                if (memoryProcessor.GetMemory(convertedMagicValue, 1) == 0)
+                {
+                    memoryProcessor.UpdateMemory(new MemoryObject
+                    {
+                        Address = convertedMagicValue,
+                        Type = DataType.Byte,
+                        ManipulationType = manipulationType,
+                        Value = "1"
+                    });
+                }
+            }
 
             return memoryProcessor.UpdateMemory(new MemoryObject
             {

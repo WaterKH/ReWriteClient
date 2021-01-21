@@ -295,19 +295,97 @@ namespace ReWriteClient.Data
                 // TODO boss fights trigger this too - within same room/ world
                 if (ClientCache.Instance.CurrentWorld != (int)world[0] || ClientCache.Instance.CurrentRoom != (int)room[0])
                 {
+                    ClientCache.Instance.CurrentWorld = (int)world[0];
+                    ClientCache.Instance.CurrentRoom = (int)room[0];
+
+                    #region Model Swaps
+
+                    this.UpdateMemory(new MemoryObject
+                    {
+                        Address = 0x21CE0B68,
+                        ManipulationType = ManipulationType.Set,
+                        Type = DataType.TwoBytes,
+                        Value = isEvent ? "84" : (string.IsNullOrEmpty(ClientCache.Instance.SoraModel)) ? "84" : ClientCache.Instance.SoraModel.ToString()
+                    });
+
+                    this.UpdateMemory(new MemoryObject
+                    {
+                        Address = 0x21CE0B6A,
+                        ManipulationType = ManipulationType.Set,
+                        Type = DataType.TwoBytes,
+                        Value = isEvent ? "92" : (string.IsNullOrEmpty(ClientCache.Instance.DonaldModel)) ? "92" : ClientCache.Instance.DonaldModel.ToString()
+                    });
+
+                    this.UpdateMemory(new MemoryObject
+                    {
+                        Address = 0x21CE0B6C,
+                        ManipulationType = ManipulationType.Set,
+                        Type = DataType.TwoBytes,
+                        Value = isEvent ? "93" : (string.IsNullOrEmpty(ClientCache.Instance.GoofyModel)) ? "93" : ClientCache.Instance.GoofyModel.ToString()
+                    });
+
                     switch (world[0])
                     {
                         case 2: // Twilight Town
 
                             this.UpdateMemory(new MemoryObject
                             {
-                                Address = 0x21C6CC20,
+                                Address = 0x21CE0B68,
                                 ManipulationType = ManipulationType.Set,
                                 Type = DataType.TwoBytes,
-                                Value = isEvent ? "90" : (ClientCache.Instance.SoraModel == null) ? "90" : ClientCache.Instance.SoraModel.ToString()
+                                Value = isEvent ? "90" : (string.IsNullOrEmpty(ClientCache.Instance.SoraModel)) ? "90" : ClientCache.Instance.SoraModel.ToString()
                             });
 
                             break;
+
+                        case 5: // Beast's Castle
+
+                            this.UpdateMemory(new MemoryObject
+                            {
+                                Address = 0x21CE104E,
+                                ManipulationType = ManipulationType.Set,
+                                Type = DataType.TwoBytes,
+                                Value = isEvent ? "94" : (string.IsNullOrEmpty(ClientCache.Instance.BeastModel)) ? "94" : ClientCache.Instance.BeastModel.ToString()
+                            });
+
+                            break;
+
+                        case 6: // Olympus Coliseum
+
+                            this.UpdateMemory(new MemoryObject
+                            {
+                                Address = 0x21CE0EE2,
+                                ManipulationType = ManipulationType.Set,
+                                Type = DataType.TwoBytes,
+                                Value = isEvent ? "101" : (string.IsNullOrEmpty(ClientCache.Instance.AuronModel)) ? "101" : ClientCache.Instance.AuronModel.ToString()
+                            });
+
+                            break;
+
+                        case 7: // Agrabah
+
+                            this.UpdateMemory(new MemoryObject
+                            {
+                                Address = 0x21CE0F7E,
+                                ManipulationType = ManipulationType.Set,
+                                Type = DataType.TwoBytes,
+                                Value = isEvent ? "98" : (string.IsNullOrEmpty(ClientCache.Instance.AladdinModel)) ? "98" : ClientCache.Instance.AladdinModel.ToString()
+                            });
+
+                            break;
+
+                        case 8: // The Land of Dragons
+
+                            this.UpdateMemory(new MemoryObject
+                            {
+                                Address = 0x21CE10B6,
+                                ManipulationType = ManipulationType.Set,
+                                Type = DataType.TwoBytes,
+                                Value = isEvent ? "100" : (string.IsNullOrEmpty(ClientCache.Instance.MulanModel)) ? "100" : ClientCache.Instance.MulanModel.ToString()
+                            });
+
+                            break;
+
                         case 10: // Pride Lands
 
                             this.UpdateMemory(new MemoryObject
@@ -315,7 +393,31 @@ namespace ReWriteClient.Data
                                 Address = 0x21CE1250,
                                 ManipulationType = ManipulationType.Set,
                                 Type = DataType.TwoBytes,
-                                Value = isEvent ? "650" : (ClientCache.Instance.SoraLionModel == null) ? "650" : ClientCache.Instance.SoraLionModel.ToString()
+                                Value = isEvent ? "650" : (string.IsNullOrEmpty(ClientCache.Instance.SoraLionModel)) ? "650" : ClientCache.Instance.SoraLionModel.ToString()
+                            });
+
+                            this.UpdateMemory(new MemoryObject
+                            {
+                                Address = 0x21CE1252,
+                                ManipulationType = ManipulationType.Set,
+                                Type = DataType.TwoBytes,
+                                Value = isEvent ? "1519" : (string.IsNullOrEmpty(ClientCache.Instance.DonaldBirdModel)) ? "1519" : ClientCache.Instance.DonaldBirdModel.ToString()
+                            });
+
+                            this.UpdateMemory(new MemoryObject
+                            {
+                                Address = 0x21CE1254,
+                                ManipulationType = ManipulationType.Set,
+                                Type = DataType.TwoBytes,
+                                Value = isEvent ? "1563" : (string.IsNullOrEmpty(ClientCache.Instance.GoofyTortoiseModel)) ? "1563" : ClientCache.Instance.GoofyTortoiseModel.ToString()
+                            });
+
+                            this.UpdateMemory(new MemoryObject
+                            {
+                                Address = 0x21CE1256,
+                                ManipulationType = ManipulationType.Set,
+                                Type = DataType.TwoBytes,
+                                Value = isEvent ? "97" : (string.IsNullOrEmpty(ClientCache.Instance.SimbaModel)) ? "97" : ClientCache.Instance.SimbaModel.ToString()
                             });
 
                             break;
@@ -337,7 +439,23 @@ namespace ReWriteClient.Data
                                 Address = 0x21CE121C,
                                 ManipulationType = ManipulationType.Set,
                                 Type = DataType.TwoBytes,
-                                Value = isEvent ? "1623" : (ClientCache.Instance.SoraTimelessRiverModel == null) ? "1623" : ClientCache.Instance.SoraTimelessRiverModel.ToString()
+                                Value = isEvent ? "1623" : (string.IsNullOrEmpty(ClientCache.Instance.SoraTimelessRiverModel)) ? "1623" : ClientCache.Instance.SoraTimelessRiverModel.ToString()
+                            });
+
+                            this.UpdateMemory(new MemoryObject
+                            {
+                                Address = 0x21CE121E,
+                                ManipulationType = ManipulationType.Set,
+                                Type = DataType.TwoBytes,
+                                Value = isEvent ? "1487" : (string.IsNullOrEmpty(ClientCache.Instance.DonaldTimelessRiverModel)) ? "1487" : ClientCache.Instance.DonaldTimelessRiverModel.ToString()
+                            });
+
+                            this.UpdateMemory(new MemoryObject
+                            {
+                                Address = 0x21CE1220,
+                                ManipulationType = ManipulationType.Set,
+                                Type = DataType.TwoBytes,
+                                Value = isEvent ? "1269" : (string.IsNullOrEmpty(ClientCache.Instance.GoofyTimelessRiverModel)) ? "1269" : ClientCache.Instance.GoofyTimelessRiverModel.ToString()
                             });
 
                             break;
@@ -350,7 +468,31 @@ namespace ReWriteClient.Data
                                     Address = 0x21CE0FAC,
                                     ManipulationType = ManipulationType.Set,
                                     Type = DataType.TwoBytes,
-                                    Value = isEvent ? "693" : (ClientCache.Instance.SoraHalloweenModel == null) ? "693" : ClientCache.Instance.SoraHalloweenModel.ToString()
+                                    Value = isEvent ? "693" : (string.IsNullOrEmpty(ClientCache.Instance.SoraHalloweenModel)) ? "693" : ClientCache.Instance.SoraHalloweenModel.ToString()
+                                });
+
+                                this.UpdateMemory(new MemoryObject
+                                {
+                                    Address = 0x21CE0FAE,
+                                    ManipulationType = ManipulationType.Set,
+                                    Type = DataType.TwoBytes,
+                                    Value = isEvent ? "670" : (string.IsNullOrEmpty(ClientCache.Instance.DonaldHalloweenModel)) ? "670" : ClientCache.Instance.DonaldHalloweenModel.ToString()
+                                });
+
+                                this.UpdateMemory(new MemoryObject
+                                {
+                                    Address = 0x21CE0FB0,
+                                    ManipulationType = ManipulationType.Set,
+                                    Type = DataType.TwoBytes,
+                                    Value = isEvent ? "669" : (string.IsNullOrEmpty(ClientCache.Instance.GoofyHalloweenModel)) ? "669" : ClientCache.Instance.GoofyHalloweenModel.ToString()
+                                });
+
+                                this.UpdateMemory(new MemoryObject
+                                {
+                                    Address = 0x21CE101A,
+                                    ManipulationType = ManipulationType.Set,
+                                    Type = DataType.TwoBytes,
+                                    Value = isEvent ? "95" : (string.IsNullOrEmpty(ClientCache.Instance.JackSkellingtonModel)) ? "95" : ClientCache.Instance.JackSkellingtonModel.ToString()
                                 });
                             }
                             else
@@ -360,9 +502,44 @@ namespace ReWriteClient.Data
                                     Address = 0x21CE0FE0,
                                     ManipulationType = ManipulationType.Set,
                                     Type = DataType.TwoBytes,
-                                    Value = isEvent ? "2389" : (ClientCache.Instance.SoraChristmasModel == null) ? "2389" : ClientCache.Instance.SoraChristmasModel.ToString()
+                                    Value = isEvent ? "2389" : (string.IsNullOrEmpty(ClientCache.Instance.SoraChristmasModel)) ? "2389" : ClientCache.Instance.SoraChristmasModel.ToString()
+                                });
+
+                                this.UpdateMemory(new MemoryObject
+                                {
+                                    Address = 0x21CE0FE2,
+                                    ManipulationType = ManipulationType.Set,
+                                    Type = DataType.TwoBytes,
+                                    Value = isEvent ? "2395" : (string.IsNullOrEmpty(ClientCache.Instance.DonaldChristmasModel)) ? "2395" : ClientCache.Instance.DonaldChristmasModel.ToString()
+                                });
+
+                                this.UpdateMemory(new MemoryObject
+                                {
+                                    Address = 0x21CE0FE4,
+                                    ManipulationType = ManipulationType.Set,
+                                    Type = DataType.TwoBytes,
+                                    Value = isEvent ? "2396" : (string.IsNullOrEmpty(ClientCache.Instance.GoofyChristmasModel)) ? "2396" : ClientCache.Instance.GoofyChristmasModel.ToString()
+                                });
+
+                                this.UpdateMemory(new MemoryObject
+                                {
+                                    Address = 0x21CE101A,
+                                    ManipulationType = ManipulationType.Set,
+                                    Type = DataType.TwoBytes,
+                                    Value = isEvent ? "96" : (string.IsNullOrEmpty(ClientCache.Instance.JackSkellingtonModel)) ? "96" : ClientCache.Instance.JackSkellingtonModel.ToString()
                                 });
                             }
+
+                            break;
+                        case 16: // Port Royal
+
+                            this.UpdateMemory(new MemoryObject
+                            {
+                                Address = 0x21CE0DDE,
+                                ManipulationType = ManipulationType.Set,
+                                Type = DataType.TwoBytes,
+                                Value = isEvent ? "2077" : (string.IsNullOrEmpty(ClientCache.Instance.CaptainJackSparrowModel)) ? "2077" : ClientCache.Instance.CaptainJackSparrowModel.ToString()
+                            });
 
                             break;
                         case 17: // Space Paranoids
@@ -372,7 +549,324 @@ namespace ReWriteClient.Data
                                 Address = 0x21CE11E8,
                                 ManipulationType = ManipulationType.Set,
                                 Type = DataType.TwoBytes,
-                                Value = isEvent ? "1622" : (ClientCache.Instance.SoraSpaceParanoidsModel == null) ? "1622" : ClientCache.Instance.SoraSpaceParanoidsModel.ToString()
+                                Value = isEvent ? "1622" : (string.IsNullOrEmpty(ClientCache.Instance.SoraSpaceParanoidsModel)) ? "1622" : ClientCache.Instance.SoraSpaceParanoidsModel.ToString()
+                            });
+
+                            this.UpdateMemory(new MemoryObject
+                            {
+                                Address = 0x21CE11EA,
+                                ManipulationType = ManipulationType.Set,
+                                Type = DataType.TwoBytes,
+                                Value = isEvent ? "1370" : (string.IsNullOrEmpty(ClientCache.Instance.DonaldSpaceParanoidsModel)) ? "1370" : ClientCache.Instance.DonaldSpaceParanoidsModel.ToString()
+                            });
+
+                            this.UpdateMemory(new MemoryObject
+                            {
+                                Address = 0x21CE11EC,
+                                ManipulationType = ManipulationType.Set,
+                                Type = DataType.TwoBytes,
+                                Value = isEvent ? "1364" : (string.IsNullOrEmpty(ClientCache.Instance.GoofySpaceParanoidsModel)) ? "1364" : ClientCache.Instance.GoofySpaceParanoidsModel.ToString()
+                            });
+
+                            this.UpdateMemory(new MemoryObject
+                            {
+                                Address = 0x21CE11EE,
+                                ManipulationType = ManipulationType.Set,
+                                Type = DataType.TwoBytes,
+                                Value = isEvent ? "724" : (string.IsNullOrEmpty(ClientCache.Instance.TronModel)) ? "724" : ClientCache.Instance.TronModel.ToString()
+                            });
+
+                            break;
+                        default:
+
+                            break;
+                    }
+
+                    #endregion
+
+                    // TODO Move this to a Pause monitor to just update this on Pause...?
+
+                    #region Party Screen Fix
+
+                    Thread.Sleep(4000);
+
+                    this.UpdateMemory(new MemoryObject
+                    {
+                        Address = 0x21C6CC20,
+                        ManipulationType = ManipulationType.Set,
+                        Type = DataType.TwoBytes,
+                        Value = "84"
+                    });
+
+                    this.UpdateMemory(new MemoryObject
+                    {
+                        Address = 0x21C6CC22,
+                        ManipulationType = ManipulationType.Set,
+                        Type = DataType.TwoBytes,
+                        Value = "92"
+                    });
+
+                    this.UpdateMemory(new MemoryObject
+                    {
+                        Address = 0x21C6CC24,
+                        ManipulationType = ManipulationType.Set,
+                        Type = DataType.TwoBytes,
+                        Value = "93"
+                    });
+
+                    switch (world[0])
+                    {
+                        case 2: // Twilight Town
+
+                            this.UpdateMemory(new MemoryObject
+                            {
+                                Address = 0x21C6CC20,
+                                ManipulationType = ManipulationType.Set,
+                                Type = DataType.TwoBytes,
+                                Value = "90"
+                            });
+
+                            break;
+                        case 5: // Beast's Castle
+                            
+                            this.UpdateMemory(new MemoryObject
+                            {
+                                Address = 0x21C6CC26,
+                                ManipulationType = ManipulationType.Set,
+                                Type = DataType.TwoBytes,
+                                Value = "94"
+                            });
+
+                            break;
+                        case 6: // Olympus Coliseum
+
+                            this.UpdateMemory(new MemoryObject
+                            {
+                                Address = 0x21C6CC26,
+                                ManipulationType = ManipulationType.Set,
+                                Type = DataType.TwoBytes,
+                                Value = "101"
+                            });
+
+                            break;
+                        case 7: // Agrabah
+
+                            this.UpdateMemory(new MemoryObject
+                            {
+                                Address = 0x21C6CC26,
+                                ManipulationType = ManipulationType.Set,
+                                Type = DataType.TwoBytes,
+                                Value = "98"
+                            });
+
+                            break;
+                        case 8: // The Land of Dragons
+
+                            this.UpdateMemory(new MemoryObject
+                            {
+                                Address = 0x21C6CC26,
+                                ManipulationType = ManipulationType.Set,
+                                Type = DataType.TwoBytes,
+                                Value = "99"
+                            });
+
+                            break;
+                        case 10: // Pride Lands
+
+                            this.UpdateMemory(new MemoryObject
+                            {
+                                Address = 0x21C6CC20,
+                                ManipulationType = ManipulationType.Set,
+                                Type = DataType.TwoBytes,
+                                Value = "650"
+                            });
+
+                            this.UpdateMemory(new MemoryObject
+                            {
+                                Address = 0x21C6CC22,
+                                ManipulationType = ManipulationType.Set,
+                                Type = DataType.TwoBytes,
+                                Value = "1519"
+                            });
+
+                            this.UpdateMemory(new MemoryObject
+                            {
+                                Address = 0x21C6CC24,
+                                ManipulationType = ManipulationType.Set,
+                                Type = DataType.TwoBytes,
+                                Value = "1563"
+                            });
+
+                            this.UpdateMemory(new MemoryObject
+                            {
+                                Address = 0x21C6CC26,
+                                ManipulationType = ManipulationType.Set,
+                                Type = DataType.TwoBytes,
+                                Value = "97"
+                            });
+
+                            break;
+                        //case 11: // Atlantica
+
+                        //    this.UpdateMemory(new MemoryObject
+                        //    {
+                        //        Address = 0x21C6CC20,
+                        //        ManipulationType = ManipulationType.Set,
+                        //        Type = DataType.TwoBytes,
+                        //        Value = isEvent ? "" : MemoryCache.SoraModelSwap.ToString()
+                        //    });
+
+                        //    break;
+                        case 13: // Timeless River
+
+                            this.UpdateMemory(new MemoryObject
+                            {
+                                Address = 0x21C6CC20,
+                                ManipulationType = ManipulationType.Set,
+                                Type = DataType.TwoBytes,
+                                Value = "1623"
+                            });
+
+                            this.UpdateMemory(new MemoryObject
+                            {
+                                Address = 0x21C6CC22,
+                                ManipulationType = ManipulationType.Set,
+                                Type = DataType.TwoBytes,
+                                Value = "1487"
+                            });
+
+                            this.UpdateMemory(new MemoryObject
+                            {
+                                Address = 0x21C6CC24,
+                                ManipulationType = ManipulationType.Set,
+                                Type = DataType.TwoBytes,
+                                Value = "1269"
+                            });
+
+                            this.UpdateMemory(new MemoryObject
+                            {
+                                Address = 0x21C6CC26,
+                                ManipulationType = ManipulationType.Set,
+                                Type = DataType.TwoBytes,
+                                Value = "2073"
+                            });
+
+                            break;
+                        case 14: // Halloween / Christmas Town
+
+                            if (room[0] < 5)
+                            {
+                                this.UpdateMemory(new MemoryObject
+                                {
+                                    Address = 0x21C6CC20,
+                                    ManipulationType = ManipulationType.Set,
+                                    Type = DataType.TwoBytes,
+                                    Value = "693"
+                                });
+
+                                this.UpdateMemory(new MemoryObject
+                                {
+                                    Address = 0x21C6CC22,
+                                    ManipulationType = ManipulationType.Set,
+                                    Type = DataType.TwoBytes,
+                                    Value = "670"
+                                });
+
+                                this.UpdateMemory(new MemoryObject
+                                {
+                                    Address = 0x21C6CC24,
+                                    ManipulationType = ManipulationType.Set,
+                                    Type = DataType.TwoBytes,
+                                    Value = "669"
+                                });
+
+                                this.UpdateMemory(new MemoryObject
+                                {
+                                    Address = 0x21C6CC26,
+                                    ManipulationType = ManipulationType.Set,
+                                    Type = DataType.TwoBytes,
+                                    Value = "95"
+                                });
+                            }
+                            else
+                            {
+                                this.UpdateMemory(new MemoryObject
+                                {
+                                    Address = 0x21C6CC20,
+                                    ManipulationType = ManipulationType.Set,
+                                    Type = DataType.TwoBytes,
+                                    Value = "2389"
+                                });
+
+                                this.UpdateMemory(new MemoryObject
+                                {
+                                    Address = 0x21C6CC22,
+                                    ManipulationType = ManipulationType.Set,
+                                    Type = DataType.TwoBytes,
+                                    Value = "2395"
+                                });
+
+                                this.UpdateMemory(new MemoryObject
+                                {
+                                    Address = 0x21C6CC24,
+                                    ManipulationType = ManipulationType.Set,
+                                    Type = DataType.TwoBytes,
+                                    Value = "2396"
+                                });
+
+                                this.UpdateMemory(new MemoryObject
+                                {
+                                    Address = 0x21C6CC26,
+                                    ManipulationType = ManipulationType.Set,
+                                    Type = DataType.TwoBytes,
+                                    Value = "96"
+                                });
+                            }
+
+                            break;
+                        case 16: // Port Royal
+
+                            this.UpdateMemory(new MemoryObject
+                            {
+                                Address = 0x21C6CC26,
+                                ManipulationType = ManipulationType.Set,
+                                Type = DataType.TwoBytes,
+                                Value = "2077"
+                            });
+
+                            break;
+                        case 17: // Space Paranoids
+
+                            this.UpdateMemory(new MemoryObject
+                            {
+                                Address = 0x21C6CC20,
+                                ManipulationType = ManipulationType.Set,
+                                Type = DataType.TwoBytes,
+                                Value = "1622"
+                            });
+
+                            this.UpdateMemory(new MemoryObject
+                            {
+                                Address = 0x21C6CC22,
+                                ManipulationType = ManipulationType.Set,
+                                Type = DataType.TwoBytes,
+                                Value = "1370"
+                            });
+
+                            this.UpdateMemory(new MemoryObject
+                            {
+                                Address = 0x21C6CC24,
+                                ManipulationType = ManipulationType.Set,
+                                Type = DataType.TwoBytes,
+                                Value = "1364"
+                            });
+
+                            this.UpdateMemory(new MemoryObject
+                            {
+                                Address = 0x21C6CC26,
+                                ManipulationType = ManipulationType.Set,
+                                Type = DataType.TwoBytes,
+                                Value = "1623"
                             });
 
                             break;
@@ -380,17 +874,16 @@ namespace ReWriteClient.Data
 
                             this.UpdateMemory(new MemoryObject
                             {
-                                Address = 0x21C6CC20,
+                                Address = 0x21C6CC26,
                                 ManipulationType = ManipulationType.Set,
                                 Type = DataType.TwoBytes,
-                                Value = isEvent ? "84" : (ClientCache.Instance.SoraModel == null) ? "84" : ClientCache.Instance.SoraModel.ToString()
+                                Value = "2073"
                             });
 
                             break;
                     }
 
-                    ClientCache.Instance.CurrentWorld = (int)world[0];
-                    ClientCache.Instance.CurrentRoom = (int)room[0];
+                    #endregion Party Screen Fix
                 }
             }
             catch(Exception e)
@@ -426,6 +919,24 @@ namespace ReWriteClient.Data
                 return true;
 
             return false;
+        }
+
+        public int GetMemory(int address, int length)
+        {
+            // TODO Figure out a less janky way of doing this
+            if (ProcessHandle == IntPtr.Zero)
+                return -1;
+
+            byte[] readMemory = new byte[length];
+
+            ReadProcessMemory(ProcessHandle, (IntPtr)address, readMemory, readMemory.Length, out _);
+
+            if(length == 1)
+            {
+                return readMemory[0];
+            }
+
+            return BitConverter.ToInt32(readMemory);
         }
 
         public bool CheckTPose()

@@ -3,10 +3,13 @@ using ReWriteClient.Data;
 using ReWriteClient.Events;
 using ReWriteClient.Messages;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
+using Waterkh.Common.Memory;
 
 namespace ReWriteClient
 {
@@ -172,44 +175,73 @@ namespace ReWriteClient
             
             foreach (var (group, buttons) in messageHub.Options)
             {
-                var methodsInGroup = Messages.Messages.Instance.MessageMappings[group];
-
-                var tabItem = new TabItem
+                this.Dispatcher.Invoke(() =>
                 {
-                    Header = group.ToString(),
-                    Content = new ScrollViewer
+                    var tabItem = new TabItem
                     {
-                        HorizontalScrollBarVisibility = ScrollBarVisibility.Disabled,
-                        VerticalScrollBarVisibility = ScrollBarVisibility.Auto,
-                        Content = new WrapPanel()
-                    }
-                };
+                        Header = group.ToString(),
+                        Content = new ScrollViewer
+                        {
+                            HorizontalScrollBarVisibility = ScrollBarVisibility.Disabled,
+                            VerticalScrollBarVisibility = ScrollBarVisibility.Auto,
+                            Content = new WrapPanel()
+                        }
+                    };
 
-                foreach (var button in buttons)
-                {
-                    foreach (var subButtons in button.SubMethodParams)
+                    foreach (var button in buttons)
                     {
                         var uiButton = new Button
                         {
-                            Content = subButtons.Name,
+                            Content = button.Name,
                             Margin = new Thickness(10, 10, 10, 10)
                         };
 
-                        var method = methodsInGroup.FirstOrDefault(x => x.Key == subButtons.MethodName).Value;
-
-                        uiButton.Click += (sender, e) => { method.Invoke(subButtons.ManipulationType, subButtons.Value.ToString()); };
+                        uiButton.Click += (sender, e) => { this.OpenPopup(button.SubMethodParams, group); };
 
                         ((WrapPanel)((ScrollViewer)tabItem.Content).Content).Children.Add(uiButton);
                     }
-                }
 
-                this.Dispatcher.Invoke(() =>
-                {
                     ManualCommands.Items.Add(tabItem);
                 });
             }
 
             return null;
+        }
+
+        public void OpenPopup(List<ButtonTemplate> subButtons, string group)
+        {
+            var methodsInGroup = Messages.Messages.Instance.MessageMappings[group];
+
+            this.Dispatcher.Invoke(() =>
+            {
+                ((WrapPanel)(SubCommands.Content)).Children.Clear();
+
+                foreach (var subButton in subButtons)
+                {
+                    var uiButton = new Button
+                    {
+                        Content = subButton.Name,
+                        Margin = new Thickness(10, 10, 10, 10)
+                    };
+
+                    var method = methodsInGroup.FirstOrDefault(x => x.Key == subButton.MethodName).Value;
+
+                    uiButton.Click += (sender, e) => { method.Invoke(subButton.ManipulationType, subButton.Value.ToString()); ClosePopup(null, null); };
+
+                    ((WrapPanel)(SubCommands.Content)).Children.Add(uiButton);
+                }
+
+                ClosePopupButton.Visibility = Visibility.Visible;
+            });
+
+            SubCommandsPopup.IsOpen = true;
+        }
+
+        public void ClosePopup(object sender, RoutedEventArgs e)
+        {
+            SubCommandsPopup.IsOpen = false;
+
+            ClosePopupButton.Visibility = Visibility.Hidden;
         }
     }
 }

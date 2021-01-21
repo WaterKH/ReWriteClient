@@ -1,375 +1,188 @@
 ﻿using ReWriteClient.Data;
 using ReWriteClient.Enums;
+using System;
+using System.Timers;
 using Waterkh.Common.Memory;
 
 namespace ReWriteClient.Messages
 {
     public partial class Messages
     {
-        #region Sora
+        #region Timers
 
-        public static bool SendSoraModelMessage(ManipulationType manipulationType, string value)
+        public static Timer SoraModelTimer = new Timer
         {
-            ClientCache.Instance.SoraModel = value;
+            AutoReset = false,
+            Interval = 45000
+        };
 
-            return memoryProcessor.UpdateMemory(new MemoryObject
+        public static Timer DonaldModelTimer = new Timer
+        {
+            AutoReset = false,
+            Interval = 45000
+        };
+
+        public static Timer GoofyModelTimer = new Timer
+        {
+            AutoReset = false,
+            Interval = 45000,
+        };
+
+        public static Timer PartyModelTimer = new Timer 
+        {
+            AutoReset = false,
+            Interval = 45000,
+        };
+
+        #endregion Timers
+
+        public static bool SendResetModelSwapsMessage(ManipulationType manipulationType, string value)
+        {
+            try
             {
-                Address = 0x21CE0B68,
-                Type = DataType.TwoBytes,
-                ManipulationType = manipulationType,
-                Value = value
-            });
+                #region Sora
+
+                SendSoraModelMessage(manipulationType, "84");
+                SendSoraLionModelMessage(manipulationType, "650");
+                SendSoraTimelessRiverModelMessage(manipulationType, "1623");
+                SendSoraHalloweenModelMessage(manipulationType, "693");
+                SendSoraChristmasModelMessage(manipulationType, "2389");
+                SendSoraSpaceParanoidsModelMessage(manipulationType, "1622");
+
+                #endregion Sora
+
+                #region Donald
+
+                SendDonaldModelMessage(manipulationType, "92");
+                SendBirdDonaldModelMessage(manipulationType, "1519");
+                SendTimelessRiverDonaldModelMessage(manipulationType, "1487");
+                SendHalloweenDonaldModelMessage(manipulationType, "670");
+                SendChristmasDonaldModelMessage(manipulationType, "2395");
+                SendSpaceParanoidsDonaldModelMessage(manipulationType, "1370");
+
+                #endregion Donald
+
+                #region Goofy
+
+                SendGoofyModelMessage(manipulationType, "93");
+                SendTortoiseGoofyModelMessage(manipulationType, "1563");
+                SendTimelessRiverGoofyModelMessage(manipulationType, "1269");
+                SendHalloweenGoofyModelMessage(manipulationType, "669");
+                SendChristmasGoofyModelMessage(manipulationType, "2396");
+                SendSpaceParanoidsGoofyModelMessage(manipulationType, "1364");
+
+                #endregion Goofy
+
+                #region Party
+
+                SendMulanModelMessage(manipulationType, "99");
+                ClientCache.Instance.MulanModel = string.Empty; // Is this needed?
+                SendBeastModelMessage(manipulationType, "94");
+                SendAuronModelMessage(manipulationType, "101");
+                SendAladdinModelMessage(manipulationType, "98");
+                SendJackSkellingtonModelMessage(manipulationType, "96");
+                ClientCache.Instance.JackSkellingtonModel = ""; // Is this needed?
+                SendSimbaModelMessage(manipulationType, "97");
+                SendTronModelMessage(manipulationType, "724");
+                SendRikuModelMessage(manipulationType, "2073");
+
+                #endregion Party
+            }
+            catch (Exception e)
+            {
+                Logger.Instance.Error(e.Message, "SendResetModelSwapsMessage");
+
+                return false;
+            }
+
+            return true;
         }
 
-        public static bool SendSoraLionModelMessage(ManipulationType manipulationType, string value)
-        {
-            ClientCache.Instance.SoraLionModel = value;
+        #region Helper Functions
 
-            return memoryProcessor.UpdateMemory(new MemoryObject
+        public static void SetupModelTimer(Timer timer, int address, string value, string cacheName)
+        {
+            timer.Stop();
+            timer.Dispose();
+
+            timer = new Timer
             {
-                Address = 0x21CE1250,
-                Type = DataType.TwoBytes,
-                ManipulationType = manipulationType,
-                Value = value
-            });
+                AutoReset = false,
+                Interval = 45000
+            };
+
+            // TODO is there a way to unsubscribe from an Elapsed event? Or delete all Events subscribed?
+            timer.Elapsed += (sender, obj) =>
+            {
+                SetCache(cacheName, value);
+
+                memoryProcessor.UpdateMemory(new MemoryObject
+                {
+                    Address = address,
+                    Type = DataType.TwoBytes,
+                    ManipulationType = ManipulationType.Set,
+                    Value = value // TODO Update this with Character mappings later
+                });
+            };
+
+            timer.Start();
         }
 
-        public static bool SendSoraTimelessRiverModelMessage(ManipulationType manipulationType, string value)
+        public static void SetCache(string cacheName, string value)
         {
-            ClientCache.Instance.SoraTimelessRiverModel = value;
-
-            return memoryProcessor.UpdateMemory(new MemoryObject
+            switch (cacheName)
             {
-                Address = 0x21CE121C,
-                Type = DataType.TwoBytes,
-                ManipulationType = manipulationType,
-                Value = value
-            });
+                #region Sora
+
+                case "Sora": ClientCache.Instance.SoraModel = value; break;
+                case "LionSora": ClientCache.Instance.SoraLionModel = value; break;
+                case "TimelessSora": ClientCache.Instance.SoraTimelessRiverModel = value; break;
+                case "HalloweenSora": ClientCache.Instance.SoraHalloweenModel = value; break;
+                case "ChristmasSora": ClientCache.Instance.SoraChristmasModel = value; break;
+                case "SpaceSora": ClientCache.Instance.SoraSpaceParanoidsModel = value; break;
+
+                #endregion Sora
+
+                #region Donald
+
+                case "Donald": ClientCache.Instance.DonaldModel = value; break;
+                case "BirdDonald": ClientCache.Instance.DonaldBirdModel = value; break;
+                case "TimelessDonald": ClientCache.Instance.DonaldTimelessRiverModel = value; break;
+                case "HalloweenDonald": ClientCache.Instance.DonaldHalloweenModel = value; break;
+                case "ChristmasDonald": ClientCache.Instance.DonaldChristmasModel = value; break;
+                case "SpaceDonald": ClientCache.Instance.DonaldSpaceParanoidsModel = value; break;
+
+                #endregion Donald
+
+                #region Goofy
+
+                case "Goofy": ClientCache.Instance.GoofyModel = value; break;
+                case "TortoiseGoofy": ClientCache.Instance.GoofyTortoiseModel = value; break;
+                case "TimelessGoofy": ClientCache.Instance.GoofyTimelessRiverModel = value; break;
+                case "HalloweenGoofy": ClientCache.Instance.GoofyHalloweenModel = value; break;
+                case "ChristmasGoofy": ClientCache.Instance.GoofyChristmasModel = value; break;
+                case "SpaceGoofy": ClientCache.Instance.GoofySpaceParanoidsModel = value; break;
+
+                #endregion Goofy
+
+                #region Party
+
+                case "Mulan": ClientCache.Instance.MulanModel = value; break;
+                case "Beast": ClientCache.Instance.BeastModel = value; break;
+                case "Auron": ClientCache.Instance.AuronModel = value; break;
+                case "Sparrow": ClientCache.Instance.CaptainJackSparrowModel = value; break;
+                case "Aladdin": ClientCache.Instance.AladdinModel = value; break;
+                case "Skellington": ClientCache.Instance.JackSkellingtonModel = value; break;
+                case "Simba": ClientCache.Instance.SimbaModel = value; break;
+                case "Tron": ClientCache.Instance.TronModel = value; break;
+                case "Riku": ClientCache.Instance.RikuModel = value; break;
+
+                #endregion Party
+
+                default: break;
+            }
         }
 
-        public static bool SendSoraHalloweenModelMessage(ManipulationType manipulationType, string value)
-        {
-            ClientCache.Instance.SoraHalloweenModel = value;
-
-            return memoryProcessor.UpdateMemory(new MemoryObject
-            {
-                Address = 0x21CE0FAC,
-                Type = DataType.TwoBytes,
-                ManipulationType = manipulationType,
-                Value = value
-            });
-        }
-
-        public static bool SendSoraChristmasModelMessage(ManipulationType manipulationType, string value)
-        {
-            ClientCache.Instance.SoraChristmasModel = value;
-
-            return memoryProcessor.UpdateMemory(new MemoryObject
-            {
-                Address = 0x21CE0FE0,
-                Type = DataType.TwoBytes,
-                ManipulationType = manipulationType,
-                Value = value
-            });
-        }
-
-        public static bool SendSoraSpaceParanoidsModelMessage(ManipulationType manipulationType, string value)
-        {
-            ClientCache.Instance.SoraSpaceParanoidsModel = value;
-
-            return memoryProcessor.UpdateMemory(new MemoryObject
-            {
-                Address = 0x21CE11E8,
-                Type = DataType.TwoBytes,
-                ManipulationType = manipulationType,
-                Value = value
-            });
-        }
-
-        #endregion Sora
-
-        #region Donald
-
-        public static bool SendDonaldModelMessage(ManipulationType manipulationType, string value)
-        {
-            ClientCache.Instance.DonaldModel = value;
-
-            return memoryProcessor.UpdateMemory(new MemoryObject
-            {
-                Address = 0x21CE0B6A,
-                Type = DataType.TwoBytes,
-                ManipulationType = manipulationType,
-                Value = value
-            });
-        }
-        public static bool SendBirdDonaldModelMessage(ManipulationType manipulationType, string value)
-        {
-            ClientCache.Instance.DonaldBirdModel = value;
-
-            return memoryProcessor.UpdateMemory(new MemoryObject
-            {
-                Address = 0x21CE1252,
-                Type = DataType.TwoBytes,
-                ManipulationType = manipulationType,
-                Value = value
-            });
-        }
-
-        public static bool SendTimelessRiverDonaldModelMessage(ManipulationType manipulationType, string value)
-        {
-            ClientCache.Instance.DonaldTimelessRiverModel = value;
-
-            return memoryProcessor.UpdateMemory(new MemoryObject
-            {
-                Address = 0x21CE121E,
-                Type = DataType.TwoBytes,
-                ManipulationType = manipulationType,
-                Value = value
-            });
-        }
-
-        public static bool SendHalloweenDonaldModelMessage(ManipulationType manipulationType, string value)
-        {
-            ClientCache.Instance.DonaldHalloweenModel = value;
-
-            return memoryProcessor.UpdateMemory(new MemoryObject
-            {
-                Address = 0x21CE0FAE,
-                Type = DataType.TwoBytes,
-                ManipulationType = manipulationType,
-                Value = value
-            });
-        }
-
-        public static bool SendChristmasDonaldModelMessage(ManipulationType manipulationType, string value)
-        {
-            ClientCache.Instance.DonaldChristmasModel = value;
-
-            return memoryProcessor.UpdateMemory(new MemoryObject
-            {
-                Address = 0x21CE0FE2,
-                Type = DataType.TwoBytes,
-                ManipulationType = manipulationType,
-                Value = value
-            });
-        }
-
-        public static bool SendSpaceParanoidsDonaldModelMessage(ManipulationType manipulationType, string value)
-        {
-            ClientCache.Instance.DonaldSpaceParanoidsModel = value;
-
-            return memoryProcessor.UpdateMemory(new MemoryObject
-            {
-                Address = 0x21CE11EA,
-                Type = DataType.TwoBytes,
-                ManipulationType = manipulationType,
-                Value = value
-            });
-        }
-
-        #endregion Donald
-
-        #region Goofy
-
-        public static bool SendGoofyModelMessage(ManipulationType manipulationType, string value)
-        {
-            ClientCache.Instance.GoofyModel = value;
-
-            return memoryProcessor.UpdateMemory(new MemoryObject
-            {
-                Address = 0x21CE0B6C,
-                Type = DataType.TwoBytes,
-                ManipulationType = manipulationType,
-                Value = value
-            });
-        }
-
-        public static bool SendTortoiseGoofyModelMessage(ManipulationType manipulationType, string value)
-        {
-            ClientCache.Instance.GoofyTortoiseModel = value;
-
-            return memoryProcessor.UpdateMemory(new MemoryObject
-            {
-                Address = 0x21CE1254,
-                Type = DataType.TwoBytes,
-                ManipulationType = manipulationType,
-                Value = value
-            });
-        }
-
-        public static bool SendTimelessRiverGoofyModelMessage(ManipulationType manipulationType, string value)
-        {
-            ClientCache.Instance.GoofyTimelessRiverModel = value;
-
-            return memoryProcessor.UpdateMemory(new MemoryObject
-            {
-                Address = 0x21CE1220,
-                Type = DataType.TwoBytes,
-                ManipulationType = manipulationType,
-                Value = value
-            });
-        }
-
-        public static bool SendHalloweenGoofyModelMessage(ManipulationType manipulationType, string value)
-        {
-            ClientCache.Instance.GoofyHalloweenModel = value;
-
-            return memoryProcessor.UpdateMemory(new MemoryObject
-            {
-                Address = 0x21CE0FB0,
-                Type = DataType.TwoBytes,
-                ManipulationType = manipulationType,
-                Value = value
-            });
-        }
-
-        public static bool SendChristmasGoofyModelMessage(ManipulationType manipulationType, string value)
-        {
-            ClientCache.Instance.GoofyChristmasModel = value;
-
-            return memoryProcessor.UpdateMemory(new MemoryObject
-            {
-                Address = 0x21CE0FE4,
-                Type = DataType.TwoBytes,
-                ManipulationType = manipulationType,
-                Value = value
-            });
-        }
-
-        public static bool SendSpaceParanoidsGoofyModelMessage(ManipulationType manipulationType, string value)
-        {
-            ClientCache.Instance.GoofySpaceParanoidsModel = value;
-
-            return memoryProcessor.UpdateMemory(new MemoryObject
-            {
-                Address = 0x21CE11EC,
-                Type = DataType.TwoBytes,
-                ManipulationType = manipulationType,
-                Value = value
-            });
-        }
-
-        #endregion Goofy
-
-        #region Party
-
-        public static bool SendMulanModelMessage(ManipulationType manipulationType, string value)
-        {
-            ClientCache.Instance.MulanModel = value;
-
-            return memoryProcessor.UpdateMemory(new MemoryObject
-            {
-                Address = 0x21CE10B6,
-                Type = DataType.TwoBytes,
-                ManipulationType = manipulationType,
-                Value = value
-            });
-        }
-
-        public static bool SendBeastModelMessage(ManipulationType manipulationType, string value)
-        {
-            ClientCache.Instance.BeastModel = value;
-
-            return memoryProcessor.UpdateMemory(new MemoryObject
-            {
-                Address = 0x21CE104E,
-                Type = DataType.TwoBytes,
-                ManipulationType = manipulationType,
-                Value = value
-            });
-        }
-
-        public static bool SendAuronModelMessage(ManipulationType manipulationType, string value)
-        {
-            ClientCache.Instance.AuronModel = value;
-
-            return memoryProcessor.UpdateMemory(new MemoryObject
-            {
-                Address = 0x21CE0EE2,
-                Type = DataType.TwoBytes,
-                ManipulationType = manipulationType,
-                Value = value
-            });
-        }
-
-        public static bool SendCaptainJackSparrowModelMessage(ManipulationType manipulationType, string value)
-        {
-            ClientCache.Instance.CaptainJackSparrowModel = value;
-
-            return memoryProcessor.UpdateMemory(new MemoryObject
-            {
-                Address = 0x21CE0DDE,
-                Type = DataType.TwoBytes,
-                ManipulationType = manipulationType,
-                Value = value
-            });
-        }
-
-        public static bool SendAladdinModelMessage(ManipulationType manipulationType, string value)
-        {
-            ClientCache.Instance.AladdinModel = value;
-
-            return memoryProcessor.UpdateMemory(new MemoryObject
-            {
-                Address = 0x21CE0F7E,
-                Type = DataType.TwoBytes,
-                ManipulationType = manipulationType,
-                Value = value
-            });
-        }
-
-        public static bool SendJackSkellingtonModelMessage(ManipulationType manipulationType, string value)
-        {
-            ClientCache.Instance.JackSkellingtonModel = value;
-
-            return memoryProcessor.UpdateMemory(new MemoryObject
-            {
-                Address = 0x21CE101A,
-                Type = DataType.TwoBytes,
-                ManipulationType = manipulationType,
-                Value = value
-            });
-        }
-
-        public static bool SendSimbaModelMessage(ManipulationType manipulationType, string value)
-        {
-            ClientCache.Instance.SimbaModel = value;
-
-            return memoryProcessor.UpdateMemory(new MemoryObject
-            {
-                Address = 0x21CE1256,
-                Type = DataType.TwoBytes,
-                ManipulationType = manipulationType,
-                Value = value
-            });
-        }
-
-        public static bool SendTronModelMessage(ManipulationType manipulationType, string value)
-        {
-            ClientCache.Instance.TronModel = value;
-
-            return memoryProcessor.UpdateMemory(new MemoryObject
-            {
-                Address = 0x21CE11EE,
-                Type = DataType.TwoBytes,
-                ManipulationType = manipulationType,
-                Value = value
-            });
-        }
-
-        public static bool SendRikuModelMessage(ManipulationType manipulationType, string value)
-        {
-            ClientCache.Instance.RikuModel = value;
-
-            return memoryProcessor.UpdateMemory(new MemoryObject
-            {
-                Address = 0x21CE10EA,
-                Type = DataType.TwoBytes,
-                ManipulationType = manipulationType,
-                Value = value
-            });
-        }
-
-        #endregion Party
+        #endregion Helper Functions
     }
 }

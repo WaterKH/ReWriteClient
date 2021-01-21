@@ -78,6 +78,8 @@ namespace ReWriteClient.Messages
         {
             SendDriveTimeMessage(ManipulationType.Set, "0");
 
+            // TODO Check that we don't already have an option up?
+
             // Display Popup
             memoryProcessor.UpdateMemory(new MemoryObject { Address = 0x21C5FF48, Type = DataType.TwoBytes, ManipulationType = ManipulationType.Set, Value = "0" });
             // Set Reaction Command Option
@@ -85,7 +87,7 @@ namespace ReWriteClient.Messages
             // Enable Popup
             memoryProcessor.UpdateMemory(new MemoryObject { Address = 0x21C5FF51, Type = DataType.Byte, ManipulationType = ManipulationType.Set, Value = "0" });
             // Press Triangle Reaction Command
-            CreateInterval(new MemoryObject { Address = 0x2034D45D, Type = DataType.Byte, ManipulationType = ManipulationType.Set, Value = ButtonMappings.Button["Triangle"] });
+            CreateInterval(new MemoryObject { Name = "Press Triangle Reaction Command", Address = 0x2034D45D, Type = DataType.Byte, ManipulationType = ManipulationType.Set, Value = ButtonMappings.Button["Triangle"], IsValueHex = true });
 
             return true; // TODO How would we tell if this triggered or not?
         }
