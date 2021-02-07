@@ -29,6 +29,8 @@ namespace ReWriteClient.Messages
 
         public static bool SendBossChangeMessage(ManipulationType manipulationType, string value)
         {
+            ClientCache.Instance.ChangeBoss = value;
+
             var change = value.Split(':')[1];
             var changeTo = value.Split(':')[0];
 

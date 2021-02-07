@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Waterkh.Common.Memory;
 
 namespace ReWriteClient.Data
@@ -18,6 +15,17 @@ namespace ReWriteClient.Data
         public string SoraHalloweenModel { get; set; }
         public string SoraChristmasModel { get; set; }
         public string SoraSpaceParanoidsModel { get; set; }
+
+        #region Forms
+
+        public string SoraValorFormModel { get; set; }
+        public string SoraWisdomFormModel { get; set; }
+        public string SoraLimitFormModel { get; set; }
+        public string SoraMasterFormModel { get; set; }
+        public string SoraFinalFormModel { get; set; }
+        public string SoraAntiFormModel { get; set; }
+
+        #endregion Forms
 
         #endregion Sora
 

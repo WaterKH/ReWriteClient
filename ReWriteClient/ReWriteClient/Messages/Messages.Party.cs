@@ -446,7 +446,7 @@ namespace ReWriteClient.Messages
 
         public static bool SendMulanAccessorySlotsMessage(ManipulationType manipulationType, string value)
         {
-            ClientCache.Instance.MulanItemSlots = value;
+            ClientCache.Instance.MulanAccessorySlots = value;
 
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
@@ -459,7 +459,7 @@ namespace ReWriteClient.Messages
 
         public static bool SendMulanAccessorySlot1Message(ManipulationType manipulationType, string value)
         {
-            ClientCache.Instance.MulanItemSlot1 = value;
+            ClientCache.Instance.MulanAccessorySlot1 = value;
 
             return memoryProcessor.UpdateMemory(new MemoryObject
             {

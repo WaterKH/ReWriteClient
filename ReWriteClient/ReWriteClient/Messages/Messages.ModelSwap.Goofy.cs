@@ -1,7 +1,5 @@
 ﻿using ReWriteClient.Data;
 using ReWriteClient.Enums;
-using System;
-using System.Timers;
 using Waterkh.Common.Memory;
 
 namespace ReWriteClient.Messages
@@ -13,6 +11,9 @@ namespace ReWriteClient.Messages
         public static bool SendGoofyModelMessage(ManipulationType manipulationType, string value)
         {
             ClientCache.Instance.GoofyModel = value;
+
+            if (value.Contains("Random"))
+                return true;
 
             memoryProcessor.UpdateMemory(new MemoryObject
             {
@@ -31,6 +32,9 @@ namespace ReWriteClient.Messages
         {
             ClientCache.Instance.GoofyTortoiseModel = value;
 
+            if (value.Contains("Random"))
+                return true;
+
             memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x21CE1254,
@@ -47,6 +51,9 @@ namespace ReWriteClient.Messages
         public static bool SendTimelessRiverGoofyModelMessage(ManipulationType manipulationType, string value)
         {
             ClientCache.Instance.GoofyTimelessRiverModel = value;
+
+            if (value.Contains("Random"))
+                return true;
 
             memoryProcessor.UpdateMemory(new MemoryObject
             {
@@ -65,6 +72,9 @@ namespace ReWriteClient.Messages
         {
             ClientCache.Instance.GoofyHalloweenModel = value;
 
+            if (value.Contains("Random"))
+                return true;
+
             memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x21CE0FB0,
@@ -82,6 +92,9 @@ namespace ReWriteClient.Messages
         {
             ClientCache.Instance.GoofyChristmasModel = value;
 
+            if (value.Contains("Random"))
+                return true;
+
             memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x21CE0FE4,
@@ -98,6 +111,9 @@ namespace ReWriteClient.Messages
         public static bool SendSpaceParanoidsGoofyModelMessage(ManipulationType manipulationType, string value)
         {
             ClientCache.Instance.GoofySpaceParanoidsModel = value;
+
+            if (value.Contains("Random"))
+                return true;
 
             memoryProcessor.UpdateMemory(new MemoryObject
             {

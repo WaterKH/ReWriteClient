@@ -1,5 +1,6 @@
 ﻿using ReWriteClient.Data;
 using ReWriteClient.Enums;
+using System;
 using System.Timers;
 using Waterkh.Common.Memory;
 
@@ -35,6 +36,12 @@ namespace ReWriteClient.Messages
         {
             AutoReset = true,
             Interval = 2000
+        };
+
+        public static Timer SoraMagicCostTimer = new Timer
+        {
+            AutoReset = true,
+            Interval = 5000
         };
 
         #region Stats
@@ -477,6 +484,470 @@ namespace ReWriteClient.Messages
                 Value = value
             });
         }
+
+        #region Cost
+
+        #region Spells
+
+        public static bool SendRandomizeMagicCostMessage(ManipulationType manipulationType, string value)
+        {
+            if (value == "Off")
+            {
+                SoraMagicCostTimer.Stop();
+                SoraMagicCostTimer.Dispose();
+            }
+            else
+            {
+                var random = new Random();
+
+                SoraMagicCostTimer.Elapsed += (sender, obj) =>
+                {
+                    SendFireMagicCostMessage(manipulationType, random.Next(0, 256).ToString());
+                    SendBlizzardMagicCostMessage(manipulationType, random.Next(0, 256).ToString());
+                    SendThunderMagicCostMessage(manipulationType, random.Next(0, 256).ToString());
+                    SendCureMagicCostMessage(manipulationType, random.Next(0, 256).ToString());
+                    SendMagnetMagicCostMessage(manipulationType, random.Next(0, 256).ToString());
+                    SendReflectMagicCostMessage(manipulationType, random.Next(0, 256).ToString());
+                };
+
+                SoraMagicCostTimer.Start();
+            }
+
+            return true;
+        }
+
+        public static bool SendFireMagicCostMessage(ManipulationType manipulationType, string value)
+        {
+            ClientCache.Instance.SoraFireMagicCost = value;
+
+            memoryProcessor.UpdateMemory(new MemoryObject
+            {
+                Address = 0x21CCBCE0,
+                Type = DataType.Byte,
+                ManipulationType = manipulationType,
+                Value = value
+            });
+
+            memoryProcessor.UpdateMemory(new MemoryObject
+            {
+                Address = 0x21CCC8E0,
+                Type = DataType.Byte,
+                ManipulationType = manipulationType,
+                Value = value
+            });
+
+            memoryProcessor.UpdateMemory(new MemoryObject
+            {
+                Address = 0x21CCC910,
+                Type = DataType.Byte,
+                ManipulationType = manipulationType,
+                Value = value
+            });
+
+            return true;
+        }
+
+        public static bool SendBlizzardMagicCostMessage(ManipulationType manipulationType, string value)
+        {
+            ClientCache.Instance.SoraBlizzardMagicCost = value;
+
+            memoryProcessor.UpdateMemory(new MemoryObject
+            {
+                Address = 0x21CCBD40,
+                Type = DataType.Byte,
+                ManipulationType = manipulationType,
+                Value = value
+            });
+
+            memoryProcessor.UpdateMemory(new MemoryObject
+            {
+                Address = 0x21CCC940,
+                Type = DataType.Byte,
+                ManipulationType = manipulationType,
+                Value = value
+            });
+
+            memoryProcessor.UpdateMemory(new MemoryObject
+            {
+                Address = 0x21CCC970,
+                Type = DataType.Byte,
+                ManipulationType = manipulationType,
+                Value = value
+            });
+
+            return true;
+        }
+
+        public static bool SendThunderMagicCostMessage(ManipulationType manipulationType, string value)
+        {
+            ClientCache.Instance.SoraThunderMagicCost = value;
+
+            memoryProcessor.UpdateMemory(new MemoryObject
+            {
+                Address = 0x21CCBD10,
+                Type = DataType.Byte,
+                ManipulationType = manipulationType,
+                Value = value
+            });
+
+            memoryProcessor.UpdateMemory(new MemoryObject
+            {
+                Address = 0x21CCC9A0,
+                Type = DataType.Byte,
+                ManipulationType = manipulationType,
+                Value = value
+            });
+
+            memoryProcessor.UpdateMemory(new MemoryObject
+            {
+                Address = 0x21CCC9D0,
+                Type = DataType.Byte,
+                ManipulationType = manipulationType,
+                Value = value
+            });
+
+            return true;
+        }
+
+        public static bool SendCureMagicCostMessage(ManipulationType manipulationType, string value)
+        {
+            ClientCache.Instance.SoraCureMagicCost = value;
+
+            memoryProcessor.UpdateMemory(new MemoryObject
+            {
+                Address = 0x21CCBD70,
+                Type = DataType.Byte,
+                ManipulationType = manipulationType,
+                Value = value
+            });
+
+            memoryProcessor.UpdateMemory(new MemoryObject
+            {
+                Address = 0x21CCCA00,
+                Type = DataType.Byte,
+                ManipulationType = manipulationType,
+                Value = value
+            });
+
+            memoryProcessor.UpdateMemory(new MemoryObject
+            {
+                Address = 0x21CCCA30,
+                Type = DataType.Byte,
+                ManipulationType = manipulationType,
+                Value = value
+            });
+
+            return true;
+        }
+
+        public static bool SendMagnetMagicCostMessage(ManipulationType manipulationType, string value)
+        {
+            ClientCache.Instance.SoraMagnetMagicCost = value;
+
+            memoryProcessor.UpdateMemory(new MemoryObject
+            {
+                Address = 0x21CCD240,
+                Type = DataType.Byte,
+                ManipulationType = manipulationType,
+                Value = value
+            });
+
+            memoryProcessor.UpdateMemory(new MemoryObject
+            {
+                Address = 0x21CCD270,
+                Type = DataType.Byte,
+                ManipulationType = manipulationType,
+                Value = value
+            });
+
+            memoryProcessor.UpdateMemory(new MemoryObject
+            {
+                Address = 0x21CCD2A0,
+                Type = DataType.Byte,
+                ManipulationType = manipulationType,
+                Value = value
+            });
+
+            return true;
+        }
+
+        public static bool SendReflectMagicCostMessage(ManipulationType manipulationType, string value)
+        {
+            ClientCache.Instance.SoraReflectMagicCost = value;
+
+            memoryProcessor.UpdateMemory(new MemoryObject
+            {
+                Address = 0x21CCD2D0,
+                Type = DataType.Byte,
+                ManipulationType = manipulationType,
+                Value = value
+            });
+
+            memoryProcessor.UpdateMemory(new MemoryObject
+            {
+                Address = 0x21CCD300,
+                Type = DataType.Byte,
+                ManipulationType = manipulationType,
+                Value = value
+            });
+
+            memoryProcessor.UpdateMemory(new MemoryObject
+            {
+                Address = 0x21CCD330,
+                Type = DataType.Byte,
+                ManipulationType = manipulationType,
+                Value = value
+            });
+
+            return true;
+        }
+
+        #endregion Spells
+
+        #region Limits
+
+        public static bool SendTrinityLimitMagicCostMessage(ManipulationType manipulationType, string value)
+        {
+            ClientCache.Instance.TrinityLimitMagicCost = value;
+
+            return memoryProcessor.UpdateMemory(new MemoryObject
+            {
+                Address = 0x21CD0B40,
+                Type = DataType.Byte,
+                ManipulationType = manipulationType,
+                Value = value
+            });
+        }
+
+        public static bool SendDuckFlareMagicCostMessage(ManipulationType manipulationType, string value)
+        {
+            ClientCache.Instance.DuckFlareMagicCost = value;
+
+            return memoryProcessor.UpdateMemory(new MemoryObject
+            {
+                Address = 0x21CCF160,
+                Type = DataType.Byte,
+                ManipulationType = manipulationType,
+                Value = value
+            });
+        }
+
+        public static bool SendCometMagicCostMessage(ManipulationType manipulationType, string value)
+        {
+            ClientCache.Instance.CometMagicCost = value;
+
+            return memoryProcessor.UpdateMemory(new MemoryObject
+            {
+                Address = 0x21CCE620,
+                Type = DataType.Byte,
+                ManipulationType = manipulationType,
+                Value = value
+            });
+        }
+
+        public static bool SendWhirliGoofMagicCostMessage(ManipulationType manipulationType, string value)
+        {
+            ClientCache.Instance.WhirliGoofMagicCost = value;
+
+            return memoryProcessor.UpdateMemory(new MemoryObject
+            {
+                Address = 0x21CCE110,
+                Type = DataType.Byte,
+                ManipulationType = manipulationType,
+                Value = value
+            });
+        }
+
+        public static bool SendKnocksmashMagicCostMessage(ManipulationType manipulationType, string value)
+        {
+            ClientCache.Instance.KnocksmashMagicCost = value;
+
+            return memoryProcessor.UpdateMemory(new MemoryObject
+            {
+                Address = 0x21CCF040,
+                Type = DataType.Byte,
+                ManipulationType = manipulationType,
+                Value = value
+            });
+        }
+
+        public static bool SendRedRocketMagicCostMessage(ManipulationType manipulationType, string value)
+        {
+            ClientCache.Instance.RedRocketMagicCost = value;
+
+            return memoryProcessor.UpdateMemory(new MemoryObject
+            {
+                Address = 0x21CCCC40,
+                Type = DataType.Byte,
+                ManipulationType = manipulationType,
+                Value = value
+            });
+        }
+
+
+        public static bool SendTwinHowlMagicCostMessage(ManipulationType manipulationType, string value)
+        {
+            ClientCache.Instance.TwinHowlMagicCost = value;
+
+            return memoryProcessor.UpdateMemory(new MemoryObject
+            {
+                Address = 0x21CCC130,
+                Type = DataType.Byte,
+                ManipulationType = manipulationType,
+                Value = value
+            });
+        }
+
+        public static bool SendBushidoMagicCostMessage(ManipulationType manipulationType, string value)
+        {
+            ClientCache.Instance.BushidoMagicCost = value;
+
+            return memoryProcessor.UpdateMemory(new MemoryObject
+            {
+                Address = 0x21CCC2B0,
+                Type = DataType.Byte,
+                ManipulationType = manipulationType,
+                Value = value
+            });
+        }
+
+        public static bool SendBluffMagicCostMessage(ManipulationType manipulationType, string value)
+        {
+            ClientCache.Instance.BluffMagicCost = value;
+
+            return memoryProcessor.UpdateMemory(new MemoryObject
+            {
+                Address = 0x21CCF3A0,
+                Type = DataType.Byte,
+                ManipulationType = manipulationType,
+                Value = value
+            });
+        }
+
+        public static bool SendDanceCallMagicCostMessage(ManipulationType manipulationType, string value)
+        {
+            ClientCache.Instance.DanceCallMagicCost = value;
+
+            return memoryProcessor.UpdateMemory(new MemoryObject
+            {
+                Address = 0x21CCFCA0,
+                Type = DataType.Byte,
+                ManipulationType = manipulationType,
+                Value = value
+            });
+        }
+
+        public static bool SendSpeedsterMagicCostMessage(ManipulationType manipulationType, string value)
+        {
+            ClientCache.Instance.SpeedsterMagicCost = value;
+
+            return memoryProcessor.UpdateMemory(new MemoryObject
+            {
+                Address = 0x21CCF280,
+                Type = DataType.Byte,
+                ManipulationType = manipulationType,
+                Value = value
+            });
+        }
+
+        public static bool SendWildcatMagicCostMessage(ManipulationType manipulationType, string value)
+        {
+            ClientCache.Instance.WildcatMagicCost = value;
+
+            return memoryProcessor.UpdateMemory(new MemoryObject
+            {
+                Address = 0x21CCF730,
+                Type = DataType.Byte,
+                ManipulationType = manipulationType,
+                Value = value
+            });
+        }
+
+        public static bool SendSetupMagicCostMessage(ManipulationType manipulationType, string value)
+        {
+            ClientCache.Instance.SetupMagicCost = value;
+
+            return memoryProcessor.UpdateMemory(new MemoryObject
+            {
+                Address = 0x21CCFE80,
+                Type = DataType.Byte,
+                ManipulationType = manipulationType,
+                Value = value
+            });
+        }
+
+        public static bool SendSessionMagicCostMessage(ManipulationType manipulationType, string value)
+        {
+            ClientCache.Instance.SessionMagicCost = value;
+
+            return memoryProcessor.UpdateMemory(new MemoryObject
+            {
+                Address = 0x21CD1AD0,
+                Type = DataType.Byte,
+                ManipulationType = manipulationType,
+                Value = value
+            });
+        }
+
+        #endregion Limits
+
+        #region Limit Form
+
+        public static bool SendStrikeRaidMagicCostMessage(ManipulationType manipulationType, string value)
+        {
+            ClientCache.Instance.StrikeRaidMagicCost = value;
+
+            return memoryProcessor.UpdateMemory(new MemoryObject
+            {
+                Address = 0x21CD3150,
+                Type = DataType.Byte,
+                ManipulationType = manipulationType,
+                Value = value
+            });
+        }
+
+        public static bool SendSonicBladeMagicCostMessage(ManipulationType manipulationType, string value)
+        {
+            ClientCache.Instance.SonicBladeMagicCost = value;
+
+            return memoryProcessor.UpdateMemory(new MemoryObject
+            {
+                Address = 0x21CD3030,
+                Type = DataType.Byte,
+                ManipulationType = manipulationType,
+                Value = value
+            });
+        }
+
+        public static bool SendRagnarokMagicCostMessage(ManipulationType manipulationType, string value)
+        {
+            ClientCache.Instance.RagnarokMagicCost = value;
+
+            return memoryProcessor.UpdateMemory(new MemoryObject
+            {
+                Address = 0x21CD2F10,
+                Type = DataType.Byte,
+                ManipulationType = manipulationType,
+                Value = value
+            });
+        }
+
+        public static bool SendArsArcanumMagicCostMessage(ManipulationType manipulationType, string value)
+        {
+            ClientCache.Instance.ArsArcanumMagicCost = value;
+
+            return memoryProcessor.UpdateMemory(new MemoryObject
+            {
+                Address = 0x21CD30C0,
+                Type = DataType.Byte,
+                ManipulationType = manipulationType,
+                Value = value
+            });
+        }
+
+        #endregion Limit Form
+
+        #endregion Cost
 
         #endregion Magic
 

@@ -53,6 +53,50 @@ namespace ReWriteClient.Messages
                     { "SendMagnetMagicMessage", SendMagnetMagicMessage },
                     { "SendReflectMagicMessage", SendReflectMagicMessage },
 
+                    #region Cost
+
+                    #region Spells
+
+                    { "SendRandomizeMagicCostMessage", SendRandomizeMagicCostMessage },
+                    { "SendFireMagicCostMessage", SendFireMagicCostMessage },
+                    { "SendBlizzardMagicCostMessage", SendBlizzardMagicCostMessage },
+                    { "SendThunderMagicCostMessage", SendThunderMagicCostMessage },
+                    { "SendCureMagicCostMessage", SendCureMagicCostMessage },
+                    { "SendMagnetMagicCostMessage", SendMagnetMagicCostMessage },
+                    { "SendReflectMagicCostMessage", SendReflectMagicCostMessage },
+                
+                    #endregion Spells
+
+                    #region Limits
+
+                    { "SendTrinityLimitMagicCostMessage", SendTrinityLimitMagicCostMessage },
+                    { "SendDuckFlareMagicCostMessage", SendDuckFlareMagicCostMessage },
+                    { "SendCometMagicCostMessage", SendCometMagicCostMessage },
+                    { "SendWhirliGoofMagicCostMessage", SendWhirliGoofMagicCostMessage },
+                    { "SendKnocksmashMagicCostMessage", SendKnocksmashMagicCostMessage },
+                    { "SendRedRocketMagicCostMessage", SendRedRocketMagicCostMessage },
+                    { "SendTwinHowlMagicCostMessage", SendTwinHowlMagicCostMessage },
+                    { "SendBushidoMagicCostMessage", SendBushidoMagicCostMessage },
+                    { "SendBluffMagicCostMessage", SendBluffMagicCostMessage },
+                    { "SendDanceCallMagicCostMessage", SendDanceCallMagicCostMessage },
+                    { "SendSpeedsterMagicCostMessage", SendSpeedsterMagicCostMessage },
+                    { "SendWildcatMagicCostMessage", SendWildcatMagicCostMessage },
+                    { "SendSetupMagicCostMessage", SendSetupMagicCostMessage },
+                    { "SendSessionMagicCostMessage", SendSessionMagicCostMessage },
+
+                    #endregion Limits
+
+                    #region Limit Form
+                    
+                    { "SendStrikeRaidCostMessage", SendStrikeRaidMagicCostMessage },
+                    { "SendSonicBladeMagicCostMessage", SendSonicBladeMagicCostMessage },
+                    { "SendRagnarokMagicCostMessage", SendRagnarokMagicCostMessage },
+                    { "SendArsArcanumMagicCostMessage", SendArsArcanumMagicCostMessage },
+
+                    #endregion Limit Form
+
+                    #endregion Cost
+
                     #endregion Magic
 
                     #region Drive
@@ -63,6 +107,7 @@ namespace ReWriteClient.Messages
                     { "SendDisableDriveMessage", SendDisableDriveMessage },
                     { "SendValorWisdomMasterFinalAntiMessage", SendValorWisdomMasterFinalAntiMessage },
                     { "SendLimitMessage", SendLimitMessage },
+                    { "SendAllDriveFormsMessage", SendAllDriveFormsMessage },
                     { "SendActivateFormMessage", SendActivateFormMessage },
 
                     #endregion Drive
@@ -344,6 +389,13 @@ namespace ReWriteClient.Messages
                     { "SendSoraHalloweenModelMessage", SendSoraHalloweenModelMessage },
                     { "SendSoraChristmasModelMessage", SendSoraChristmasModelMessage },
                     { "SendSoraSpaceParanoidsModelMessage", SendSoraSpaceParanoidsModelMessage },
+
+                    { "SendSoraValorFormModelMessage", SendSoraValorFormModelMessage },
+                    { "SendSoraWisdomFormModelMessage", SendSoraWisdomFormModelMessage },
+                    { "SendSoraLimitFormModelMessage", SendSoraLimitFormModelMessage },
+                    { "SendSoraMasterFormModelMessage", SendSoraMasterFormModelMessage },
+                    { "SendSoraFinalFormModelMessage", SendSoraFinalFormModelMessage },
+                    { "SendSoraAntiFormModelMessage", SendSoraAntiFormModelMessage },
 
                     { "SendDonaldModelMessage", SendDonaldModelMessage },
                     { "SendGoofyModelMessage", SendGoofyModelMessage },
@@ -834,6 +886,16 @@ namespace ReWriteClient.Messages
             },
 
             #endregion Enemy
+
+            #region Environment
+
+            { "Environment", new Dictionary<string, Func<ManipulationType, string, bool>>
+                {
+                    { "SendRoomChangeMessage", SendRoomChangeMessage },    
+                }
+            },
+
+            #endregion Environment
         };
 
         private static void CreateInterval(MemoryObject obj, int interval = 1)

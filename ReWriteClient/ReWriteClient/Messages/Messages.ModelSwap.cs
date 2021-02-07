@@ -16,6 +16,12 @@ namespace ReWriteClient.Messages
             Interval = 45000
         };
 
+        public static Timer SoraFormModelTimer = new Timer
+        {
+            AutoReset = false,
+            Interval = 45000
+        };
+
         public static Timer DonaldModelTimer = new Timer
         {
             AutoReset = false,
@@ -48,6 +54,13 @@ namespace ReWriteClient.Messages
                 SendSoraHalloweenModelMessage(manipulationType, "693");
                 SendSoraChristmasModelMessage(manipulationType, "2389");
                 SendSoraSpaceParanoidsModelMessage(manipulationType, "1622");
+
+                SendSoraValorFormModelMessage(manipulationType, "85");
+                SendSoraWisdomFormModelMessage(manipulationType, "86");
+                SendSoraLimitFormModelMessage(manipulationType, "2397");
+                SendSoraMasterFormModelMessage(manipulationType, "87");
+                SendSoraFinalFormModelMessage(manipulationType, "88");
+                SendSoraAntiFormModelMessage(manipulationType, "89");
 
                 #endregion Sora
 
@@ -140,6 +153,17 @@ namespace ReWriteClient.Messages
                 case "HalloweenSora": ClientCache.Instance.SoraHalloweenModel = value; break;
                 case "ChristmasSora": ClientCache.Instance.SoraChristmasModel = value; break;
                 case "SpaceSora": ClientCache.Instance.SoraSpaceParanoidsModel = value; break;
+
+                #region Forms
+
+                case "ValorSora": ClientCache.Instance.SoraValorFormModel = value; break;
+                case "WisdomSora": ClientCache.Instance.SoraWisdomFormModel = value; break;
+                case "LimitSora": ClientCache.Instance.SoraLimitFormModel = value; break;
+                case "MasterSora": ClientCache.Instance.SoraMasterFormModel = value; break;
+                case "FinalSora": ClientCache.Instance.SoraFinalFormModel = value; break;
+                case "AntiSora": ClientCache.Instance.SoraAntiFormModel = value; break;
+
+                #endregion Forms
 
                 #endregion Sora
 

@@ -34,6 +34,49 @@ namespace ReWriteClient.Data
         public string SoraMagnetMagic { get; set; }
         public string SoraReflectMagic { get; set; }
 
+        #region Cost
+
+        #region Spells
+
+        public string SoraFireMagicCost { get; set; }
+        public string SoraBlizzardMagicCost { get; set; }
+        public string SoraThunderMagicCost { get; set; }
+        public string SoraCureMagicCost { get; set; }
+        public string SoraMagnetMagicCost { get; set; }
+        public string SoraReflectMagicCost { get; set; }
+
+        #endregion Spells
+
+        #region Limits
+
+        public string TrinityLimitMagicCost { get; set; }
+        public string DuckFlareMagicCost { get; set; }
+        public string CometMagicCost { get; set; }
+        public string WhirliGoofMagicCost { get; set; }
+        public string KnocksmashMagicCost { get; set; }
+        public string RedRocketMagicCost { get; set; }
+        public string TwinHowlMagicCost { get; set; }
+        public string BushidoMagicCost { get; set; }
+        public string BluffMagicCost { get; set; }
+        public string DanceCallMagicCost { get; set; }
+        public string SpeedsterMagicCost { get; set; }
+        public string WildcatMagicCost { get; set; }
+        public string SetupMagicCost { get; set; }
+        public string SessionMagicCost { get; set; }
+
+        #endregion Limits
+
+        #region Limit Form
+
+        public string StrikeRaidMagicCost { get; set; }
+        public string SonicBladeMagicCost { get; set; }
+        public string RagnarokMagicCost { get; set; }
+        public string ArsArcanumMagicCost { get; set; }
+
+        #endregion Limit Form
+
+        #endregion Cost
+
         #endregion Magic
 
         #region Equipment
@@ -163,12 +206,100 @@ namespace ReWriteClient.Data
             
             if (!string.IsNullOrEmpty(this.SoraReflectMagic))
                 this.messages.MessageMappings["Sora"]["SendReflectMagicMessage"].Invoke(ManipulationType.Set, this.SoraReflectMagic);
+
+            #region Cost
+
+            #region Spells
+
+            if (!string.IsNullOrEmpty(this.SoraFireMagicCost))
+                this.messages.MessageMappings["Sora"]["SendFireMagicCostMessage"].Invoke(ManipulationType.Set, this.SoraFireMagicCost);
+
+            if (!string.IsNullOrEmpty(this.SoraBlizzardMagicCost))
+                this.messages.MessageMappings["Sora"]["SendBlizzardMagicCostMessage"].Invoke(ManipulationType.Set, this.SoraBlizzardMagicCost);
+
+            if (!string.IsNullOrEmpty(this.SoraThunderMagicCost))
+                this.messages.MessageMappings["Sora"]["SendThunderMagicCostMessage"].Invoke(ManipulationType.Set, this.SoraThunderMagicCost);
+
+            if (!string.IsNullOrEmpty(this.SoraCureMagicCost))
+                this.messages.MessageMappings["Sora"]["SendSoraCureMagicCostMessage"].Invoke(ManipulationType.Set, this.SoraCureMagicCost);
+
+            if (!string.IsNullOrEmpty(this.SoraMagnetMagicCost))
+                this.messages.MessageMappings["Sora"]["SendMagnetMagicCostMessage"].Invoke(ManipulationType.Set, this.SoraMagnetMagicCost);
+
+            if (!string.IsNullOrEmpty(this.SoraReflectMagicCost))
+                this.messages.MessageMappings["Sora"]["SendReflectMagicCostMessage"].Invoke(ManipulationType.Set, this.SoraReflectMagicCost);
+
+            #endregion Spells
+
+            #region Limits
+
+            if (!string.IsNullOrEmpty(this.TrinityLimitMagicCost))
+                this.messages.MessageMappings["Sora"]["TrinityLimitCostMessage"].Invoke(ManipulationType.Set, this.TrinityLimitMagicCost);
+
+            if (!string.IsNullOrEmpty(this.DuckFlareMagicCost))
+                this.messages.MessageMappings["Sora"]["DuckFlareCostMessage"].Invoke(ManipulationType.Set, this.DuckFlareMagicCost);
+
+            if (!string.IsNullOrEmpty(this.CometMagicCost))
+                this.messages.MessageMappings["Sora"]["CometCostMessage"].Invoke(ManipulationType.Set, this.CometMagicCost);
+
+            if (!string.IsNullOrEmpty(this.WhirliGoofMagicCost))
+                this.messages.MessageMappings["Sora"]["WhirliGoofCostMessage"].Invoke(ManipulationType.Set, this.WhirliGoofMagicCost);
+
+            if (!string.IsNullOrEmpty(this.KnocksmashMagicCost))
+                this.messages.MessageMappings["Sora"]["KnocksmashCostMessage"].Invoke(ManipulationType.Set, this.KnocksmashMagicCost);
+
+            if (!string.IsNullOrEmpty(this.RedRocketMagicCost))
+                this.messages.MessageMappings["Sora"]["RedRocketCostMessage"].Invoke(ManipulationType.Set, this.RedRocketMagicCost);
+
+            if (!string.IsNullOrEmpty(this.TwinHowlMagicCost))
+                this.messages.MessageMappings["Sora"]["TwinHowlCostMessage"].Invoke(ManipulationType.Set, this.TwinHowlMagicCost);
+
+            if (!string.IsNullOrEmpty(this.BushidoMagicCost))
+                this.messages.MessageMappings["Sora"]["BushidoCostMessage"].Invoke(ManipulationType.Set, this.BushidoMagicCost);
+
+            if (!string.IsNullOrEmpty(this.BluffMagicCost))
+                this.messages.MessageMappings["Sora"]["BluffCostMessage"].Invoke(ManipulationType.Set, this.BluffMagicCost);
+
+            if (!string.IsNullOrEmpty(this.DanceCallMagicCost))
+                this.messages.MessageMappings["Sora"]["DanceCallCostMessage"].Invoke(ManipulationType.Set, this.DanceCallMagicCost);
+
+            if (!string.IsNullOrEmpty(this.SpeedsterMagicCost))
+                this.messages.MessageMappings["Sora"]["SpeedsterCostMessage"].Invoke(ManipulationType.Set, this.SpeedsterMagicCost);
+
+            if (!string.IsNullOrEmpty(this.WildcatMagicCost))
+                this.messages.MessageMappings["Sora"]["WildcatCostMessage"].Invoke(ManipulationType.Set, this.WildcatMagicCost);
+
+            if (!string.IsNullOrEmpty(this.SetupMagicCost))
+                this.messages.MessageMappings["Sora"]["SetupCostMessage"].Invoke(ManipulationType.Set, this.SetupMagicCost);
+
+            if (!string.IsNullOrEmpty(this.SessionMagicCost))
+                this.messages.MessageMappings["Sora"]["SessionCostMessage"].Invoke(ManipulationType.Set, this.SessionMagicCost);
+
+            #endregion Limits
+
+            #region Limit Form
+
+            if (!string.IsNullOrEmpty(this.StrikeRaidMagicCost))
+                this.messages.MessageMappings["Sora"]["StrikeRaidCostMessage"].Invoke(ManipulationType.Set, this.StrikeRaidMagicCost);
+
+            if (!string.IsNullOrEmpty(this.SonicBladeMagicCost))
+                this.messages.MessageMappings["Sora"]["SonicBladeCostMessage"].Invoke(ManipulationType.Set, this.SonicBladeMagicCost);
+
+            if (!string.IsNullOrEmpty(this.RagnarokMagicCost))
+                this.messages.MessageMappings["Sora"]["RagnarokCostMessage"].Invoke(ManipulationType.Set, this.RagnarokMagicCost);
+
+            if (!string.IsNullOrEmpty(this.ArsArcanumMagicCost))
+                this.messages.MessageMappings["Sora"]["ArsArcanumCostMessage"].Invoke(ManipulationType.Set, this.ArsArcanumMagicCost);
+
+            #endregion Limit Form
+
+            #endregion Cost
         }
 
         public async Task RefreshSoraEquipmentCache()
         {
             if (!string.IsNullOrEmpty(this.SoraKeyblade))
-                this.messages.MessageMappings["Sora"]["SendEquipKeybladeMessage"].Invoke(ManipulationType.Set, this.SoraFireMagic);
+                this.messages.MessageMappings["Sora"]["SendEquipKeybladeMessage"].Invoke(ManipulationType.Set, this.SoraKeyblade);
 
             if (!string.IsNullOrEmpty(this.SoraValorKeyblade))
                 this.messages.MessageMappings["Sora"]["SendEquipValorKeybladeMessage"].Invoke(ManipulationType.Set, this.SoraValorKeyblade);
@@ -233,17 +364,17 @@ namespace ReWriteClient.Data
             if (!string.IsNullOrEmpty(this.SoraItemSlot4))
                 this.messages.MessageMappings["Sora"]["SendSoraItemSlot4Message"].Invoke(ManipulationType.Set, this.SoraItemSlot4);
             
-            if (!string.IsNullOrEmpty(this.SoraItemSlot1))
-                this.messages.MessageMappings["Sora"]["SendSoraItemSlot1Message"].Invoke(ManipulationType.Set, this.SoraItemSlot1);
+            if (!string.IsNullOrEmpty(this.SoraItemSlot5))
+                this.messages.MessageMappings["Sora"]["SendSoraItemSlot5Message"].Invoke(ManipulationType.Set, this.SoraItemSlot5);
 
-            if (!string.IsNullOrEmpty(this.SoraItemSlot2))
-                this.messages.MessageMappings["Sora"]["SendSoraItemSlot2Message"].Invoke(ManipulationType.Set, this.SoraItemSlot2);
+            if (!string.IsNullOrEmpty(this.SoraItemSlot6))
+                this.messages.MessageMappings["Sora"]["SendSoraItemSlot6Message"].Invoke(ManipulationType.Set, this.SoraItemSlot6);
 
-            if (!string.IsNullOrEmpty(this.SoraItemSlot3))
-                this.messages.MessageMappings["Sora"]["SendSoraItemSlot3Message"].Invoke(ManipulationType.Set, this.SoraItemSlot3);
+            if (!string.IsNullOrEmpty(this.SoraItemSlot7))
+                this.messages.MessageMappings["Sora"]["SendSoraItemSlot7Message"].Invoke(ManipulationType.Set, this.SoraItemSlot7);
 
-            if (!string.IsNullOrEmpty(this.SoraItemSlot4))
-                this.messages.MessageMappings["Sora"]["SendSoraItemSlot4Message"].Invoke(ManipulationType.Set, this.SoraItemSlot4);
+            if (!string.IsNullOrEmpty(this.SoraItemSlot8))
+                this.messages.MessageMappings["Sora"]["SendSoraItemSlot8Message"].Invoke(ManipulationType.Set, this.SoraItemSlot8);
         }
 
         public async Task RefreshSoraQuickMenuCache()

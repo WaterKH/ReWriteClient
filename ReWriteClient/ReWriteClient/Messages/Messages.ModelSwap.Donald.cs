@@ -14,6 +14,9 @@ namespace ReWriteClient.Messages
         {
             ClientCache.Instance.DonaldModel = value;
 
+            if (value.Contains("Random"))
+                return true;
+
             memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x21CE0B6A,
@@ -30,6 +33,9 @@ namespace ReWriteClient.Messages
         public static bool SendBirdDonaldModelMessage(ManipulationType manipulationType, string value)
         {
             ClientCache.Instance.DonaldBirdModel = value;
+
+            if (value.Contains("Random"))
+                return true;
 
             memoryProcessor.UpdateMemory(new MemoryObject
             {
@@ -48,6 +54,9 @@ namespace ReWriteClient.Messages
         {
             ClientCache.Instance.DonaldTimelessRiverModel = value;
 
+            if (value.Contains("Random"))
+                return true;
+
             memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x21CE121E,
@@ -64,6 +73,9 @@ namespace ReWriteClient.Messages
         public static bool SendHalloweenDonaldModelMessage(ManipulationType manipulationType, string value)
         {
             ClientCache.Instance.DonaldHalloweenModel = value;
+
+            if (value.Contains("Random"))
+                return true;
 
             memoryProcessor.UpdateMemory(new MemoryObject
             {
@@ -82,6 +94,9 @@ namespace ReWriteClient.Messages
         {
             ClientCache.Instance.DonaldChristmasModel = value;
 
+            if (value.Contains("Random"))
+                return true;
+
             memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x21CE0FE2,
@@ -98,6 +113,9 @@ namespace ReWriteClient.Messages
         public static bool SendSpaceParanoidsDonaldModelMessage(ManipulationType manipulationType, string value)
         {
             ClientCache.Instance.DonaldSpaceParanoidsModel = value;
+
+            if (value.Contains("Random"))
+                return true;
 
             memoryProcessor.UpdateMemory(new MemoryObject
             {

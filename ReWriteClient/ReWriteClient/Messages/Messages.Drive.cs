@@ -74,6 +74,14 @@ namespace ReWriteClient.Messages
             });
         }
 
+        public static bool SendAllDriveFormsMessage(ManipulationType manipulationType, string value)
+        {
+            SendValorWisdomMasterFinalAntiMessage(manipulationType, value);
+            SendLimitMessage(manipulationType, value == "0" ? "8" : "8");
+
+            return true;
+        }
+
         public static bool SendActivateFormMessage(ManipulationType manipulationType, string value)
         {
             SendDriveTimeMessage(ManipulationType.Set, "0");

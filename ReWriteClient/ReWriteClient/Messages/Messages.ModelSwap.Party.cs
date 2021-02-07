@@ -1,7 +1,5 @@
 ﻿using ReWriteClient.Data;
 using ReWriteClient.Enums;
-using System;
-using System.Timers;
 using Waterkh.Common.Memory;
 
 namespace ReWriteClient.Messages
@@ -13,6 +11,9 @@ namespace ReWriteClient.Messages
         public static bool SendMulanModelMessage(ManipulationType manipulationType, string value)
         {
             ClientCache.Instance.MulanModel = value;
+
+            if (value.Contains("Random"))
+                return true;
 
             memoryProcessor.UpdateMemory(new MemoryObject
             {
@@ -32,6 +33,9 @@ namespace ReWriteClient.Messages
         {
             ClientCache.Instance.BeastModel = value;
 
+            if (value.Contains("Random"))
+                return true;
+
             memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x21CE104E,
@@ -48,6 +52,9 @@ namespace ReWriteClient.Messages
         public static bool SendAuronModelMessage(ManipulationType manipulationType, string value)
         {
             ClientCache.Instance.AuronModel = value;
+
+            if (value.Contains("Random"))
+                return true;
 
             memoryProcessor.UpdateMemory(new MemoryObject
             {
@@ -66,6 +73,9 @@ namespace ReWriteClient.Messages
         {
             ClientCache.Instance.CaptainJackSparrowModel = value;
 
+            if (value.Contains("Random"))
+                return true;
+
             memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x21CE0DDE,
@@ -83,6 +93,9 @@ namespace ReWriteClient.Messages
         {
             ClientCache.Instance.AladdinModel = value;
 
+            if (value.Contains("Random"))
+                return true;
+
             memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x21CE0F7E,
@@ -99,6 +112,9 @@ namespace ReWriteClient.Messages
         public static bool SendJackSkellingtonModelMessage(ManipulationType manipulationType, string value)
         {
             ClientCache.Instance.JackSkellingtonModel = value;
+
+            if (value.Contains("Random"))
+                return true;
 
             memoryProcessor.UpdateMemory(new MemoryObject
             {
@@ -118,6 +134,9 @@ namespace ReWriteClient.Messages
         {
             ClientCache.Instance.SimbaModel = value;
 
+            if (value.Contains("Random"))
+                return true;
+
             memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x21CE1256,
@@ -135,6 +154,9 @@ namespace ReWriteClient.Messages
         {
             ClientCache.Instance.TronModel = value;
 
+            if (value.Contains("Random"))
+                return true;
+
             memoryProcessor.UpdateMemory(new MemoryObject
             {
                 Address = 0x21CE11EE,
@@ -151,6 +173,9 @@ namespace ReWriteClient.Messages
         public static bool SendRikuModelMessage(ManipulationType manipulationType, string value)
         {
             ClientCache.Instance.RikuModel = value;
+
+            if (value.Contains("Random"))
+                return true;
 
             memoryProcessor.UpdateMemory(new MemoryObject
             {

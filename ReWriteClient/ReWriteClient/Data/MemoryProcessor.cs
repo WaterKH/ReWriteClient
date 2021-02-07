@@ -1,5 +1,6 @@
 ﻿using ReWriteClient.Enums;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -24,6 +25,10 @@ namespace ReWriteClient.Data
 
         public Process Process;
         private IntPtr ProcessHandle;
+
+        private Random random = new Random();
+        private List<string> allies = new List<string> { "92", "1519", "93", "1563", "2073", "1244", "1564", "1712", "1715", "1672", "94", "100", "99", "101", "98", "102", "95", "96", "97", "724", "362", "1211" };
+        private List<string> enemies = new List<string> { "2296", "2299", "2298", "2297", "2079", "1570", "997", "2355", "2356", "2357", "2427", "1737", "81", "795", "2294", "1528", "2339", "2402", "2385", "1876", "2998", "2415" };
 
         private MemoryProcessor()
         { }
@@ -305,7 +310,7 @@ namespace ReWriteClient.Data
                         Address = 0x21CE0B68,
                         ManipulationType = ManipulationType.Set,
                         Type = DataType.TwoBytes,
-                        Value = isEvent ? "84" : (string.IsNullOrEmpty(ClientCache.Instance.SoraModel)) ? "84" : ClientCache.Instance.SoraModel.ToString()
+                        Value = isEvent ? "84" : (string.IsNullOrEmpty(ClientCache.Instance.SoraModel)) ? "84" : ClientCache.Instance.SoraModel
                     });
 
                     this.UpdateMemory(new MemoryObject
@@ -313,7 +318,8 @@ namespace ReWriteClient.Data
                         Address = 0x21CE0B6A,
                         ManipulationType = ManipulationType.Set,
                         Type = DataType.TwoBytes,
-                        Value = isEvent ? "92" : (string.IsNullOrEmpty(ClientCache.Instance.DonaldModel)) ? "92" : ClientCache.Instance.DonaldModel.ToString()
+                        Value = isEvent ? "92" : (string.IsNullOrEmpty(ClientCache.Instance.DonaldModel)) ? "92" : 
+                                    ClientCache.Instance.DonaldModel == "RandomAlly" ? allies[random.Next(allies.Count)] : ClientCache.Instance.DonaldModel == "RandomEnemy" ? enemies[random.Next(enemies.Count)] : ClientCache.Instance.DonaldModel
                     });
 
                     this.UpdateMemory(new MemoryObject
@@ -321,8 +327,61 @@ namespace ReWriteClient.Data
                         Address = 0x21CE0B6C,
                         ManipulationType = ManipulationType.Set,
                         Type = DataType.TwoBytes,
-                        Value = isEvent ? "93" : (string.IsNullOrEmpty(ClientCache.Instance.GoofyModel)) ? "93" : ClientCache.Instance.GoofyModel.ToString()
+                        Value = isEvent ? "93" : (string.IsNullOrEmpty(ClientCache.Instance.GoofyModel)) ? "93" :
+                                    ClientCache.Instance.GoofyModel == "RandomAlly" ? allies[random.Next(allies.Count)] : ClientCache.Instance.GoofyModel == "RandomEnemy" ? enemies[random.Next(enemies.Count)] : ClientCache.Instance.GoofyModel
                     });
+
+                    #region Forms
+
+                    this.UpdateMemory(new MemoryObject
+                    {
+                        Address = 0x21CE0B70,
+                        ManipulationType = ManipulationType.Set,
+                        Type = DataType.TwoBytes,
+                        Value = isEvent ? "85" : (string.IsNullOrEmpty(ClientCache.Instance.SoraValorFormModel)) ? "85" : ClientCache.Instance.SoraValorFormModel
+                    });
+
+                    this.UpdateMemory(new MemoryObject
+                    {
+                        Address = 0x21CE0B72,
+                        ManipulationType = ManipulationType.Set,
+                        Type = DataType.TwoBytes,
+                        Value = isEvent ? "86" : (string.IsNullOrEmpty(ClientCache.Instance.SoraWisdomFormModel)) ? "86" : ClientCache.Instance.SoraWisdomFormModel
+                    });
+
+                    this.UpdateMemory(new MemoryObject
+                    {
+                        Address = 0x21CE0B74,
+                        ManipulationType = ManipulationType.Set,
+                        Type = DataType.TwoBytes,
+                        Value = isEvent ? "2397" : (string.IsNullOrEmpty(ClientCache.Instance.SoraLimitFormModel)) ? "2397" : ClientCache.Instance.SoraLimitFormModel
+                    });
+
+                    this.UpdateMemory(new MemoryObject
+                    {
+                        Address = 0x21CE0B76,
+                        ManipulationType = ManipulationType.Set,
+                        Type = DataType.TwoBytes,
+                        Value = isEvent ? "87" : (string.IsNullOrEmpty(ClientCache.Instance.SoraMasterFormModel)) ? "87" : ClientCache.Instance.SoraMasterFormModel
+                    });
+
+                    this.UpdateMemory(new MemoryObject
+                    {
+                        Address = 0x21CE0B78,
+                        ManipulationType = ManipulationType.Set,
+                        Type = DataType.TwoBytes,
+                        Value = isEvent ? "88" : (string.IsNullOrEmpty(ClientCache.Instance.SoraFinalFormModel)) ? "88" : ClientCache.Instance.SoraFinalFormModel
+                    });
+
+                    this.UpdateMemory(new MemoryObject
+                    {
+                        Address = 0x21CE0B7A,
+                        ManipulationType = ManipulationType.Set,
+                        Type = DataType.TwoBytes,
+                        Value = isEvent ? "89" : (string.IsNullOrEmpty(ClientCache.Instance.SoraAntiFormModel)) ? "89" : ClientCache.Instance.SoraAntiFormModel
+                    });
+
+                    #endregion Forms
 
                     switch (world[0])
                     {
@@ -333,7 +392,7 @@ namespace ReWriteClient.Data
                                 Address = 0x21CE0B68,
                                 ManipulationType = ManipulationType.Set,
                                 Type = DataType.TwoBytes,
-                                Value = isEvent ? "90" : (string.IsNullOrEmpty(ClientCache.Instance.SoraModel)) ? "90" : ClientCache.Instance.SoraModel.ToString()
+                                Value = isEvent ? "90" : (string.IsNullOrEmpty(ClientCache.Instance.SoraModel)) ? "90" : ClientCache.Instance.SoraModel
                             });
 
                             break;
@@ -345,7 +404,8 @@ namespace ReWriteClient.Data
                                 Address = 0x21CE104E,
                                 ManipulationType = ManipulationType.Set,
                                 Type = DataType.TwoBytes,
-                                Value = isEvent ? "94" : (string.IsNullOrEmpty(ClientCache.Instance.BeastModel)) ? "94" : ClientCache.Instance.BeastModel.ToString()
+                                Value = isEvent ? "94" : (string.IsNullOrEmpty(ClientCache.Instance.BeastModel)) ? "94" :
+                                    ClientCache.Instance.BeastModel == "RandomAlly" ? allies[random.Next(allies.Count)] : ClientCache.Instance.BeastModel == "RandomEnemy" ? enemies[random.Next(enemies.Count)] : ClientCache.Instance.BeastModel
                             });
 
                             break;
@@ -357,7 +417,8 @@ namespace ReWriteClient.Data
                                 Address = 0x21CE0EE2,
                                 ManipulationType = ManipulationType.Set,
                                 Type = DataType.TwoBytes,
-                                Value = isEvent ? "101" : (string.IsNullOrEmpty(ClientCache.Instance.AuronModel)) ? "101" : ClientCache.Instance.AuronModel.ToString()
+                                Value = isEvent ? "101" : (string.IsNullOrEmpty(ClientCache.Instance.AuronModel)) ? "101" :
+                                    ClientCache.Instance.AuronModel == "RandomAlly" ? allies[random.Next(allies.Count)] : ClientCache.Instance.AuronModel == "RandomEnemy" ? enemies[random.Next(enemies.Count)] : ClientCache.Instance.AuronModel
                             });
 
                             break;
@@ -369,7 +430,8 @@ namespace ReWriteClient.Data
                                 Address = 0x21CE0F7E,
                                 ManipulationType = ManipulationType.Set,
                                 Type = DataType.TwoBytes,
-                                Value = isEvent ? "98" : (string.IsNullOrEmpty(ClientCache.Instance.AladdinModel)) ? "98" : ClientCache.Instance.AladdinModel.ToString()
+                                Value = isEvent ? "98" : (string.IsNullOrEmpty(ClientCache.Instance.AladdinModel)) ? "98" :
+                                    ClientCache.Instance.AladdinModel == "RandomAlly" ? allies[random.Next(allies.Count)] : ClientCache.Instance.AladdinModel == "RandomEnemy" ? enemies[random.Next(enemies.Count)] : ClientCache.Instance.AladdinModel
                             });
 
                             break;
@@ -381,7 +443,8 @@ namespace ReWriteClient.Data
                                 Address = 0x21CE10B6,
                                 ManipulationType = ManipulationType.Set,
                                 Type = DataType.TwoBytes,
-                                Value = isEvent ? "100" : (string.IsNullOrEmpty(ClientCache.Instance.MulanModel)) ? "100" : ClientCache.Instance.MulanModel.ToString()
+                                Value = isEvent ? "100" : (string.IsNullOrEmpty(ClientCache.Instance.MulanModel)) ? "100" :
+                                    ClientCache.Instance.MulanModel == "RandomAlly" ? allies[random.Next(allies.Count)] : ClientCache.Instance.MulanModel == "RandomEnemy" ? enemies[random.Next(enemies.Count)] : ClientCache.Instance.MulanModel
                             });
 
                             break;
@@ -393,7 +456,7 @@ namespace ReWriteClient.Data
                                 Address = 0x21CE1250,
                                 ManipulationType = ManipulationType.Set,
                                 Type = DataType.TwoBytes,
-                                Value = isEvent ? "650" : (string.IsNullOrEmpty(ClientCache.Instance.SoraLionModel)) ? "650" : ClientCache.Instance.SoraLionModel.ToString()
+                                Value = isEvent ? "650" : (string.IsNullOrEmpty(ClientCache.Instance.SoraLionModel)) ? "650" : ClientCache.Instance.SoraLionModel
                             });
 
                             this.UpdateMemory(new MemoryObject
@@ -401,7 +464,8 @@ namespace ReWriteClient.Data
                                 Address = 0x21CE1252,
                                 ManipulationType = ManipulationType.Set,
                                 Type = DataType.TwoBytes,
-                                Value = isEvent ? "1519" : (string.IsNullOrEmpty(ClientCache.Instance.DonaldBirdModel)) ? "1519" : ClientCache.Instance.DonaldBirdModel.ToString()
+                                Value = isEvent ? "1519" : (string.IsNullOrEmpty(ClientCache.Instance.DonaldBirdModel)) ? "1519" :
+                                    ClientCache.Instance.DonaldBirdModel == "RandomAlly" ? allies[random.Next(allies.Count)] : ClientCache.Instance.DonaldBirdModel == "RandomEnemy" ? enemies[random.Next(enemies.Count)] : ClientCache.Instance.DonaldBirdModel
                             });
 
                             this.UpdateMemory(new MemoryObject
@@ -409,7 +473,8 @@ namespace ReWriteClient.Data
                                 Address = 0x21CE1254,
                                 ManipulationType = ManipulationType.Set,
                                 Type = DataType.TwoBytes,
-                                Value = isEvent ? "1563" : (string.IsNullOrEmpty(ClientCache.Instance.GoofyTortoiseModel)) ? "1563" : ClientCache.Instance.GoofyTortoiseModel.ToString()
+                                Value = isEvent ? "1563" : (string.IsNullOrEmpty(ClientCache.Instance.GoofyTortoiseModel)) ? "1563" :
+                                    ClientCache.Instance.GoofyTortoiseModel == "RandomAlly" ? allies[random.Next(allies.Count)] : ClientCache.Instance.GoofyTortoiseModel == "RandomEnemy" ? enemies[random.Next(enemies.Count)] : ClientCache.Instance.GoofyTortoiseModel
                             });
 
                             this.UpdateMemory(new MemoryObject
@@ -417,7 +482,8 @@ namespace ReWriteClient.Data
                                 Address = 0x21CE1256,
                                 ManipulationType = ManipulationType.Set,
                                 Type = DataType.TwoBytes,
-                                Value = isEvent ? "97" : (string.IsNullOrEmpty(ClientCache.Instance.SimbaModel)) ? "97" : ClientCache.Instance.SimbaModel.ToString()
+                                Value = isEvent ? "97" : (string.IsNullOrEmpty(ClientCache.Instance.SimbaModel)) ? "97" :
+                                    ClientCache.Instance.SimbaModel == "RandomAlly" ? allies[random.Next(allies.Count)] : ClientCache.Instance.SimbaModel == "RandomEnemy" ? enemies[random.Next(enemies.Count)] : ClientCache.Instance.SimbaModel
                             });
 
                             break;
@@ -439,7 +505,7 @@ namespace ReWriteClient.Data
                                 Address = 0x21CE121C,
                                 ManipulationType = ManipulationType.Set,
                                 Type = DataType.TwoBytes,
-                                Value = isEvent ? "1623" : (string.IsNullOrEmpty(ClientCache.Instance.SoraTimelessRiverModel)) ? "1623" : ClientCache.Instance.SoraTimelessRiverModel.ToString()
+                                Value = isEvent ? "1623" : (string.IsNullOrEmpty(ClientCache.Instance.SoraTimelessRiverModel)) ? "1623" : ClientCache.Instance.SoraTimelessRiverModel
                             });
 
                             this.UpdateMemory(new MemoryObject
@@ -447,7 +513,8 @@ namespace ReWriteClient.Data
                                 Address = 0x21CE121E,
                                 ManipulationType = ManipulationType.Set,
                                 Type = DataType.TwoBytes,
-                                Value = isEvent ? "1487" : (string.IsNullOrEmpty(ClientCache.Instance.DonaldTimelessRiverModel)) ? "1487" : ClientCache.Instance.DonaldTimelessRiverModel.ToString()
+                                Value = isEvent ? "1487" : (string.IsNullOrEmpty(ClientCache.Instance.DonaldTimelessRiverModel)) ? "1487" :
+                                    ClientCache.Instance.DonaldTimelessRiverModel == "RandomAlly" ? allies[random.Next(allies.Count)] : ClientCache.Instance.DonaldTimelessRiverModel == "RandomEnemy" ? enemies[random.Next(enemies.Count)] : ClientCache.Instance.DonaldTimelessRiverModel
                             });
 
                             this.UpdateMemory(new MemoryObject
@@ -455,7 +522,8 @@ namespace ReWriteClient.Data
                                 Address = 0x21CE1220,
                                 ManipulationType = ManipulationType.Set,
                                 Type = DataType.TwoBytes,
-                                Value = isEvent ? "1269" : (string.IsNullOrEmpty(ClientCache.Instance.GoofyTimelessRiverModel)) ? "1269" : ClientCache.Instance.GoofyTimelessRiverModel.ToString()
+                                Value = isEvent ? "1269" : (string.IsNullOrEmpty(ClientCache.Instance.GoofyTimelessRiverModel)) ? "1269" :
+                                    ClientCache.Instance.GoofyTimelessRiverModel == "RandomAlly" ? allies[random.Next(allies.Count)] : ClientCache.Instance.GoofyTimelessRiverModel == "RandomEnemy" ? enemies[random.Next(enemies.Count)] : ClientCache.Instance.GoofyTimelessRiverModel
                             });
 
                             break;
@@ -468,7 +536,7 @@ namespace ReWriteClient.Data
                                     Address = 0x21CE0FAC,
                                     ManipulationType = ManipulationType.Set,
                                     Type = DataType.TwoBytes,
-                                    Value = isEvent ? "693" : (string.IsNullOrEmpty(ClientCache.Instance.SoraHalloweenModel)) ? "693" : ClientCache.Instance.SoraHalloweenModel.ToString()
+                                    Value = isEvent ? "693" : (string.IsNullOrEmpty(ClientCache.Instance.SoraHalloweenModel)) ? "693" : ClientCache.Instance.SoraHalloweenModel
                                 });
 
                                 this.UpdateMemory(new MemoryObject
@@ -476,7 +544,8 @@ namespace ReWriteClient.Data
                                     Address = 0x21CE0FAE,
                                     ManipulationType = ManipulationType.Set,
                                     Type = DataType.TwoBytes,
-                                    Value = isEvent ? "670" : (string.IsNullOrEmpty(ClientCache.Instance.DonaldHalloweenModel)) ? "670" : ClientCache.Instance.DonaldHalloweenModel.ToString()
+                                    Value = isEvent ? "670" : (string.IsNullOrEmpty(ClientCache.Instance.DonaldHalloweenModel)) ? "670" :
+                                        ClientCache.Instance.DonaldHalloweenModel == "RandomAlly" ? allies[random.Next(allies.Count)] : ClientCache.Instance.DonaldHalloweenModel == "RandomEnemy" ? enemies[random.Next(enemies.Count)] : ClientCache.Instance.DonaldHalloweenModel
                                 });
 
                                 this.UpdateMemory(new MemoryObject
@@ -484,7 +553,8 @@ namespace ReWriteClient.Data
                                     Address = 0x21CE0FB0,
                                     ManipulationType = ManipulationType.Set,
                                     Type = DataType.TwoBytes,
-                                    Value = isEvent ? "669" : (string.IsNullOrEmpty(ClientCache.Instance.GoofyHalloweenModel)) ? "669" : ClientCache.Instance.GoofyHalloweenModel.ToString()
+                                    Value = isEvent ? "669" : (string.IsNullOrEmpty(ClientCache.Instance.GoofyHalloweenModel)) ? "669" :
+                                        ClientCache.Instance.GoofyHalloweenModel == "RandomAlly" ? allies[random.Next(allies.Count)] : ClientCache.Instance.GoofyHalloweenModel == "RandomEnemy" ? enemies[random.Next(enemies.Count)] : ClientCache.Instance.GoofyHalloweenModel
                                 });
 
                                 this.UpdateMemory(new MemoryObject
@@ -492,7 +562,8 @@ namespace ReWriteClient.Data
                                     Address = 0x21CE101A,
                                     ManipulationType = ManipulationType.Set,
                                     Type = DataType.TwoBytes,
-                                    Value = isEvent ? "95" : (string.IsNullOrEmpty(ClientCache.Instance.JackSkellingtonModel)) ? "95" : ClientCache.Instance.JackSkellingtonModel.ToString()
+                                    Value = isEvent ? "95" : (string.IsNullOrEmpty(ClientCache.Instance.JackSkellingtonModel)) ? "95" :
+                                        ClientCache.Instance.JackSkellingtonModel == "RandomAlly" ? allies[random.Next(allies.Count)] : ClientCache.Instance.JackSkellingtonModel == "RandomEnemy" ? enemies[random.Next(enemies.Count)] : ClientCache.Instance.JackSkellingtonModel
                                 });
                             }
                             else
@@ -502,7 +573,7 @@ namespace ReWriteClient.Data
                                     Address = 0x21CE0FE0,
                                     ManipulationType = ManipulationType.Set,
                                     Type = DataType.TwoBytes,
-                                    Value = isEvent ? "2389" : (string.IsNullOrEmpty(ClientCache.Instance.SoraChristmasModel)) ? "2389" : ClientCache.Instance.SoraChristmasModel.ToString()
+                                    Value = isEvent ? "2389" : (string.IsNullOrEmpty(ClientCache.Instance.SoraChristmasModel)) ? "2389" : ClientCache.Instance.SoraChristmasModel
                                 });
 
                                 this.UpdateMemory(new MemoryObject
@@ -510,7 +581,8 @@ namespace ReWriteClient.Data
                                     Address = 0x21CE0FE2,
                                     ManipulationType = ManipulationType.Set,
                                     Type = DataType.TwoBytes,
-                                    Value = isEvent ? "2395" : (string.IsNullOrEmpty(ClientCache.Instance.DonaldChristmasModel)) ? "2395" : ClientCache.Instance.DonaldChristmasModel.ToString()
+                                    Value = isEvent ? "2395" : (string.IsNullOrEmpty(ClientCache.Instance.DonaldChristmasModel)) ? "2395" :
+                                        ClientCache.Instance.DonaldChristmasModel == "RandomAlly" ? allies[random.Next(allies.Count)] : ClientCache.Instance.DonaldChristmasModel == "RandomEnemy" ? enemies[random.Next(enemies.Count)] : ClientCache.Instance.DonaldChristmasModel
                                 });
 
                                 this.UpdateMemory(new MemoryObject
@@ -518,7 +590,8 @@ namespace ReWriteClient.Data
                                     Address = 0x21CE0FE4,
                                     ManipulationType = ManipulationType.Set,
                                     Type = DataType.TwoBytes,
-                                    Value = isEvent ? "2396" : (string.IsNullOrEmpty(ClientCache.Instance.GoofyChristmasModel)) ? "2396" : ClientCache.Instance.GoofyChristmasModel.ToString()
+                                    Value = isEvent ? "2396" : (string.IsNullOrEmpty(ClientCache.Instance.GoofyChristmasModel)) ? "2396" :
+                                        ClientCache.Instance.GoofyChristmasModel == "RandomAlly" ? allies[random.Next(allies.Count)] : ClientCache.Instance.GoofyChristmasModel == "RandomEnemy" ? enemies[random.Next(enemies.Count)] : ClientCache.Instance.GoofyChristmasModel
                                 });
 
                                 this.UpdateMemory(new MemoryObject
@@ -526,7 +599,8 @@ namespace ReWriteClient.Data
                                     Address = 0x21CE101A,
                                     ManipulationType = ManipulationType.Set,
                                     Type = DataType.TwoBytes,
-                                    Value = isEvent ? "96" : (string.IsNullOrEmpty(ClientCache.Instance.JackSkellingtonModel)) ? "96" : ClientCache.Instance.JackSkellingtonModel.ToString()
+                                    Value = isEvent ? "96" : (string.IsNullOrEmpty(ClientCache.Instance.JackSkellingtonModel)) ? "96" :
+                                        ClientCache.Instance.JackSkellingtonModel == "RandomAlly" ? allies[random.Next(allies.Count)] : ClientCache.Instance.JackSkellingtonModel == "RandomEnemy" ? enemies[random.Next(enemies.Count)] : ClientCache.Instance.JackSkellingtonModel
                                 });
                             }
 
@@ -538,7 +612,8 @@ namespace ReWriteClient.Data
                                 Address = 0x21CE0DDE,
                                 ManipulationType = ManipulationType.Set,
                                 Type = DataType.TwoBytes,
-                                Value = isEvent ? "2077" : (string.IsNullOrEmpty(ClientCache.Instance.CaptainJackSparrowModel)) ? "2077" : ClientCache.Instance.CaptainJackSparrowModel.ToString()
+                                Value = isEvent ? "2077" : (string.IsNullOrEmpty(ClientCache.Instance.CaptainJackSparrowModel)) ? "2077" :
+                                        ClientCache.Instance.CaptainJackSparrowModel == "RandomAlly" ? allies[random.Next(allies.Count)] : ClientCache.Instance.CaptainJackSparrowModel == "RandomEnemy" ? enemies[random.Next(enemies.Count)] : ClientCache.Instance.CaptainJackSparrowModel
                             });
 
                             break;
@@ -549,7 +624,7 @@ namespace ReWriteClient.Data
                                 Address = 0x21CE11E8,
                                 ManipulationType = ManipulationType.Set,
                                 Type = DataType.TwoBytes,
-                                Value = isEvent ? "1622" : (string.IsNullOrEmpty(ClientCache.Instance.SoraSpaceParanoidsModel)) ? "1622" : ClientCache.Instance.SoraSpaceParanoidsModel.ToString()
+                                Value = isEvent ? "1622" : (string.IsNullOrEmpty(ClientCache.Instance.SoraSpaceParanoidsModel)) ? "1622" : ClientCache.Instance.SoraSpaceParanoidsModel
                             });
 
                             this.UpdateMemory(new MemoryObject
@@ -557,7 +632,8 @@ namespace ReWriteClient.Data
                                 Address = 0x21CE11EA,
                                 ManipulationType = ManipulationType.Set,
                                 Type = DataType.TwoBytes,
-                                Value = isEvent ? "1370" : (string.IsNullOrEmpty(ClientCache.Instance.DonaldSpaceParanoidsModel)) ? "1370" : ClientCache.Instance.DonaldSpaceParanoidsModel.ToString()
+                                Value = isEvent ? "1370" : (string.IsNullOrEmpty(ClientCache.Instance.DonaldSpaceParanoidsModel)) ? "1370" :
+                                        ClientCache.Instance.DonaldSpaceParanoidsModel == "RandomAlly" ? allies[random.Next(allies.Count)] : ClientCache.Instance.DonaldSpaceParanoidsModel == "RandomEnemy" ? enemies[random.Next(enemies.Count)] : ClientCache.Instance.DonaldSpaceParanoidsModel
                             });
 
                             this.UpdateMemory(new MemoryObject
@@ -565,7 +641,8 @@ namespace ReWriteClient.Data
                                 Address = 0x21CE11EC,
                                 ManipulationType = ManipulationType.Set,
                                 Type = DataType.TwoBytes,
-                                Value = isEvent ? "1364" : (string.IsNullOrEmpty(ClientCache.Instance.GoofySpaceParanoidsModel)) ? "1364" : ClientCache.Instance.GoofySpaceParanoidsModel.ToString()
+                                Value = isEvent ? "1364" : (string.IsNullOrEmpty(ClientCache.Instance.GoofySpaceParanoidsModel)) ? "1364" :
+                                        ClientCache.Instance.GoofySpaceParanoidsModel == "RandomAlly" ? allies[random.Next(allies.Count)] : ClientCache.Instance.GoofySpaceParanoidsModel == "RandomEnemy" ? enemies[random.Next(enemies.Count)] : ClientCache.Instance.GoofySpaceParanoidsModel
                             });
 
                             this.UpdateMemory(new MemoryObject
@@ -573,7 +650,8 @@ namespace ReWriteClient.Data
                                 Address = 0x21CE11EE,
                                 ManipulationType = ManipulationType.Set,
                                 Type = DataType.TwoBytes,
-                                Value = isEvent ? "724" : (string.IsNullOrEmpty(ClientCache.Instance.TronModel)) ? "724" : ClientCache.Instance.TronModel.ToString()
+                                Value = isEvent ? "724" : (string.IsNullOrEmpty(ClientCache.Instance.TronModel)) ? "724" :
+                                        ClientCache.Instance.TronModel == "RandomAlly" ? allies[random.Next(allies.Count)] : ClientCache.Instance.TronModel == "RandomEnemy" ? enemies[random.Next(enemies.Count)] : ClientCache.Instance.TronModel
                             });
 
                             break;

@@ -4,9 +4,10 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
-    <Version>0.7.0</Version>
+    <Version>0.9.0</Version>
     <Authors>WaterKH</Authors>
-    <PackageReleaseNotes>0.7.0 - Updated according to Project Release 0.7.0
+    <PackageReleaseNotes>0.9.0 - Updated according to Project Release 0.9.0
+0.7.0 - Updated according to Project Release 0.7.0
 0.6.2 - ModelSwapping Bug Fix
 0.6.0 - Updated according to Project Release 0.6.0
 0.5.0 - Updated according to Project Release 0.5.0 
@@ -31,7 +32,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="MemoryContract" Version="1.0.15" />
+    <PackageReference Include="MemoryContract" Version="1.0.16" />
     <PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="3.1.9" />
   </ItemGroup>

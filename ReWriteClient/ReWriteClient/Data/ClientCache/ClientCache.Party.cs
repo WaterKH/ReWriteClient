@@ -65,8 +65,6 @@ namespace ReWriteClient.Data
 
         public string BeastAccessorySlots { get; set; }
         public string BeastAccessorySlot1 { get; set; }
-        public string BeastAccessorySlot2 { get; set; }
-        public string BeastAccessorySlot3 { get; set; }
         public string BeastItemSlots { get; set; }
         public string BeastItemSlot1 { get; set; }
         public string BeastItemSlot2 { get; set; }

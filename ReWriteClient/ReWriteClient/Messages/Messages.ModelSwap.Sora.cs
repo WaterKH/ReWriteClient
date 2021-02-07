@@ -112,6 +112,100 @@ namespace ReWriteClient.Messages
             return true;
         }
 
+        #region Forms
+
+        public static bool SendSoraValorFormModelMessage(ManipulationType manipulationType, string value)
+        {
+            memoryProcessor.UpdateMemory(new MemoryObject
+            {
+                Address = 0x21CE0B70,
+                Type = DataType.TwoBytes,
+                ManipulationType = manipulationType,
+                Value = value
+            });
+
+            SetupModelTimer(SoraFormModelTimer, 0x21CE0B70, "85", "ValorSora");
+
+            return true;
+        }
+
+        public static bool SendSoraWisdomFormModelMessage(ManipulationType manipulationType, string value)
+        {
+            memoryProcessor.UpdateMemory(new MemoryObject
+            {
+                Address = 0x21CE0B72,
+                Type = DataType.TwoBytes,
+                ManipulationType = manipulationType,
+                Value = value
+            });
+
+            SetupModelTimer(SoraFormModelTimer, 0x21CE0B72, "86", "WisdomSora");
+
+            return true;
+        }
+
+        public static bool SendSoraLimitFormModelMessage(ManipulationType manipulationType, string value)
+        {
+            memoryProcessor.UpdateMemory(new MemoryObject
+            {
+                Address = 0x21CE0B74,
+                Type = DataType.TwoBytes,
+                ManipulationType = manipulationType,
+                Value = value
+            });
+
+            SetupModelTimer(SoraFormModelTimer, 0x21CE0B74, "2397", "LimitSora");
+
+            return true;
+        }
+
+        public static bool SendSoraMasterFormModelMessage(ManipulationType manipulationType, string value)
+        {
+            memoryProcessor.UpdateMemory(new MemoryObject
+            {
+                Address = 0x21CE0B76,
+                Type = DataType.TwoBytes,
+                ManipulationType = manipulationType,
+                Value = value
+            });
+
+            SetupModelTimer(SoraFormModelTimer, 0x21CE0B76, "87", "MasterSora");
+
+            return true;
+        }
+
+        public static bool SendSoraFinalFormModelMessage(ManipulationType manipulationType, string value)
+        {
+            memoryProcessor.UpdateMemory(new MemoryObject
+            {
+                Address = 0x21CE0B78,
+                Type = DataType.TwoBytes,
+                ManipulationType = manipulationType,
+                Value = value
+            });
+
+            SetupModelTimer(SoraFormModelTimer, 0x21CE0B78, "88", "FinalSora");
+
+            return true;
+        }
+
+        public static bool SendSoraAntiFormModelMessage(ManipulationType manipulationType, string value)
+        {
+            memoryProcessor.UpdateMemory(new MemoryObject
+            {
+                Address = 0x21CE0B7A,
+                Type = DataType.TwoBytes,
+                ManipulationType = manipulationType,
+                Value = value
+            });
+
+            SetupModelTimer(SoraFormModelTimer, 0x21CE0B7A, "89", "AntiSora");
+
+            return true;
+        }
+
+        #endregion Forms
+
         #endregion Sora
     }
 }
