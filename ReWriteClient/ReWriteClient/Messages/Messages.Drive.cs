@@ -1,5 +1,6 @@
 ﻿using ReWriteClient.Data;
 using ReWriteClient.Enums;
+using Waterkh.Common.Mappings;
 using Waterkh.Common.Memory;
 
 namespace ReWriteClient.Messages
@@ -95,7 +96,7 @@ namespace ReWriteClient.Messages
             // Enable Popup
             memoryProcessor.UpdateMemory(new MemoryObject { Address = 0x21C5FF51, Type = DataType.Byte, ManipulationType = ManipulationType.Set, Value = "0" });
             // Press Triangle Reaction Command
-            CreateInterval(new MemoryObject { Name = "Press Triangle Reaction Command", Address = 0x2034D45D, Type = DataType.Byte, ManipulationType = ManipulationType.Set, Value = ButtonMappings.Button["Triangle"], IsValueHex = true });
+            CreateInterval(new MemoryObject { Name = "Press Triangle Reaction Command", Address = 0x2034D45D, Type = DataType.Byte, ManipulationType = ManipulationType.Set, Value = ButtonMapping.Button["Triangle"], IsValueHex = true });
 
             return true; // TODO How would we tell if this triggered or not?
         }

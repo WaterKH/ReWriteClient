@@ -2,6 +2,7 @@
 using ReWriteClient.Enums;
 using System;
 using System.Timers;
+using Waterkh.Common.Mappings;
 using Waterkh.Common.Memory;
 
 namespace ReWriteClient.Messages
@@ -1398,7 +1399,7 @@ namespace ReWriteClient.Messages
 
         public static bool SendSoraActivateAbilityMessage(ManipulationType manipulationType, string value)
         {
-            var ability = AbilityMappings.SoraAbilities[value];
+            var ability = AbilityMapping.SoraAbilities[value];
 
             var memoryObject = new MemoryObject { Address = 0x2032E074, Type = DataType.Byte, ManipulationType = manipulationType, Value = ability.Value.ToString(), IsValueHex = true };
 
@@ -1412,7 +1413,7 @@ namespace ReWriteClient.Messages
 
         public static bool SendSoraDeactivateAbilityMessage(ManipulationType manipulationType, string value)
         {
-            var ability = AbilityMappings.SoraAbilities[value];
+            var ability = AbilityMapping.SoraAbilities[value];
 
             var memoryObject = new MemoryObject { Address = 0x2032E074, Type = DataType.Byte, ManipulationType = manipulationType, Value = ability.Value.ToString(), IsValueHex = true };
 

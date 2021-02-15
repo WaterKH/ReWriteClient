@@ -1,6 +1,7 @@
 ﻿using ReWriteClient.Enums;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Waterkh.Common.Mappings;
 using Waterkh.Common.Memory;
 
 namespace ReWriteClient.Data
@@ -396,7 +397,7 @@ namespace ReWriteClient.Data
         {
             foreach (var ability in this.SoraAbilities)
             {
-                var abilityValue = AbilityMappings.SoraAbilities[ability];
+                var abilityValue = AbilityMapping.SoraAbilities[ability];
 
                 var memoryObject = new MemoryObject { Address = 0x2032E074, Type = DataType.Byte, ManipulationType = ManipulationType.Set, Value = abilityValue.Value.ToString(), IsValueHex = true };
 

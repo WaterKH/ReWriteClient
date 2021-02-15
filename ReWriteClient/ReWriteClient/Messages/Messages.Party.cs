@@ -1,5 +1,6 @@
 ﻿using ReWriteClient.Data;
 using ReWriteClient.Enums;
+using Waterkh.Common.Mappings;
 using Waterkh.Common.Memory;
 
 namespace ReWriteClient.Messages
@@ -171,7 +172,7 @@ namespace ReWriteClient.Messages
 
         public static bool SendDonaldActivateAbilityMessage(ManipulationType manipulationType, string value)
         {
-            var ability = AbilityMappings.DonaldAbilities[value];
+            var ability = AbilityMapping.DonaldAbilities[value];
 
             var memoryObject = new MemoryObject { Address = 0x2032E188, Type = DataType.Byte, ManipulationType = manipulationType, Value = ability.Value.ToString(), IsValueHex = true };
 
@@ -182,7 +183,7 @@ namespace ReWriteClient.Messages
 
         public static bool SendDonaldDeactivateAbilityMessage(ManipulationType manipulationType, string value)
         {
-            var ability = AbilityMappings.DonaldAbilities[value];
+            var ability = AbilityMapping.DonaldAbilities[value];
 
             var memoryObject = new MemoryObject { Address = 0x2032E188, Type = DataType.Byte, ManipulationType = manipulationType, Value = ability.Value.ToString(), IsValueHex = true };
 
@@ -386,7 +387,7 @@ namespace ReWriteClient.Messages
 
         public static bool SendGoofyActivateAbilityMessage(ManipulationType manipulationType, string value)
         {
-            var ability = AbilityMappings.GoofyAbilities[value];
+            var ability = AbilityMapping.GoofyAbilities[value];
 
             var memoryObject = new MemoryObject { Address = 0x2032E29C, Type = DataType.Byte, ManipulationType = manipulationType, Value = ability.Value.ToString(), IsValueHex = true };
 
@@ -397,7 +398,7 @@ namespace ReWriteClient.Messages
 
         public static bool SendGoofyDeactivateAbilityMessage(ManipulationType manipulationType, string value)
         {
-            var ability = AbilityMappings.GoofyAbilities[value];
+            var ability = AbilityMapping.GoofyAbilities[value];
 
             var memoryObject = new MemoryObject { Address = 0x2032E29C, Type = DataType.Byte, ManipulationType = manipulationType, Value = ability.Value.ToString(), IsValueHex = true };
 
@@ -532,7 +533,7 @@ namespace ReWriteClient.Messages
 
         public static bool SendMulanActivateAbilityMessage(ManipulationType manipulationType, string value)
         {
-            var ability = AbilityMappings.MulanAbilities[value];
+            var ability = AbilityMapping.MulanAbilities[value];
 
             var memoryObject = new MemoryObject { Address = 0x2032E5D8, Type = DataType.Byte, ManipulationType = manipulationType, Value = ability.Value.ToString(), IsValueHex = true };
 
@@ -543,7 +544,7 @@ namespace ReWriteClient.Messages
 
         public static bool SendMulanDeactivateAbilityMessage(ManipulationType manipulationType, string value)
         {
-            var ability = AbilityMappings.MulanAbilities[value];
+            var ability = AbilityMapping.MulanAbilities[value];
 
             var memoryObject = new MemoryObject { Address = 0x2032E5D8, Type = DataType.Byte, ManipulationType = manipulationType, Value = ability.Value.ToString(), IsValueHex = true };
 
@@ -661,7 +662,7 @@ namespace ReWriteClient.Messages
 
         public static bool SendBeastActivateAbilityMessage(ManipulationType manipulationType, string value)
         {
-            var ability = AbilityMappings.BeastAbilities[value];
+            var ability = AbilityMapping.BeastAbilities[value];
 
             var memoryObject = new MemoryObject { Address = 0x2032E914, Type = DataType.Byte, ManipulationType = manipulationType, Value = ability.Value.ToString(), IsValueHex = true };
 
@@ -672,7 +673,7 @@ namespace ReWriteClient.Messages
 
         public static bool SendBeastDeactivateAbilityMessage(ManipulationType manipulationType, string value)
         {
-            var ability = AbilityMappings.BeastAbilities[value];
+            var ability = AbilityMapping.BeastAbilities[value];
 
             var memoryObject = new MemoryObject { Address = 0x2032E914, Type = DataType.Byte, ManipulationType = manipulationType, Value = ability.Value.ToString(), IsValueHex = true };
 
@@ -764,7 +765,7 @@ namespace ReWriteClient.Messages
 
         public static bool SendAuronActivateAbilityMessage(ManipulationType manipulationType, string value)
         {
-            var ability = AbilityMappings.AuronAbilities[value];
+            var ability = AbilityMapping.AuronAbilities[value];
 
             var memoryObject = new MemoryObject { Address = 0x2032E4C4, Type = DataType.Byte, ManipulationType = manipulationType, Value = ability.Value.ToString(), IsValueHex = true };
 
@@ -775,7 +776,7 @@ namespace ReWriteClient.Messages
 
         public static bool SendAuronDeactivateAbilityMessage(ManipulationType manipulationType, string value)
         {
-            var ability = AbilityMappings.AuronAbilities[value];
+            var ability = AbilityMapping.AuronAbilities[value];
 
             var memoryObject = new MemoryObject { Address = 0x2032E4C4, Type = DataType.Byte, ManipulationType = manipulationType, Value = ability.Value.ToString(), IsValueHex = true };
 
@@ -923,7 +924,7 @@ namespace ReWriteClient.Messages
 
         public static bool SendCaptainJackSparrowActivateAbilityMessage(ManipulationType manipulationType, string value)
         {
-            var ability = AbilityMappings.CaptainJackSparrowAbilities[value];
+            var ability = AbilityMapping.CaptainJackSparrowAbilities[value];
 
             var memoryObject = new MemoryObject { Address = 0x2032E800, Type = DataType.Byte, ManipulationType = manipulationType, Value = ability.Value.ToString(), IsValueHex = true };
 
@@ -934,7 +935,7 @@ namespace ReWriteClient.Messages
 
         public static bool SendCaptainJackSparrowDeactivateAbilityMessage(ManipulationType manipulationType, string value)
         {
-            var ability = AbilityMappings.CaptainJackSparrowAbilities[value];
+            var ability = AbilityMapping.CaptainJackSparrowAbilities[value];
 
             var memoryObject = new MemoryObject { Address = 0x2032E800, Type = DataType.Byte, ManipulationType = manipulationType, Value = ability.Value.ToString(), IsValueHex = true };
 
@@ -1078,7 +1079,7 @@ namespace ReWriteClient.Messages
 
         public static bool SendAladdinActivateAbilityMessage(ManipulationType manipulationType, string value)
         {
-            var ability = AbilityMappings.AladdinAbilities[value];
+            var ability = AbilityMapping.AladdinAbilities[value];
 
             var memoryObject = new MemoryObject { Address = 0x2032E6EC, Type = DataType.Byte, ManipulationType = manipulationType, Value = ability.Value.ToString(), IsValueHex = true };
 
@@ -1089,7 +1090,7 @@ namespace ReWriteClient.Messages
 
         public static bool SendAladdinDeactivateAbilityMessage(ManipulationType manipulationType, string value)
         {
-            var ability = AbilityMappings.AladdinAbilities[value];
+            var ability = AbilityMapping.AladdinAbilities[value];
 
             var memoryObject = new MemoryObject { Address = 0x2032E6EC, Type = DataType.Byte, ManipulationType = manipulationType, Value = ability.Value.ToString(), IsValueHex = true };
 
@@ -1207,7 +1208,7 @@ namespace ReWriteClient.Messages
 
         public static bool SendJackSkellingtonActivateAbilityMessage(ManipulationType manipulationType, string value)
         {
-            var ability = AbilityMappings.JackSkellingtonAbilities[value];
+            var ability = AbilityMapping.JackSkellingtonAbilities[value];
 
             var memoryObject = new MemoryObject { Address = 0x2032EA28, Type = DataType.Byte, ManipulationType = manipulationType, Value = ability.Value.ToString(), IsValueHex = true };
 
@@ -1218,7 +1219,7 @@ namespace ReWriteClient.Messages
 
         public static bool SendJackSkellingtonDeactivateAbilityMessage(ManipulationType manipulationType, string value)
         {
-            var ability = AbilityMappings.JackSkellingtonAbilities[value];
+            var ability = AbilityMapping.JackSkellingtonAbilities[value];
 
             var memoryObject = new MemoryObject { Address = 0x2032EA28, Type = DataType.Byte, ManipulationType = manipulationType, Value = ability.Value.ToString(), IsValueHex = true };
 
@@ -1336,7 +1337,7 @@ namespace ReWriteClient.Messages
 
         public static bool SendSimbaActivateAbilityMessage(ManipulationType manipulationType, string value)
         {
-            var ability = AbilityMappings.SimbaAbilities[value];
+            var ability = AbilityMapping.SimbaAbilities[value];
 
             var memoryObject = new MemoryObject { Address = 0x2032EB3C, Type = DataType.Byte, ManipulationType = manipulationType, Value = ability.Value.ToString(), IsValueHex = true };
 
@@ -1347,7 +1348,7 @@ namespace ReWriteClient.Messages
 
         public static bool SendSimbaDeactivateAbilityMessage(ManipulationType manipulationType, string value)
         {
-            var ability = AbilityMappings.SimbaAbilities[value];
+            var ability = AbilityMapping.SimbaAbilities[value];
 
             var memoryObject = new MemoryObject { Address = 0x2032EB3C, Type = DataType.Byte, ManipulationType = manipulationType, Value = ability.Value.ToString(), IsValueHex = true };
 
@@ -1469,7 +1470,7 @@ namespace ReWriteClient.Messages
 
         public static bool SendTronActivateAbilityMessage(ManipulationType manipulationType, string value)
         {
-            var ability = AbilityMappings.TronAbilities[value];
+            var ability = AbilityMapping.TronAbilities[value];
 
             var memoryObject = new MemoryObject { Address = 0x2032EC50, Type = DataType.Byte, ManipulationType = manipulationType, Value = ability.Value.ToString(), IsValueHex = true };
 
@@ -1480,7 +1481,7 @@ namespace ReWriteClient.Messages
 
         public static bool SendTronDeactivateAbilityMessage(ManipulationType manipulationType, string value)
         {
-            var ability = AbilityMappings.TronAbilities[value];
+            var ability = AbilityMapping.TronAbilities[value];
 
             var memoryObject = new MemoryObject { Address = 0x2032EC50, Type = DataType.Byte, ManipulationType = manipulationType, Value = ability.Value.ToString(), IsValueHex = true };
 
@@ -1667,7 +1668,7 @@ namespace ReWriteClient.Messages
 
         public static bool SendRikuActivateAbilityMessage(ManipulationType manipulationType, string value)
         {
-            var ability = AbilityMappings.RikuAbilities[value];
+            var ability = AbilityMapping.RikuAbilities[value];
 
             var memoryObject = new MemoryObject { Address = 0x2032ED64, Type = DataType.Byte, ManipulationType = manipulationType, Value = ability.Value.ToString(), IsValueHex = true };
 
@@ -1678,7 +1679,7 @@ namespace ReWriteClient.Messages
 
         public static bool SendRikuDeactivateAbilityMessage(ManipulationType manipulationType, string value)
         {
-            var ability = AbilityMappings.RikuAbilities[value];
+            var ability = AbilityMapping.RikuAbilities[value];
 
             var memoryObject = new MemoryObject { Address = 0x2032ED64, Type = DataType.Byte, ManipulationType = manipulationType, Value = ability.Value.ToString(), IsValueHex = true };
 

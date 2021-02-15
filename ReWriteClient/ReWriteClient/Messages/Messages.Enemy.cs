@@ -1,6 +1,7 @@
 ﻿using ReWriteClient.Data;
 using ReWriteClient.Enums;
 using System.Timers;
+using Waterkh.Common.Mappings;
 using Waterkh.Common.Memory;
 
 namespace ReWriteClient.Messages
@@ -34,8 +35,8 @@ namespace ReWriteClient.Messages
             var change = value.Split(':')[1];
             var changeTo = value.Split(':')[0];
 
-            var enemyChange = EnemyMappings.Enemies[change];
-            var enemyChangeTo = EnemyMappings.Enemies[changeTo];
+            var enemyChange = EnemyMapping.Enemies[change];
+            var enemyChangeTo = EnemyMapping.Enemies[changeTo];
 
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
@@ -51,7 +52,7 @@ namespace ReWriteClient.Messages
 
         public static bool SendBossActivateHealthTimerMessage(ManipulationType manipulationType, string value)
         {
-            var entitySlot = EntitySlotMappings.EntitySlots[EnemyMappings.Enemies[value].EntitySlot];
+            var entitySlot = EntitySlotMapping.EntitySlots[EnemyMapping.Enemies[value].EntitySlot];
 
             EnemyHealthTimer.Elapsed += (sender, obj) =>
             {
@@ -78,7 +79,7 @@ namespace ReWriteClient.Messages
 
         public static bool SendBossActivateStrengthTimerMessage(ManipulationType manipulationType, string value)
         {
-            var entitySlot = EntitySlotMappings.EntitySlots[EnemyMappings.Enemies[value].EntitySlot];
+            var entitySlot = EntitySlotMapping.EntitySlots[EnemyMapping.Enemies[value].EntitySlot];
 
             EnemyStrengthTimer.Elapsed += (sender, obj) =>
             {
@@ -106,7 +107,7 @@ namespace ReWriteClient.Messages
 
         public static bool SendBossActivateDefenseTimerMessage(ManipulationType manipulationType, string value)
         {
-            var entitySlot = EntitySlotMappings.EntitySlots[EnemyMappings.Enemies[value].EntitySlot];
+            var entitySlot = EntitySlotMapping.EntitySlots[EnemyMapping.Enemies[value].EntitySlot];
 
             EnemyDefenseTimer.Elapsed += (sender, obj) =>
             {
@@ -141,7 +142,7 @@ namespace ReWriteClient.Messages
             var change = value.Split(':')[0];
             var changeValue = value.Split(':')[1];
 
-            var entitySlot = EntitySlotMappings.EntitySlots[EnemyMappings.Enemies[change].EntitySlot];
+            var entitySlot = EntitySlotMapping.EntitySlots[EnemyMapping.Enemies[change].EntitySlot];
 
             var maxHealth = 0;
             switch (changeValue)
@@ -173,7 +174,7 @@ namespace ReWriteClient.Messages
             var change = value.Split(':')[0];
             var changeValue = value.Split(':')[1];
 
-            var entitySlot = EntitySlotMappings.EntitySlots[EnemyMappings.Enemies[change].EntitySlot];
+            var entitySlot = EntitySlotMapping.EntitySlots[EnemyMapping.Enemies[change].EntitySlot];
 
             var health = 0;
             switch(changeValue)
@@ -205,7 +206,7 @@ namespace ReWriteClient.Messages
             var change = value.Split(':')[0];
             var changeValue = value.Split(':')[1];
 
-            var entitySlot = EntitySlotMappings.EntitySlots[EnemyMappings.Enemies[change].EntitySlot];
+            var entitySlot = EntitySlotMapping.EntitySlots[EnemyMapping.Enemies[change].EntitySlot];
 
             var strength = 0;
             switch (changeValue)
@@ -237,7 +238,7 @@ namespace ReWriteClient.Messages
             var change = value.Split(':')[0];
             var changeValue = value.Split(':')[1];
 
-            var entitySlot = EntitySlotMappings.EntitySlots[EnemyMappings.Enemies[change].EntitySlot];
+            var entitySlot = EntitySlotMapping.EntitySlots[EnemyMapping.Enemies[change].EntitySlot];
 
             var defense = 0;
             switch (changeValue)

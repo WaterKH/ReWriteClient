@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
+using Waterkh.Common.Mappings;
 using Waterkh.Common.Memory;
 
 namespace ReWriteClient.Data
@@ -252,7 +253,7 @@ namespace ReWriteClient.Data
                 ReadProcessMemory(ProcessHandle, (IntPtr)0x2032BAE0, world, 1, out _);
                 ReadProcessMemory(ProcessHandle, (IntPtr)0x2032BAE1, room, 1, out _);
 
-                EventMappings.Instance.Events.TryGetValue((int)world[0], out var rooms);
+                EventMapping.Instance.Events.TryGetValue((int)world[0], out var rooms);
 
                 if (rooms == null)
                     return;
