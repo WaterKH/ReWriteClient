@@ -20,7 +20,8 @@
         <Grid Margin="0,59,14,0" Height="59" VerticalAlignment="Top" HorizontalAlignment="Right" Width="350">
             <Button Name="ServerConnectButton" Content="Connect to Server" Margin="0,0,14,0" VerticalAlignment="Top" Height="25" Click="ServerConnectClicked" HorizontalAlignment="Right" Width="110"/>
             <TextBox Name="UsernameInput" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Margin="0,0,124,0" Height="25" HorizontalAlignment="Right" Width="220"/>
-            <Label Name="ServerConnectionStatusMessage" Content="" Margin="0,30,14,0" HorizontalAlignment="Right" Width="330" Height="24" VerticalAlignment="Top"/>
+            <Label Name="ServerConnectionStatusMessage" Content="" Margin="0,30,124,0" HorizontalAlignment="Right" Width="220" Height="24" VerticalAlignment="Top"/>
+            <Button x:Name="ServerDisconnectButton" Visibility="Hidden" Content="Disconnect" Margin="0,29,14,0" VerticalAlignment="Top" Height="25" Click="ServerDisconnectClicked" HorizontalAlignment="Right" Width="110"/>
 
             <!--<Button Content="Update Options" Margin="650,30,0,0" Click="UpdateOptions" HorizontalAlignment="Left" Width="110" Height="24" VerticalAlignment="Top"/>-->
 
