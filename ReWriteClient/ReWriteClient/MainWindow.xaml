@@ -8,20 +8,31 @@
         Title="Re:Write" Height="527" Width="808">
 
     <Grid Margin="0,0,10,0">
+
+        <Grid Margin="10,10,0,0" HorizontalAlignment="Left" Width="275" Height="49" VerticalAlignment="Top">
+
+            <Button Name="StartSoloButton" Background="LimeGreen" Content="Start Solo" HorizontalAlignment="Left" Margin="0,0,0,0" Width="114" Click="StartSoloClicked" Height="25" VerticalAlignment="Top"/>
+            <Button Name="StopSoloButton" Visibility="Hidden" Background="PaleVioletRed" Content="Stop Solo" HorizontalAlignment="Left" Margin="138,0,0,0" Width="114" Click="StopSoloClicked" Height="25" VerticalAlignment="Top"/>
+            <Label Content="Random Event per Second:" HorizontalAlignment="Left" Margin="0,24,0,0" VerticalAlignment="Top" Height="25" Width="155"/>
+            <TextBox Name="RandomEventPerSecond" HorizontalAlignment="Left" Margin="155,30,0,0" Text="60" TextWrapping="Wrap" VerticalAlignment="Top" Width="97"/>
+
+        </Grid>
+
         <Label Name="Title" Content="Re:Write (Client)" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Height="44" FontSize="25"/>
 
         <Grid Margin="10,59,0,0" HorizontalAlignment="Left" Width="419" Height="59" VerticalAlignment="Top">
 
             <Button Name="Pcsx2ConnectButton" Content="Connect to PCSX2" HorizontalAlignment="Left" Margin="0,0,0,0" Width="114" Click="ClientConnectClicked" Height="25" VerticalAlignment="Top"/>
-            <Label Name="ClientConnectionStatusMessage" Content="" HorizontalAlignment="Left" Margin="0,30,0,0" VerticalAlignment="Top" Width="210" Height="24"/>
+            <Label Name="ClientConnectionStatusMessage" Content="" HorizontalAlignment="Left" Margin="119,0,0,0" VerticalAlignment="Top" Width="210" Height="24"/>
             <Button Name="ClosePopupButton" Content="Close Popup" HorizontalAlignment="Left" Margin="240,30,0,0" VerticalAlignment="Top" Width="81" Height="29" Visibility="Hidden" Click="ClosePopup"/>
+            <Button Name="ClientDisconnectButton" Visibility="Hidden" Content="Disconnect" HorizontalAlignment="Left" Margin="0,30,0,0" Width="114" Click="ClientDisconnectClicked" Height="24" VerticalAlignment="Top"/>
 
         </Grid>
         <Grid Margin="0,59,14,0" Height="59" VerticalAlignment="Top" HorizontalAlignment="Right" Width="350">
             <Button Name="ServerConnectButton" Content="Connect to Server" Margin="0,0,14,0" VerticalAlignment="Top" Height="25" Click="ServerConnectClicked" HorizontalAlignment="Right" Width="110"/>
             <TextBox Name="UsernameInput" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Margin="0,0,124,0" Height="25" HorizontalAlignment="Right" Width="220"/>
             <Label Name="ServerConnectionStatusMessage" Content="" Margin="0,30,124,0" HorizontalAlignment="Right" Width="220" Height="24" VerticalAlignment="Top"/>
-            <Button x:Name="ServerDisconnectButton" Visibility="Hidden" Content="Disconnect" Margin="0,29,14,0" VerticalAlignment="Top" Height="25" Click="ServerDisconnectClicked" HorizontalAlignment="Right" Width="110"/>
+            <Button Name="ServerDisconnectButton" Visibility="Hidden" Content="Disconnect" Margin="0,29,14,0" VerticalAlignment="Top" Height="25" Click="ServerDisconnectClicked" HorizontalAlignment="Right" Width="110"/>
 
             <!--<Button Content="Update Options" Margin="650,30,0,0" Click="UpdateOptions" HorizontalAlignment="Left" Width="110" Height="24" VerticalAlignment="Top"/>-->
 

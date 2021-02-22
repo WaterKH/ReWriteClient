@@ -53,6 +53,23 @@ namespace ReWriteClient.Data
             return true;
         }
 
+        public bool DisconnectFromProcess()
+        {
+            try
+            {
+                Process = null;
+                ProcessHandle = IntPtr.Zero;
+            }
+            catch (Exception e)
+            {
+                Logger.Instance.Error(e.Message, "DisconnectFromProcess");
+
+                return false;
+            }
+
+            return true;
+        }
+
         public bool UpdateMemory(MemoryObject obj)
         {
             if (ProcessHandle == IntPtr.Zero)

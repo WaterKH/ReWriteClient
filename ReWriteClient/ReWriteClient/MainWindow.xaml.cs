@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -28,6 +29,8 @@ namespace ReWriteClient
         private bool serverConnected = false;
         private bool clientConnected = false;
 
+        private Timer soloTimer;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -41,9 +44,25 @@ namespace ReWriteClient
 
         #region View Methods
 
-        private void ClientConnectClicked(object sender, RoutedEventArgs e)
+        private async void ClientConnectClicked(object sender, RoutedEventArgs e)
         {
-            this.ConnectToClient();
+            await this.ConnectToClient();
+        }
+
+        private async void ClientDisconnectClicked(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                await this.DisconnectFromClient();
+            }
+            catch (Exception ex)
+            {
+                this.ClientConnectionStatusMessage.Content = ex.Message;
+
+                this.clientConnected = false;
+
+                Logger.Instance.Error(ex.Message, "ClientDisconnectClicked");
+            }
         }
 
         private async void ServerConnectClicked(object sender, RoutedEventArgs e)
@@ -104,9 +123,33 @@ namespace ReWriteClient
             messageHub.UpdateOptionsMessage();
         }
 
+        private async void StartSoloClicked(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                this.StartSoloPlay();
+            }
+            catch (Exception ex)
+            {
+                Logger.Instance.Error($"Error Starting Solo: {ex.Message}", "StartSoloClicked");
+            }
+        }
+
+        private async void StopSoloClicked(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                this.StopSoloPlay();
+            }
+            catch(Exception ex)
+            {
+                Logger.Instance.Error($"Error Stoping Solo: {ex.Message}", "StopSoloClicked");
+            }
+        }
+
         #endregion View Methods
 
-        private void ConnectToClient()
+        private async Task ConnectToClient()
         {
             try
             {
@@ -122,6 +165,8 @@ namespace ReWriteClient
 
                         this.clientConnected = true;
                     });
+
+                    ClientDisconnectButton.Visibility = Visibility.Visible;
 
                     return;
                 }
@@ -139,6 +184,13 @@ namespace ReWriteClient
 
                 this.clientConnected = false;
             });
+        }
+
+        private async Task DisconnectFromClient()
+        {
+            this.memoryProcessor.DisconnectFromProcess();
+
+            ClientDisconnectButton.Visibility = Visibility.Hidden;
         }
 
         private async Task ReconnectClientConnection()
@@ -296,7 +348,7 @@ namespace ReWriteClient
 
                     var method = methodsInGroup.FirstOrDefault(x => x.Key == subButton.MethodName).Value;
 
-                    uiButton.Click += (sender, e) => { method.Invoke(subButton.ManipulationType, subButton.Value.ToString()); ClosePopup(null, null); };
+                    uiButton.Click += (sender, e) => { method.Method.Invoke(subButton.ManipulationType, subButton.Value.ToString()); ClosePopup(null, null); };
 
                     ((WrapPanel)(SubCommands.Content)).Children.Add(uiButton);
                 }
@@ -312,6 +364,41 @@ namespace ReWriteClient
             SubCommandsPopup.IsOpen = false;
 
             ClosePopupButton.Visibility = Visibility.Hidden;
+        }
+
+        public void StartSoloPlay()
+        {
+            int randomValueParsed = 0;
+
+            try
+            {
+                randomValueParsed = int.Parse(RandomEventPerSecond.Text);
+            }
+            catch(Exception ex)
+            {
+                Logger.Instance.Error(ex.Message, "StartSoloPlay");
+            }
+
+            if (randomValueParsed == 0)
+                return;
+
+            this.soloTimer = new Timer
+            {
+                AutoReset = true,
+                Interval = randomValueParsed * 1000
+            };
+
+            this.soloTimer.Elapsed += (object sender, ElapsedEventArgs e) => {
+                Messages.Messages.Instance.SelectRandomMessage();
+            };
+        }
+
+        public void StopSoloPlay()
+        {
+            this.soloTimer.Stop();
+            this.soloTimer.Dispose();
+
+            this.soloTimer = null;
         }
     }
 }

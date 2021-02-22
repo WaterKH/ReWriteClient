@@ -202,37 +202,37 @@ namespace ReWriteClient.Data
         public async Task RefreshDonaldPartyCache()
         {
             if (!string.IsNullOrEmpty(this.DonaldStaff))
-                this.messages.MessageMappings["Party"]["SendEquipStaffMessage"].Invoke(ManipulationType.Set, this.DonaldStaff);
+                this.messages.MessageMappings["Party"]["SendEquipStaffMessage"].Method.Invoke(ManipulationType.Set, this.DonaldStaff);
             
             if (!string.IsNullOrEmpty(this.DonaldArmorSlots))
-                this.messages.MessageMappings["Party"]["SendDonaldArmorSlotsMessage"].Invoke(ManipulationType.Set, this.DonaldArmorSlots);
+                this.messages.MessageMappings["Party"]["SendDonaldArmorSlotsMessage"].Method.Invoke(ManipulationType.Set, this.DonaldArmorSlots);
 
             if (!string.IsNullOrEmpty(this.DonaldArmorSlot1))
-                this.messages.MessageMappings["Party"]["SendDonaldArmorSlot1Message"].Invoke(ManipulationType.Set, this.DonaldArmorSlot1);
+                this.messages.MessageMappings["Party"]["SendDonaldArmorSlot1Message"].Method.Invoke(ManipulationType.Set, this.DonaldArmorSlot1);
 
             if (!string.IsNullOrEmpty(this.DonaldArmorSlot2))
-                this.messages.MessageMappings["Party"]["SendDonaldArmorSlot2Message"].Invoke(ManipulationType.Set, this.DonaldArmorSlot2);
+                this.messages.MessageMappings["Party"]["SendDonaldArmorSlot2Message"].Method.Invoke(ManipulationType.Set, this.DonaldArmorSlot2);
 
             if (!string.IsNullOrEmpty(this.DonaldAccessorySlots))
-                this.messages.MessageMappings["Party"]["SendDonaldAccessorySlotsMessage"].Invoke(ManipulationType.Set, this.DonaldAccessorySlots);
+                this.messages.MessageMappings["Party"]["SendDonaldAccessorySlotsMessage"].Method.Invoke(ManipulationType.Set, this.DonaldAccessorySlots);
 
             if (!string.IsNullOrEmpty(this.DonaldAccessorySlot1))
-                this.messages.MessageMappings["Party"]["SendDonaldAccessorySlot1Message"].Invoke(ManipulationType.Set, this.DonaldAccessorySlot1);
+                this.messages.MessageMappings["Party"]["SendDonaldAccessorySlot1Message"].Method.Invoke(ManipulationType.Set, this.DonaldAccessorySlot1);
 
             if (!string.IsNullOrEmpty(this.DonaldAccessorySlot2))
-                this.messages.MessageMappings["Party"]["SendDonaldAccessorySlot2Message"].Invoke(ManipulationType.Set, this.DonaldAccessorySlot2);
+                this.messages.MessageMappings["Party"]["SendDonaldAccessorySlot2Message"].Method.Invoke(ManipulationType.Set, this.DonaldAccessorySlot2);
 
             if (!string.IsNullOrEmpty(this.DonaldAccessorySlot3))
-                this.messages.MessageMappings["Party"]["SendDonaldAccessorySlot3Message"].Invoke(ManipulationType.Set, this.DonaldAccessorySlot3);
+                this.messages.MessageMappings["Party"]["SendDonaldAccessorySlot3Message"].Method.Invoke(ManipulationType.Set, this.DonaldAccessorySlot3);
 
             if (!string.IsNullOrEmpty(this.DonaldItemSlots))
-                this.messages.MessageMappings["Party"]["SendDonaldItemSlotsMessage"].Invoke(ManipulationType.Set, this.DonaldItemSlots);
+                this.messages.MessageMappings["Party"]["SendDonaldItemSlotsMessage"].Method.Invoke(ManipulationType.Set, this.DonaldItemSlots);
 
             if (!string.IsNullOrEmpty(this.DonaldItemSlot1))
-                this.messages.MessageMappings["Party"]["SendDonaldItemSlot1Message"].Invoke(ManipulationType.Set, this.DonaldItemSlot1);
+                this.messages.MessageMappings["Party"]["SendDonaldItemSlot1Message"].Method.Invoke(ManipulationType.Set, this.DonaldItemSlot1);
 
             if (!string.IsNullOrEmpty(this.DonaldItemSlot2))
-                this.messages.MessageMappings["Party"]["SendDonaldItemSlot2Message"].Invoke(ManipulationType.Set, this.DonaldItemSlot2);
+                this.messages.MessageMappings["Party"]["SendDonaldItemSlot2Message"].Method.Invoke(ManipulationType.Set, this.DonaldItemSlot2);
 
             // TODO Add a better ability system
 
@@ -241,43 +241,43 @@ namespace ReWriteClient.Data
         public async Task RefreshGoofyPartyCache()
         {
             if (!string.IsNullOrEmpty(this.GoofyShield))
-                this.messages.MessageMappings["Party"]["SendEquipShieldMessage"].Invoke(ManipulationType.Set, this.GoofyShield);
+                this.messages.MessageMappings["Party"]["SendEquipShieldMessage"].Method.Invoke(ManipulationType.Set, this.GoofyShield);
 
             if (!string.IsNullOrEmpty(this.GoofyArmorSlots))
-                this.messages.MessageMappings["Party"]["SendGoofyArmorSlotsMessage"].Invoke(ManipulationType.Set, this.GoofyArmorSlots);
+                this.messages.MessageMappings["Party"]["SendGoofyArmorSlotsMessage"].Method.Invoke(ManipulationType.Set, this.GoofyArmorSlots);
 
             if (!string.IsNullOrEmpty(this.GoofyArmorSlot1))
-                this.messages.MessageMappings["Party"]["SendGoofyArmorSlot1Message"].Invoke(ManipulationType.Set, this.GoofyArmorSlot1);
+                this.messages.MessageMappings["Party"]["SendGoofyArmorSlot1Message"].Method.Invoke(ManipulationType.Set, this.GoofyArmorSlot1);
 
             if (!string.IsNullOrEmpty(this.GoofyArmorSlot2))
-                this.messages.MessageMappings["Party"]["SendGoofyArmorSlot2Message"].Invoke(ManipulationType.Set, this.GoofyArmorSlot2);
+                this.messages.MessageMappings["Party"]["SendGoofyArmorSlot2Message"].Method.Invoke(ManipulationType.Set, this.GoofyArmorSlot2);
 
             if (!string.IsNullOrEmpty(this.GoofyArmorSlot3))
-                this.messages.MessageMappings["Party"]["SendGoofyArmorySlot3Message"].Invoke(ManipulationType.Set, this.GoofyArmorSlot3);
+                this.messages.MessageMappings["Party"]["SendGoofyArmorySlot3Message"].Method.Invoke(ManipulationType.Set, this.GoofyArmorSlot3);
 
             if (!string.IsNullOrEmpty(this.GoofyAccessorySlots))
-                this.messages.MessageMappings["Party"]["SendGoofyAccessorySlotsMessage"].Invoke(ManipulationType.Set, this.GoofyAccessorySlots);
+                this.messages.MessageMappings["Party"]["SendGoofyAccessorySlotsMessage"].Method.Invoke(ManipulationType.Set, this.GoofyAccessorySlots);
 
             if (!string.IsNullOrEmpty(this.GoofyAccessorySlot1))
-                this.messages.MessageMappings["Party"]["SendGoofyAccessorySlot1Message"].Invoke(ManipulationType.Set, this.GoofyAccessorySlot1);
+                this.messages.MessageMappings["Party"]["SendGoofyAccessorySlot1Message"].Method.Invoke(ManipulationType.Set, this.GoofyAccessorySlot1);
 
             if (!string.IsNullOrEmpty(this.GoofyAccessorySlot2))
-                this.messages.MessageMappings["Party"]["SendGoofyAccessorySlot2Message"].Invoke(ManipulationType.Set, this.GoofyAccessorySlot2);
+                this.messages.MessageMappings["Party"]["SendGoofyAccessorySlot2Message"].Method.Invoke(ManipulationType.Set, this.GoofyAccessorySlot2);
 
             if (!string.IsNullOrEmpty(this.GoofyItemSlots))
-                this.messages.MessageMappings["Party"]["SendGoofyItemSlotsMessage"].Invoke(ManipulationType.Set, this.GoofyItemSlots);
+                this.messages.MessageMappings["Party"]["SendGoofyItemSlotsMessage"].Method.Invoke(ManipulationType.Set, this.GoofyItemSlots);
 
             if (!string.IsNullOrEmpty(this.GoofyItemSlot1))
-                this.messages.MessageMappings["Party"]["SendGoofyItemSlot1Message"].Invoke(ManipulationType.Set, this.GoofyItemSlot1);
+                this.messages.MessageMappings["Party"]["SendGoofyItemSlot1Message"].Method.Invoke(ManipulationType.Set, this.GoofyItemSlot1);
 
             if (!string.IsNullOrEmpty(this.GoofyItemSlot2))
-                this.messages.MessageMappings["Party"]["SendGoofyItemSlot2Message"].Invoke(ManipulationType.Set, this.GoofyItemSlot2);
+                this.messages.MessageMappings["Party"]["SendGoofyItemSlot2Message"].Method.Invoke(ManipulationType.Set, this.GoofyItemSlot2);
             
             if (!string.IsNullOrEmpty(this.GoofyItemSlot3))
-                this.messages.MessageMappings["Party"]["SendGoofyItemSlot3Message"].Invoke(ManipulationType.Set, this.GoofyItemSlot3);
+                this.messages.MessageMappings["Party"]["SendGoofyItemSlot3Message"].Method.Invoke(ManipulationType.Set, this.GoofyItemSlot3);
 
             if (!string.IsNullOrEmpty(this.GoofyItemSlot4))
-                this.messages.MessageMappings["Party"]["SendGoofyItemSlot4Message"].Invoke(ManipulationType.Set, this.GoofyItemSlot4);
+                this.messages.MessageMappings["Party"]["SendGoofyItemSlot4Message"].Method.Invoke(ManipulationType.Set, this.GoofyItemSlot4);
 
             // TODO Add a better ability system
         }
@@ -285,28 +285,28 @@ namespace ReWriteClient.Data
         public async Task RefreshMulanPartyCache()
         {
             if (!string.IsNullOrEmpty(this.MulanArmorSlots))
-                this.messages.MessageMappings["Party"]["SendMulanArmorSlotsMessage"].Invoke(ManipulationType.Set, this.MulanArmorSlots);
+                this.messages.MessageMappings["Party"]["SendMulanArmorSlotsMessage"].Method.Invoke(ManipulationType.Set, this.MulanArmorSlots);
 
             if (!string.IsNullOrEmpty(this.MulanArmorSlot1))
-                this.messages.MessageMappings["Party"]["SendMulanArmorSlot1Message"].Invoke(ManipulationType.Set, this.MulanArmorSlot1);
+                this.messages.MessageMappings["Party"]["SendMulanArmorSlot1Message"].Method.Invoke(ManipulationType.Set, this.MulanArmorSlot1);
 
             if (!string.IsNullOrEmpty(this.MulanAccessorySlots))
-                this.messages.MessageMappings["Party"]["SendMulanAccessorySlotsMessage"].Invoke(ManipulationType.Set, this.MulanAccessorySlots);
+                this.messages.MessageMappings["Party"]["SendMulanAccessorySlotsMessage"].Method.Invoke(ManipulationType.Set, this.MulanAccessorySlots);
 
             if (!string.IsNullOrEmpty(this.MulanAccessorySlot1))
-                this.messages.MessageMappings["Party"]["SendMulanAccessorySlot1Message"].Invoke(ManipulationType.Set, this.MulanAccessorySlot1);
+                this.messages.MessageMappings["Party"]["SendMulanAccessorySlot1Message"].Method.Invoke(ManipulationType.Set, this.MulanAccessorySlot1);
 
             if (!string.IsNullOrEmpty(this.MulanItemSlots))
-                this.messages.MessageMappings["Party"]["SendMulanItemSlotsMessage"].Invoke(ManipulationType.Set, this.MulanItemSlots);
+                this.messages.MessageMappings["Party"]["SendMulanItemSlotsMessage"].Method.Invoke(ManipulationType.Set, this.MulanItemSlots);
 
             if (!string.IsNullOrEmpty(this.MulanItemSlot1))
-                this.messages.MessageMappings["Party"]["SendMulanItemSlot1Message"].Invoke(ManipulationType.Set, this.MulanItemSlot1);
+                this.messages.MessageMappings["Party"]["SendMulanItemSlot1Message"].Method.Invoke(ManipulationType.Set, this.MulanItemSlot1);
 
             if (!string.IsNullOrEmpty(this.MulanItemSlot2))
-                this.messages.MessageMappings["Party"]["SendMulanItemSlot2Message"].Invoke(ManipulationType.Set, this.MulanItemSlot2);
+                this.messages.MessageMappings["Party"]["SendMulanItemSlot2Message"].Method.Invoke(ManipulationType.Set, this.MulanItemSlot2);
 
             if (!string.IsNullOrEmpty(this.MulanItemSlot3))
-                this.messages.MessageMappings["Party"]["SendMulanItemSlot3Message"].Invoke(ManipulationType.Set, this.MulanItemSlot3);
+                this.messages.MessageMappings["Party"]["SendMulanItemSlot3Message"].Method.Invoke(ManipulationType.Set, this.MulanItemSlot3);
 
             // TODO Add a better ability system
         }
@@ -314,25 +314,25 @@ namespace ReWriteClient.Data
         public async Task RefreshBeastPartyCache()
         {
             if (!string.IsNullOrEmpty(this.BeastAccessorySlots))
-                this.messages.MessageMappings["Party"]["SendBeastAccessorySlotsMessage"].Invoke(ManipulationType.Set, this.BeastAccessorySlots);
+                this.messages.MessageMappings["Party"]["SendBeastAccessorySlotsMessage"].Method.Invoke(ManipulationType.Set, this.BeastAccessorySlots);
 
             if (!string.IsNullOrEmpty(this.BeastAccessorySlot1))
-                this.messages.MessageMappings["Party"]["SendBeastAccessorySlot1Message"].Invoke(ManipulationType.Set, this.BeastAccessorySlot1);
+                this.messages.MessageMappings["Party"]["SendBeastAccessorySlot1Message"].Method.Invoke(ManipulationType.Set, this.BeastAccessorySlot1);
 
             if (!string.IsNullOrEmpty(this.BeastItemSlots))
-                this.messages.MessageMappings["Party"]["SendBeastItemSlotsMessage"].Invoke(ManipulationType.Set, this.BeastItemSlots);
+                this.messages.MessageMappings["Party"]["SendBeastItemSlotsMessage"].Method.Invoke(ManipulationType.Set, this.BeastItemSlots);
 
             if (!string.IsNullOrEmpty(this.BeastItemSlot1))
-                this.messages.MessageMappings["Party"]["SendBeastItemSlot1Message"].Invoke(ManipulationType.Set, this.BeastItemSlot1);
+                this.messages.MessageMappings["Party"]["SendBeastItemSlot1Message"].Method.Invoke(ManipulationType.Set, this.BeastItemSlot1);
 
             if (!string.IsNullOrEmpty(this.BeastItemSlot2))
-                this.messages.MessageMappings["Party"]["SendBeastItemSlot2Message"].Invoke(ManipulationType.Set, this.BeastItemSlot2);
+                this.messages.MessageMappings["Party"]["SendBeastItemSlot2Message"].Method.Invoke(ManipulationType.Set, this.BeastItemSlot2);
 
             if (!string.IsNullOrEmpty(this.BeastItemSlot3))
-                this.messages.MessageMappings["Party"]["SendBeastItemSlot3Message"].Invoke(ManipulationType.Set, this.BeastItemSlot3);
+                this.messages.MessageMappings["Party"]["SendBeastItemSlot3Message"].Method.Invoke(ManipulationType.Set, this.BeastItemSlot3);
 
             if (!string.IsNullOrEmpty(this.BeastItemSlot4))
-                this.messages.MessageMappings["Party"]["SendBeastItemSlot4Message"].Invoke(ManipulationType.Set, this.BeastItemSlot4);
+                this.messages.MessageMappings["Party"]["SendBeastItemSlot4Message"].Method.Invoke(ManipulationType.Set, this.BeastItemSlot4);
 
             // TODO Add a better ability system
         }
@@ -340,19 +340,19 @@ namespace ReWriteClient.Data
         public async Task RefreshAuronPartyCache()
         {
             if (!string.IsNullOrEmpty(this.AuronArmorSlots))
-                this.messages.MessageMappings["Party"]["SendAuronArmorSlotsMessage"].Invoke(ManipulationType.Set, this.AuronArmorSlots);
+                this.messages.MessageMappings["Party"]["SendAuronArmorSlotsMessage"].Method.Invoke(ManipulationType.Set, this.AuronArmorSlots);
 
             if (!string.IsNullOrEmpty(this.AuronArmorSlot1))
-                this.messages.MessageMappings["Party"]["SendAuronArmorSlot1Message"].Invoke(ManipulationType.Set, this.AuronArmorSlot1);
+                this.messages.MessageMappings["Party"]["SendAuronArmorSlot1Message"].Method.Invoke(ManipulationType.Set, this.AuronArmorSlot1);
 
             if (!string.IsNullOrEmpty(this.AuronItemSlots))
-                this.messages.MessageMappings["Party"]["SendAuronItemSlotsMessage"].Invoke(ManipulationType.Set, this.AuronItemSlots);
+                this.messages.MessageMappings["Party"]["SendAuronItemSlotsMessage"].Method.Invoke(ManipulationType.Set, this.AuronItemSlots);
 
             if (!string.IsNullOrEmpty(this.AuronItemSlot1))
-                this.messages.MessageMappings["Party"]["SendAuronItemSlot1Message"].Invoke(ManipulationType.Set, this.AuronItemSlot1);
+                this.messages.MessageMappings["Party"]["SendAuronItemSlot1Message"].Method.Invoke(ManipulationType.Set, this.AuronItemSlot1);
 
             if (!string.IsNullOrEmpty(this.AuronItemSlot2))
-                this.messages.MessageMappings["Party"]["SendAuronItemSlot2Message"].Invoke(ManipulationType.Set, this.AuronItemSlot2);
+                this.messages.MessageMappings["Party"]["SendAuronItemSlot2Message"].Method.Invoke(ManipulationType.Set, this.AuronItemSlot2);
 
             // TODO Add a better ability system
         }
@@ -360,31 +360,31 @@ namespace ReWriteClient.Data
         public async Task RefreshCaptainJackSparrowPartyCache()
         {
             if (!string.IsNullOrEmpty(this.CaptainJackSparrowArmorSlots))
-                this.messages.MessageMappings["Party"]["SendCaptainJackSparrowArmorSlotsMessage"].Invoke(ManipulationType.Set, this.CaptainJackSparrowArmorSlots);
+                this.messages.MessageMappings["Party"]["SendCaptainJackSparrowArmorSlotsMessage"].Method.Invoke(ManipulationType.Set, this.CaptainJackSparrowArmorSlots);
 
             if (!string.IsNullOrEmpty(this.CaptainJackSparrowArmorSlot1))
-                this.messages.MessageMappings["Party"]["SendCaptainJackSparrowArmorSlot1Message"].Invoke(ManipulationType.Set, this.CaptainJackSparrowArmorSlot1);
+                this.messages.MessageMappings["Party"]["SendCaptainJackSparrowArmorSlot1Message"].Method.Invoke(ManipulationType.Set, this.CaptainJackSparrowArmorSlot1);
 
             if (!string.IsNullOrEmpty(this.CaptainJackSparrowAccessorySlots))
-                this.messages.MessageMappings["Party"]["SendCaptainJackSparrowAccessorySlotsMessage"].Invoke(ManipulationType.Set, this.CaptainJackSparrowAccessorySlots);
+                this.messages.MessageMappings["Party"]["SendCaptainJackSparrowAccessorySlotsMessage"].Method.Invoke(ManipulationType.Set, this.CaptainJackSparrowAccessorySlots);
 
             if (!string.IsNullOrEmpty(this.CaptainJackSparrowAccessorySlot1))
-                this.messages.MessageMappings["Party"]["SendCaptainJackSparrowAccessorySlot1Message"].Invoke(ManipulationType.Set, this.CaptainJackSparrowAccessorySlot1);
+                this.messages.MessageMappings["Party"]["SendCaptainJackSparrowAccessorySlot1Message"].Method.Invoke(ManipulationType.Set, this.CaptainJackSparrowAccessorySlot1);
 
             if (!string.IsNullOrEmpty(this.CaptainJackSparrowItemSlots))
-                this.messages.MessageMappings["Party"]["SendCaptainJackSparrowItemSlotsMessage"].Invoke(ManipulationType.Set, this.CaptainJackSparrowItemSlots);
+                this.messages.MessageMappings["Party"]["SendCaptainJackSparrowItemSlotsMessage"].Method.Invoke(ManipulationType.Set, this.CaptainJackSparrowItemSlots);
 
             if (!string.IsNullOrEmpty(this.CaptainJackSparrowItemSlot1))
-                this.messages.MessageMappings["Party"]["SendCaptainJackSparrowItemSlot1Message"].Invoke(ManipulationType.Set, this.CaptainJackSparrowItemSlot1);
+                this.messages.MessageMappings["Party"]["SendCaptainJackSparrowItemSlot1Message"].Method.Invoke(ManipulationType.Set, this.CaptainJackSparrowItemSlot1);
 
             if (!string.IsNullOrEmpty(this.CaptainJackSparrowItemSlot2))
-                this.messages.MessageMappings["Party"]["SendCaptainJackSparrowItemSlot2Message"].Invoke(ManipulationType.Set, this.CaptainJackSparrowItemSlot2);
+                this.messages.MessageMappings["Party"]["SendCaptainJackSparrowItemSlot2Message"].Method.Invoke(ManipulationType.Set, this.CaptainJackSparrowItemSlot2);
 
             if (!string.IsNullOrEmpty(this.CaptainJackSparrowItemSlot3))
-                this.messages.MessageMappings["Party"]["SendCaptainJackSparrowItemSlot3Message"].Invoke(ManipulationType.Set, this.CaptainJackSparrowItemSlot3);
+                this.messages.MessageMappings["Party"]["SendCaptainJackSparrowItemSlot3Message"].Method.Invoke(ManipulationType.Set, this.CaptainJackSparrowItemSlot3);
 
             if (!string.IsNullOrEmpty(this.CaptainJackSparrowItemSlot4))
-                this.messages.MessageMappings["Party"]["SendCaptainJackSparrowItemSlot4Message"].Invoke(ManipulationType.Set, this.CaptainJackSparrowItemSlot4);
+                this.messages.MessageMappings["Party"]["SendCaptainJackSparrowItemSlot4Message"].Method.Invoke(ManipulationType.Set, this.CaptainJackSparrowItemSlot4);
 
             // TODO Add a better ability system
         }
@@ -392,31 +392,31 @@ namespace ReWriteClient.Data
         public async Task RefreshAladdinPartyCache()
         {
             if (!string.IsNullOrEmpty(this.AladdinArmorSlots))
-                this.messages.MessageMappings["Party"]["SendAladdinArmorSlotsMessage"].Invoke(ManipulationType.Set, this.AladdinArmorSlots);
+                this.messages.MessageMappings["Party"]["SendAladdinArmorSlotsMessage"].Method.Invoke(ManipulationType.Set, this.AladdinArmorSlots);
 
             if (!string.IsNullOrEmpty(this.AladdinArmorSlot1))
-                this.messages.MessageMappings["Party"]["SendAladdinArmorSlot1Message"].Invoke(ManipulationType.Set, this.AladdinArmorSlot1);
+                this.messages.MessageMappings["Party"]["SendAladdinArmorSlot1Message"].Method.Invoke(ManipulationType.Set, this.AladdinArmorSlot1);
 
             if (!string.IsNullOrEmpty(this.AladdinArmorSlot2))
-                this.messages.MessageMappings["Party"]["SendAladdinArmorSlot2Message"].Invoke(ManipulationType.Set, this.AladdinArmorSlot2);
+                this.messages.MessageMappings["Party"]["SendAladdinArmorSlot2Message"].Method.Invoke(ManipulationType.Set, this.AladdinArmorSlot2);
 
             if (!string.IsNullOrEmpty(this.AladdinItemSlots))
-                this.messages.MessageMappings["Party"]["SendAladdinItemSlotsMessage"].Invoke(ManipulationType.Set, this.AladdinItemSlots);
+                this.messages.MessageMappings["Party"]["SendAladdinItemSlotsMessage"].Method.Invoke(ManipulationType.Set, this.AladdinItemSlots);
 
             if (!string.IsNullOrEmpty(this.AladdinItemSlot1))
-                this.messages.MessageMappings["Party"]["SendAladdinItemSlot1Message"].Invoke(ManipulationType.Set, this.AladdinItemSlot1);
+                this.messages.MessageMappings["Party"]["SendAladdinItemSlot1Message"].Method.Invoke(ManipulationType.Set, this.AladdinItemSlot1);
 
             if (!string.IsNullOrEmpty(this.AladdinItemSlot2))
-                this.messages.MessageMappings["Party"]["SendAladdinItemSlot2Message"].Invoke(ManipulationType.Set, this.AladdinItemSlot2);
+                this.messages.MessageMappings["Party"]["SendAladdinItemSlot2Message"].Method.Invoke(ManipulationType.Set, this.AladdinItemSlot2);
 
             if (!string.IsNullOrEmpty(this.AladdinItemSlot3))
-                this.messages.MessageMappings["Party"]["SendAladdinItemSlot3Message"].Invoke(ManipulationType.Set, this.AladdinItemSlot3);
+                this.messages.MessageMappings["Party"]["SendAladdinItemSlot3Message"].Method.Invoke(ManipulationType.Set, this.AladdinItemSlot3);
 
             if (!string.IsNullOrEmpty(this.AladdinItemSlot4))
-                this.messages.MessageMappings["Party"]["SendAladdinItemSlot4Message"].Invoke(ManipulationType.Set, this.AladdinItemSlot4);
+                this.messages.MessageMappings["Party"]["SendAladdinItemSlot4Message"].Method.Invoke(ManipulationType.Set, this.AladdinItemSlot4);
 
             if (!string.IsNullOrEmpty(this.AladdinItemSlot5))
-                this.messages.MessageMappings["Party"]["SendAladdinItemSlot5Message"].Invoke(ManipulationType.Set, this.AladdinItemSlot5);
+                this.messages.MessageMappings["Party"]["SendAladdinItemSlot5Message"].Method.Invoke(ManipulationType.Set, this.AladdinItemSlot5);
 
             // TODO Add a better ability system
         }
@@ -424,25 +424,25 @@ namespace ReWriteClient.Data
         public async Task RefreshJackSkellingtonPartyCache()
         {
             if (!string.IsNullOrEmpty(this.JackSkellingtonAccessorySlots))
-                this.messages.MessageMappings["Party"]["SendJackSkellingtonAccessorySlotsMessage"].Invoke(ManipulationType.Set, this.JackSkellingtonAccessorySlots);
+                this.messages.MessageMappings["Party"]["SendJackSkellingtonAccessorySlotsMessage"].Method.Invoke(ManipulationType.Set, this.JackSkellingtonAccessorySlots);
 
             if (!string.IsNullOrEmpty(this.JackSkellingtonAccessorySlot1))
-                this.messages.MessageMappings["Party"]["SendJackSkellingtonAccessorySlot1Message"].Invoke(ManipulationType.Set, this.JackSkellingtonAccessorySlot1);
+                this.messages.MessageMappings["Party"]["SendJackSkellingtonAccessorySlot1Message"].Method.Invoke(ManipulationType.Set, this.JackSkellingtonAccessorySlot1);
 
             if (!string.IsNullOrEmpty(this.JackSkellingtonAccessorySlot2))
-                this.messages.MessageMappings["Party"]["SendJackSkellingtonAccessorySlot2Message"].Invoke(ManipulationType.Set, this.JackSkellingtonAccessorySlot2);
+                this.messages.MessageMappings["Party"]["SendJackSkellingtonAccessorySlot2Message"].Method.Invoke(ManipulationType.Set, this.JackSkellingtonAccessorySlot2);
 
             if (!string.IsNullOrEmpty(this.JackSkellingtonItemSlots))
-                this.messages.MessageMappings["Party"]["SendJackSkellingtonItemSlotsMessage"].Invoke(ManipulationType.Set, this.JackSkellingtonItemSlots);
+                this.messages.MessageMappings["Party"]["SendJackSkellingtonItemSlotsMessage"].Method.Invoke(ManipulationType.Set, this.JackSkellingtonItemSlots);
 
             if (!string.IsNullOrEmpty(this.JackSkellingtonItemSlot1))
-                this.messages.MessageMappings["Party"]["SendJackSkellingtonItemSlot1Message"].Invoke(ManipulationType.Set, this.JackSkellingtonItemSlot1);
+                this.messages.MessageMappings["Party"]["SendJackSkellingtonItemSlot1Message"].Method.Invoke(ManipulationType.Set, this.JackSkellingtonItemSlot1);
 
             if (!string.IsNullOrEmpty(this.JackSkellingtonItemSlot2))
-                this.messages.MessageMappings["Party"]["SendJackSkellingtonItemSlot2Message"].Invoke(ManipulationType.Set, this.JackSkellingtonItemSlot2);
+                this.messages.MessageMappings["Party"]["SendJackSkellingtonItemSlot2Message"].Method.Invoke(ManipulationType.Set, this.JackSkellingtonItemSlot2);
 
             if (!string.IsNullOrEmpty(this.JackSkellingtonItemSlot3))
-                this.messages.MessageMappings["Party"]["SendJackSkellingtonItemSlot3Message"].Invoke(ManipulationType.Set, this.JackSkellingtonItemSlot3);
+                this.messages.MessageMappings["Party"]["SendJackSkellingtonItemSlot3Message"].Method.Invoke(ManipulationType.Set, this.JackSkellingtonItemSlot3);
 
             // TODO Add a better ability system
         }
@@ -450,25 +450,25 @@ namespace ReWriteClient.Data
         public async Task RefreshSimbaPartyCache()
         {
             if (!string.IsNullOrEmpty(this.SimbaAccessorySlots))
-                this.messages.MessageMappings["Party"]["SendSimbaAccessorySlotsMessage"].Invoke(ManipulationType.Set, this.SimbaAccessorySlots);
+                this.messages.MessageMappings["Party"]["SendSimbaAccessorySlotsMessage"].Method.Invoke(ManipulationType.Set, this.SimbaAccessorySlots);
 
             if (!string.IsNullOrEmpty(this.SimbaAccessorySlot1))
-                this.messages.MessageMappings["Party"]["SendSimbaAccessorySlot1Message"].Invoke(ManipulationType.Set, this.SimbaAccessorySlot1);
+                this.messages.MessageMappings["Party"]["SendSimbaAccessorySlot1Message"].Method.Invoke(ManipulationType.Set, this.SimbaAccessorySlot1);
 
             if (!string.IsNullOrEmpty(this.SimbaAccessorySlot2))
-                this.messages.MessageMappings["Party"]["SendSimbaAccessorySlot2Message"].Invoke(ManipulationType.Set, this.SimbaAccessorySlot2);
+                this.messages.MessageMappings["Party"]["SendSimbaAccessorySlot2Message"].Method.Invoke(ManipulationType.Set, this.SimbaAccessorySlot2);
 
             if (!string.IsNullOrEmpty(this.SimbaItemSlots))
-                this.messages.MessageMappings["Party"]["SendSimbaItemSlotsMessage"].Invoke(ManipulationType.Set, this.SimbaItemSlots);
+                this.messages.MessageMappings["Party"]["SendSimbaItemSlotsMessage"].Method.Invoke(ManipulationType.Set, this.SimbaItemSlots);
 
             if (!string.IsNullOrEmpty(this.SimbaItemSlot1))
-                this.messages.MessageMappings["Party"]["SendSimbaItemSlot1Message"].Invoke(ManipulationType.Set, this.SimbaItemSlot1);
+                this.messages.MessageMappings["Party"]["SendSimbaItemSlot1Message"].Method.Invoke(ManipulationType.Set, this.SimbaItemSlot1);
 
             if (!string.IsNullOrEmpty(this.SimbaItemSlot2))
-                this.messages.MessageMappings["Party"]["SendSimbaItemSlot2Message"].Invoke(ManipulationType.Set, this.SimbaItemSlot2);
+                this.messages.MessageMappings["Party"]["SendSimbaItemSlot2Message"].Method.Invoke(ManipulationType.Set, this.SimbaItemSlot2);
             
             if (!string.IsNullOrEmpty(this.SimbaItemSlot3))
-                this.messages.MessageMappings["Party"]["SendSimbaItemSlot3Message"].Invoke(ManipulationType.Set, this.SimbaItemSlot3);
+                this.messages.MessageMappings["Party"]["SendSimbaItemSlot3Message"].Method.Invoke(ManipulationType.Set, this.SimbaItemSlot3);
 
             // TODO Add a better ability system
         }
@@ -476,25 +476,25 @@ namespace ReWriteClient.Data
         public async Task RefreshTronPartyCache()
         {
             if (!string.IsNullOrEmpty(this.TronArmorSlots))
-                this.messages.MessageMappings["Party"]["SendTronArmorSlotsMessage"].Invoke(ManipulationType.Set, this.TronArmorSlots);
+                this.messages.MessageMappings["Party"]["SendTronArmorSlotsMessage"].Method.Invoke(ManipulationType.Set, this.TronArmorSlots);
 
             if (!string.IsNullOrEmpty(this.TronArmorSlot1))
-                this.messages.MessageMappings["Party"]["SendTronArmorSlot1Message"].Invoke(ManipulationType.Set, this.TronArmorSlot1);
+                this.messages.MessageMappings["Party"]["SendTronArmorSlot1Message"].Method.Invoke(ManipulationType.Set, this.TronArmorSlot1);
 
             if (!string.IsNullOrEmpty(this.TronAccessorySlots))
-                this.messages.MessageMappings["Party"]["SendTronAccessorySlotsMessage"].Invoke(ManipulationType.Set, this.TronAccessorySlots);
+                this.messages.MessageMappings["Party"]["SendTronAccessorySlotsMessage"].Method.Invoke(ManipulationType.Set, this.TronAccessorySlots);
 
             if (!string.IsNullOrEmpty(this.TronAccessorySlot1))
-                this.messages.MessageMappings["Party"]["SendTronAccessorySlot1Message"].Invoke(ManipulationType.Set, this.TronAccessorySlot1);
+                this.messages.MessageMappings["Party"]["SendTronAccessorySlot1Message"].Method.Invoke(ManipulationType.Set, this.TronAccessorySlot1);
 
             if (!string.IsNullOrEmpty(this.TronItemSlots))
-                this.messages.MessageMappings["Party"]["SendTronItemSlotsMessage"].Invoke(ManipulationType.Set, this.TronItemSlots);
+                this.messages.MessageMappings["Party"]["SendTronItemSlotsMessage"].Method.Invoke(ManipulationType.Set, this.TronItemSlots);
 
             if (!string.IsNullOrEmpty(this.TronItemSlot1))
-                this.messages.MessageMappings["Party"]["SendTronItemSlot1Message"].Invoke(ManipulationType.Set, this.TronItemSlot1);
+                this.messages.MessageMappings["Party"]["SendTronItemSlot1Message"].Method.Invoke(ManipulationType.Set, this.TronItemSlot1);
 
             if (!string.IsNullOrEmpty(this.TronItemSlot2))
-                this.messages.MessageMappings["Party"]["SendTronItemSlot2Message"].Invoke(ManipulationType.Set, this.TronItemSlot2);
+                this.messages.MessageMappings["Party"]["SendTronItemSlot2Message"].Method.Invoke(ManipulationType.Set, this.TronItemSlot2);
 
             // TODO Add a better ability system
         }
@@ -502,40 +502,40 @@ namespace ReWriteClient.Data
         public async Task RefreshRikuPartyCache()
         {
             if (!string.IsNullOrEmpty(this.RikuArmorSlots))
-                this.messages.MessageMappings["Party"]["SendRikuArmorSlotsMessage"].Invoke(ManipulationType.Set, this.RikuArmorSlots);
+                this.messages.MessageMappings["Party"]["SendRikuArmorSlotsMessage"].Method.Invoke(ManipulationType.Set, this.RikuArmorSlots);
 
             if (!string.IsNullOrEmpty(this.RikuArmorSlot1))
-                this.messages.MessageMappings["Party"]["SendRikuArmorSlot1Message"].Invoke(ManipulationType.Set, this.RikuArmorSlot1);
+                this.messages.MessageMappings["Party"]["SendRikuArmorSlot1Message"].Method.Invoke(ManipulationType.Set, this.RikuArmorSlot1);
 
             if (!string.IsNullOrEmpty(this.RikuArmorSlot2))
-                this.messages.MessageMappings["Party"]["SendRikuArmorSlot2Message"].Invoke(ManipulationType.Set, this.RikuArmorSlot2);
+                this.messages.MessageMappings["Party"]["SendRikuArmorSlot2Message"].Method.Invoke(ManipulationType.Set, this.RikuArmorSlot2);
 
             if (!string.IsNullOrEmpty(this.RikuAccessorySlots))
-                this.messages.MessageMappings["Party"]["SendRikuAccessorySlotsMessage"].Invoke(ManipulationType.Set, this.RikuAccessorySlots);
+                this.messages.MessageMappings["Party"]["SendRikuAccessorySlotsMessage"].Method.Invoke(ManipulationType.Set, this.RikuAccessorySlots);
 
             if (!string.IsNullOrEmpty(this.RikuAccessorySlot1))
-                this.messages.MessageMappings["Party"]["SendRikuAccessorySlot1Message"].Invoke(ManipulationType.Set, this.RikuAccessorySlot1);
+                this.messages.MessageMappings["Party"]["SendRikuAccessorySlot1Message"].Method.Invoke(ManipulationType.Set, this.RikuAccessorySlot1);
 
             if (!string.IsNullOrEmpty(this.RikuItemSlots))
-                this.messages.MessageMappings["Party"]["SendRikuItemSlotsMessage"].Invoke(ManipulationType.Set, this.RikuItemSlots);
+                this.messages.MessageMappings["Party"]["SendRikuItemSlotsMessage"].Method.Invoke(ManipulationType.Set, this.RikuItemSlots);
 
             if (!string.IsNullOrEmpty(this.RikuItemSlot1))
-                this.messages.MessageMappings["Party"]["SendRikuItemSlot1Message"].Invoke(ManipulationType.Set, this.RikuItemSlot1);
+                this.messages.MessageMappings["Party"]["SendRikuItemSlot1Message"].Method.Invoke(ManipulationType.Set, this.RikuItemSlot1);
 
             if (!string.IsNullOrEmpty(this.RikuItemSlot2))
-                this.messages.MessageMappings["Party"]["SendRikuItemSlot2Message"].Invoke(ManipulationType.Set, this.RikuItemSlot2);
+                this.messages.MessageMappings["Party"]["SendRikuItemSlot2Message"].Method.Invoke(ManipulationType.Set, this.RikuItemSlot2);
             
             if (!string.IsNullOrEmpty(this.RikuItemSlot3))
-                this.messages.MessageMappings["Party"]["SendRikuItemSlot3Message"].Invoke(ManipulationType.Set, this.RikuItemSlot3);
+                this.messages.MessageMappings["Party"]["SendRikuItemSlot3Message"].Method.Invoke(ManipulationType.Set, this.RikuItemSlot3);
 
             if (!string.IsNullOrEmpty(this.RikuItemSlot4))
-                this.messages.MessageMappings["Party"]["SendRikuItemSlot4Message"].Invoke(ManipulationType.Set, this.RikuItemSlot4);
+                this.messages.MessageMappings["Party"]["SendRikuItemSlot4Message"].Method.Invoke(ManipulationType.Set, this.RikuItemSlot4);
             
             if (!string.IsNullOrEmpty(this.RikuItemSlot5))
-                this.messages.MessageMappings["Party"]["SendRikuItemSlot5Message"].Invoke(ManipulationType.Set, this.RikuItemSlot5);
+                this.messages.MessageMappings["Party"]["SendRikuItemSlot5Message"].Method.Invoke(ManipulationType.Set, this.RikuItemSlot5);
 
             if (!string.IsNullOrEmpty(this.RikuItemSlot6))
-                this.messages.MessageMappings["Party"]["SendRikuItemSlot6Message"].Invoke(ManipulationType.Set, this.RikuItemSlot6);
+                this.messages.MessageMappings["Party"]["SendRikuItemSlot6Message"].Method.Invoke(ManipulationType.Set, this.RikuItemSlot6);
 
             // TODO Add a better ability system
         }

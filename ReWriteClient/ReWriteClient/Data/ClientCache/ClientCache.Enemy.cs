@@ -14,7 +14,7 @@ namespace ReWriteClient.Data
         public async Task RefreshEnemyCache()
         {
             if (!string.IsNullOrEmpty(this.ChangeBoss))
-                this.messages.MessageMappings["Enemy"]["SendBossChangeMessage"].Invoke(ManipulationType.Set, this.ChangeBoss);
+                this.messages.MessageMappings["Enemy"]["SendBossChangeMessage"].Method.Invoke(ManipulationType.Set, this.ChangeBoss);
         }
     }
 }

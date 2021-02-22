@@ -37,7 +37,7 @@ namespace ReWriteClient.Messages
                 {
                     connection.On<Request>(messageName, message =>
                     {
-                        var isSuccessful = method.Invoke(message.ManipulationType, message.Value);
+                        var isSuccessful = method.Method.Invoke(message.ManipulationType, message.Value);
 
                         SendServerLogReceived(this, new MessageHubArgs { Viewer = message.ViewerName, MethodName = messageName, Value = message.Value } );
 
@@ -83,7 +83,7 @@ namespace ReWriteClient.Messages
             }
         }
 
-        private static void SendServerLogReceived(object sender, MessageHubArgs e)
+        public static void SendServerLogReceived(object sender, MessageHubArgs e)
         {
             OnServerLogReceived?.Invoke(sender, e);
         }
