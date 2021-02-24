@@ -50,14 +50,14 @@ namespace ReWriteClient.Data
                 };
 
                 refreshTimer.Elapsed += (sender, obj) => {
-                    RefreshFromCache();
+                    Task.Run(async () => { await RefreshFromCache(); });
                 };
             }
             
             refreshTimer.Start();
         }
 
-        public async Task UpdateCache()
+        public void UpdateCache()
         {
             // Check animation state - 912 is death
             if (memoryProcessor.CheckAnimationState("912"))

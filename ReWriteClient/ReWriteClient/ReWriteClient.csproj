@@ -24,6 +24,7 @@
     <None Remove="Data\EntitySlotMapping.cs~RFbfe6a5e.TMP" />
     <None Remove="Data\MemoryCache.cs~RF3ebf0c.TMP" />
     <None Remove="Data\MessageMapping.cs~RF1a5cb2de.TMP" />
+    <None Remove="Data\MessageValue.cs~RF34c1cc.TMP" />
     <None Remove="Data\Options.cs~RF134d3ff.TMP" />
     <None Remove="Messages\MessageHub.cs~RF19d3da08.TMP" />
     <None Remove="Messages\MessageHub.cs~RF1a749ca2.TMP" />
@@ -32,7 +33,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="MemoryContract" Version="1.0.18" />
+    <PackageReference Include="MemoryContract" Version="1.0.19" />
     <PackageReference Include="MemoryMappings" Version="1.0.3" />
     <PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="3.1.9" />

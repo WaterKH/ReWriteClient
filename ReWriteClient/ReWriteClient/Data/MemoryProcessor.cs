@@ -673,6 +673,18 @@ namespace ReWriteClient.Data
                             });
 
                             break;
+                        case 18: // TWTNW
+
+                            this.UpdateMemory(new MemoryObject
+                            {
+                                Address = 0x21CE10EA,
+                                ManipulationType = ManipulationType.Set,
+                                Type = DataType.TwoBytes,
+                                Value = isEvent ? "2073" : (string.IsNullOrEmpty(ClientCache.Instance.RikuModel)) ? "2073" :
+                                        ClientCache.Instance.RikuModel == "RandomAlly" ? allies[random.Next(allies.Count)] : ClientCache.Instance.RikuModel == "RandomEnemy" ? enemies[random.Next(enemies.Count)] : ClientCache.Instance.RikuModel
+                            });
+
+                            break;
                         default:
 
                             break;
@@ -966,6 +978,17 @@ namespace ReWriteClient.Data
                             });
 
                             break;
+                        case 18: // TWTNW
+
+                            this.UpdateMemory(new MemoryObject
+                            {
+                                Address = 0x21C6CC26,
+                                ManipulationType = ManipulationType.Set,
+                                Type = DataType.TwoBytes,
+                                Value = "2073"
+                            });
+
+                            break;
                         default:
 
                             this.UpdateMemory(new MemoryObject
@@ -1111,24 +1134,6 @@ namespace ReWriteClient.Data
             }
         }
 
-        //public byte[] GetPlayerIdleAnimation()
-        //{
-        //    byte[] readMemory = new byte[8];
-        //    byte[] readPlayerPointerMemory = new byte[8];
-        //    byte[] playerNameMemory = new byte[7];
-
-        //    // TODO Make a Pointer Handler
-        //    ReadProcessMemory(ProcessHandle, (IntPtr)0x20341708, readMemory, readMemory.Length, out _);
-        //    ReadProcessMemory(ProcessHandle, (IntPtr)(BitConverter.ToInt32(readMemory) + 0x2000000C), readPlayerPointerMemory, readPlayerPointerMemory.Length, out _);
-        //    ReadProcessMemory(ProcessHandle, (IntPtr)(BitConverter.ToInt32(readPlayerPointerMemory) + 0x20000008), playerNameMemory, playerNameMemory.Length, out _);
-
-        //    var playerName = Encoding.ASCII.GetString(playerNameMemory);
-
-        //    var idleAnimation = IdleAnimationMappings.IdleAnimations[playerName];
-
-        //    return ConvertToBytes(DataType.FourBytes, idleAnimation, false);
-        //}
-
         #region Conversions
 
         public byte[] ConvertToBytes(DataType type, string value, bool isValueHex) => type switch
@@ -1153,6 +1158,7 @@ namespace ReWriteClient.Data
             DataType.EightBytes => BitConverter.GetBytes(BitConverter.ToInt64(arr1) - BitConverter.ToInt64(arr2)),
             DataType.Float => BitConverter.GetBytes(BitConverter.ToDouble(arr1) - BitConverter.ToDouble(arr2)),
             DataType.Double => BitConverter.GetBytes(BitConverter.ToDouble(arr1) - BitConverter.ToDouble(arr2)),
+            _ => throw new NotImplementedException(),
         };
 
         public byte[] AddBytes(DataType type, byte[] arr1, byte[] arr2) => type switch
@@ -1163,6 +1169,7 @@ namespace ReWriteClient.Data
             DataType.EightBytes => BitConverter.GetBytes(BitConverter.ToInt64(arr1) + BitConverter.ToInt64(arr2)),
             DataType.Float => BitConverter.GetBytes(BitConverter.ToDouble(arr1) + BitConverter.ToDouble(arr2)),
             DataType.Double => BitConverter.GetBytes(BitConverter.ToDouble(arr1) + BitConverter.ToDouble(arr2)),
+            _ => throw new NotImplementedException(),
         };
 
         #endregion Conversions

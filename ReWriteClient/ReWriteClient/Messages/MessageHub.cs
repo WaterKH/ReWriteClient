@@ -71,6 +71,25 @@ namespace ReWriteClient.Messages
             }
         }
 
+        public async void SendDynamicUIResponseMessage(List<string> options)
+        {
+            try
+            {
+                var response = new DynamicUIResponse
+                {
+                    HostName = this.username,
+                    HostConnectionId = this.messageHubConnection.ConnectionId,
+                    Options = options
+                };
+
+                await this.messageHubConnection.InvokeAsync("SendDynamicUIResponseMessage", response);
+            }
+            catch (Exception e)
+            {
+                Logger.Instance.Error(e.Message, "SendResponseMessage");
+            }
+        }
+
         public void UpdateOptionsMessage()
         {
             try

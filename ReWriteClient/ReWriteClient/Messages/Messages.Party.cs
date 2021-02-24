@@ -1001,7 +1001,7 @@ namespace ReWriteClient.Messages
 
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
-                Address = 0x2032E6A8,
+                Address = 0x2032E6AA,
                 Type = DataType.Byte,
                 ManipulationType = manipulationType,
                 Value = value
@@ -1156,7 +1156,7 @@ namespace ReWriteClient.Messages
 
             return memoryProcessor.UpdateMemory(new MemoryObject
             {
-                Address = 0x2032E9E5,
+                Address = 0x2032E9E6,
                 Type = DataType.Byte,
                 ManipulationType = manipulationType,
                 Value = value

@@ -30,6 +30,7 @@ namespace ReWriteClient
         private bool clientConnected = false;
 
         private Timer soloTimer;
+        private Timer dynamicTimer;
 
         public MainWindow()
         {
@@ -44,16 +45,20 @@ namespace ReWriteClient
 
         #region View Methods
 
-        private async void ClientConnectClicked(object sender, RoutedEventArgs e)
+        private void ClientConnectClicked(object sender, RoutedEventArgs e)
         {
-            await this.ConnectToClient();
+            this.ConnectToClient();
+
+            Pcsx2ConnectButton.IsEnabled = false;
         }
 
-        private async void ClientDisconnectClicked(object sender, RoutedEventArgs e)
+        private void ClientDisconnectClicked(object sender, RoutedEventArgs e)
         {
             try
             {
-                await this.DisconnectFromClient();
+                this.DisconnectFromClient();
+
+                Pcsx2ConnectButton.IsEnabled = true;
             }
             catch (Exception ex)
             {
@@ -83,6 +88,8 @@ namespace ReWriteClient
                     await this.ConnectToServer(this.UsernameInput.Text);
 
                     this.serverConnected = true;
+
+                    ServerConnectButton.IsEnabled = false;
                 }
             }
             catch (Exception ex)
@@ -101,7 +108,9 @@ namespace ReWriteClient
         {
             try
             {
-                await this.DisconnectFromServer(this.UsernameInput.Text);
+                await this.DisconnectFromServer();
+
+                ServerConnectButton.IsEnabled = true;
             }
             catch (Exception ex)
             {
@@ -123,11 +132,16 @@ namespace ReWriteClient
             messageHub.UpdateOptionsMessage();
         }
 
-        private async void StartSoloClicked(object sender, RoutedEventArgs e)
+        private void StartSoloClicked(object sender, RoutedEventArgs e)
         {
             try
             {
                 this.StartSoloPlay();
+
+                RandomEventPerSecond.IsEnabled = false;
+                StartSoloButton.IsEnabled = false;
+
+                StopSoloButton.Visibility = Visibility.Visible;
             }
             catch (Exception ex)
             {
@@ -135,13 +149,18 @@ namespace ReWriteClient
             }
         }
 
-        private async void StopSoloClicked(object sender, RoutedEventArgs e)
+        private void StopSoloClicked(object sender, RoutedEventArgs e)
         {
             try
             {
                 this.StopSoloPlay();
+
+                RandomEventPerSecond.IsEnabled = true;
+                StartSoloButton.IsEnabled = true;
+
+                StopSoloButton.Visibility = Visibility.Hidden;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Logger.Instance.Error($"Error Stoping Solo: {ex.Message}", "StopSoloClicked");
             }
@@ -149,7 +168,7 @@ namespace ReWriteClient
 
         #endregion View Methods
 
-        private async Task ConnectToClient()
+        private void ConnectToClient()
         {
             try
             {
@@ -186,7 +205,7 @@ namespace ReWriteClient
             });
         }
 
-        private async Task DisconnectFromClient()
+        private void DisconnectFromClient()
         {
             this.memoryProcessor.DisconnectFromProcess();
 
@@ -231,11 +250,24 @@ namespace ReWriteClient
                     Logger.Instance.Info("Server Connection Established", "ConnectToServer");
                 });
 
-                this.messageHub = new MessageHub(this.connection, username);
+                this.messageHub = new MessageHub(this.connection, username.ToLower());
+
+                this.dynamicTimer = new Timer
+                {
+                    AutoReset = true,
+                    Interval = 60000
+                };
+
+                this.dynamicTimer.Elapsed += (object sender, ElapsedEventArgs e) => {
+                    if (this.serverConnected && this.messageHub != null)
+                        ResponseManager.Instance.SendResponse(this.messageHub);
+                };
+
+                this.dynamicTimer.Start();
             }
         }
 
-        private async Task DisconnectFromServer(string username)
+        private async Task DisconnectFromServer()
         {
             if (this.connection == null) return;
 
@@ -250,7 +282,12 @@ namespace ReWriteClient
                 Logger.Instance.Info("Server Connection Disconnected", "DisconnectFromServer");
             });
 
-            this.messageHub = null;   
+            this.messageHub = null;
+
+            this.dynamicTimer.Stop();
+            this.dynamicTimer.Dispose();
+
+            this.dynamicTimer = null;
         }
 
         private async Task ReconnectToServer(string username)
