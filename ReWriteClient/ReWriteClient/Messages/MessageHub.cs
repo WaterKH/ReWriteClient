@@ -41,14 +41,14 @@ namespace ReWriteClient.Messages
 
                         SendServerLogReceived(this, new MessageHubArgs { Viewer = message.ViewerName, MethodName = messageName, Value = message.Value } );
 
-                        this.SendResponseMessage(new Response
-                        {
-                            HostConnectionId = message.HostConnectionId,
-                            HostName = message.HostName,
-                            ViewerName = message.ViewerName,
-                            Cost = message.Cost,
-                            IsSuccessful = isSuccessful
-                        });
+                        //this.SendResponseMessage(new Response
+                        //{
+                        //    HostConnectionId = message.HostConnectionId,
+                        //    HostName = message.HostName,
+                        //    ViewerName = message.ViewerName,
+                        //    Cost = message.Cost,
+                        //    IsSuccessful = isSuccessful
+                        //});
                     });
                 }
             }

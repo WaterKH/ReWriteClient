@@ -23,8 +23,8 @@ namespace ReWriteClient
         private MessageHub messageHub;
         private readonly MemoryProcessor memoryProcessor = MemoryProcessor.Instance;
 
-        //private readonly string connectionUrl = "https://localhost:44303/MessageHub";
-        private readonly string connectionUrl = "https://memoryscape.azurewebsites.net/MessageHub";
+        private readonly string connectionUrl = "https://localhost:44303/MessageHub";
+        //private readonly string connectionUrl = "https://memoryscape.azurewebsites.net/MessageHub";
 
         private bool serverConnected = false;
         private bool clientConnected = false;
@@ -109,8 +109,6 @@ namespace ReWriteClient
             try
             {
                 await this.DisconnectFromServer();
-
-                ServerConnectButton.IsEnabled = true;
             }
             catch (Exception ex)
             {
@@ -120,8 +118,6 @@ namespace ReWriteClient
 
                 Logger.Instance.Error(ex.Message, "ServerDisconnectClicked");
             }
-
-            ServerDisconnectButton.Visibility = this.serverConnected ? Visibility.Visible : Visibility.Hidden;
         }
 
         private void UpdateOptions(object sender, RoutedEventArgs e)
@@ -284,23 +280,28 @@ namespace ReWriteClient
 
             this.messageHub = null;
 
-            this.dynamicTimer.Stop();
-            this.dynamicTimer.Dispose();
+            if (this.dynamicTimer != null)
+            {
+                this.dynamicTimer.Stop();
+                this.dynamicTimer.Dispose();
 
-            this.dynamicTimer = null;
+                this.dynamicTimer = null;
+            }
+
+            ServerDisconnectButton.Visibility = this.serverConnected ? Visibility.Visible : Visibility.Hidden;
+
+            ServerConnectButton.IsEnabled = true;
         }
 
         private async Task ReconnectToServer(string username)
         {
             this.Dispatcher.Invoke(() =>
             {
-                this.ServerConnectionStatusMessage.Content = $"Connection Status: {this.connection.State}";
+                this.ServerConnectionStatusMessage.Content = $"Connection Status: Retrying";
 
                 this.serverConnected = false;
 
                 Logger.Instance.Error("Server Connection Disconnected Forcebly - Trying to Re-establish Connection", "ReconnectToServer");
-
-                ServerDisconnectButton.Visibility = Visibility.Hidden;
             });
 
             while (!this.serverConnected)
